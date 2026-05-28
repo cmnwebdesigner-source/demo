@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atelier LuminArt | Terapie prin artă & cursuri creative</title>
-  <meta name="description" content="Atelier LuminArt - terapie prin artă, cursuri pentru copii, tabere creative și picturi personalizate. Programări telefonice." />
+
+  <title>Atelier LuminArt | Terapie prin artă, cursuri pentru copii și tabere creative</title>
+
+  <meta name="description" content="Atelier LuminArt - demo site pentru terapie prin artă, cursuri pentru copii, tabere creative și pictură. Programări telefonice." />
 
   <style>
     :root {
-      --bg: #fffaf4;
-      --card: rgba(255, 255, 255, .82);
-      --card-solid: #ffffff;
-      --ink: #231915;
-      --muted: #6f5c51;
-      --line: rgba(56, 38, 28, .12);
-      --accent: #b97843;
-      --accent-2: #e7c37f;
-      --rose: #d48b7b;
-      --sage: #88a889;
-      --lavender: #9a84b7;
-      --shadow: 0 18px 55px rgba(82, 49, 30, .13);
-      --soft-shadow: 0 10px 30px rgba(82, 49, 30, .08);
-      --radius: 28px;
-      --radius-sm: 18px;
-      --container: 1120px;
+      --bg: #fff8ef;
+      --bg-soft: #f7eadc;
+      --card: rgba(255, 255, 255, 0.78);
+      --text: #241713;
+      --muted: #765f55;
+      --brown: #7b4528;
+      --brown-dark: #2a1711;
+      --gold: #c8843f;
+      --gold-soft: #ffd79a;
+      --rose: #d98b73;
+      --cream: #fffdf8;
+      --line: rgba(88, 52, 32, 0.14);
+      --shadow: 0 22px 70px rgba(77, 42, 22, 0.12);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
     }
 
     * {
@@ -38,12 +41,12 @@
 
     body {
       min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at 10% 0%, rgba(231, 195, 127, .42), transparent 32%),
-        radial-gradient(circle at 90% 14%, rgba(212, 139, 123, .28), transparent 30%),
-        linear-gradient(180deg, #fffaf4 0%, #fff3e6 55%, #fbefe4 100%);
-      color: var(--ink);
+        radial-gradient(circle at 12% 8%, rgba(255, 200, 131, 0.35), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(217, 139, 115, 0.22), transparent 26%),
+        linear-gradient(180deg, #fff7ed 0%, #fffaf5 48%, #fff1e5 100%);
+      color: var(--text);
       overflow-x: hidden;
     }
 
@@ -53,11 +56,11 @@
       inset: 0;
       pointer-events: none;
       z-index: -2;
-      opacity: .16;
       background-image:
-        linear-gradient(rgba(35, 25, 21, .04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(35, 25, 21, .04) 1px, transparent 1px);
-      background-size: 34px 34px;
+        linear-gradient(rgba(92, 58, 37, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(92, 58, 37, 0.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
     }
 
     a {
@@ -65,1621 +68,1576 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    textarea {
-      font: inherit;
+    button {
+      border: 0;
+      font-family: inherit;
+      cursor: pointer;
     }
 
     .page {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 36px));
+      width: min(var(--max), calc(100% - 36px));
       margin: 0 auto;
     }
 
-    .nav {
+    .top-blur {
       position: fixed;
-      z-index: 50;
-      top: 14px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 110px;
+      z-index: 80;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 248, 240, 0.96), rgba(255, 248, 240, 0));
+    }
+
+    .navbar {
+      position: fixed;
+      top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(var(--container), calc(100% - 28px));
+      width: min(var(--max), calc(100% - 36px));
+      z-index: 100;
+      border: 1px solid rgba(255,255,255,0.62);
+      background: rgba(255, 246, 235, 0.78);
+      backdrop-filter: blur(22px);
+      border-radius: 999px;
+      box-shadow: 0 18px 55px rgba(58, 31, 18, 0.12);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 10px 12px 10px 16px;
-      border: 1px solid rgba(255, 255, 255, .72);
-      border-radius: 999px;
-      background: rgba(255, 250, 244, .76);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 14px 46px rgba(62, 38, 23, .12);
+      padding: 10px 12px 10px 14px;
+      animation: navDown 0.8s ease both;
+    }
+
+    @keyframes navDown {
+      from { opacity: 0; transform: translate(-50%, -18px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      min-width: max-content;
+      gap: 12px;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 19px;
       display: grid;
       place-items: center;
+      color: white;
+      font-weight: 900;
       background:
-        radial-gradient(circle at 28% 22%, #fff2c9, transparent 34%),
-        linear-gradient(135deg, var(--accent), var(--rose));
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.5), 0 10px 24px rgba(185,120,67,.28);
-      animation: markFloat 3.8s ease-in-out infinite;
+        radial-gradient(circle at 35% 28%, #ffe7ba, transparent 23%),
+        linear-gradient(135deg, #d99a6c, #9c5532 56%, #2f1a13);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 10px 25px rgba(123, 69, 40, .20);
+      animation: markPulse 3.6s ease-in-out infinite;
     }
 
-    .brand-mark svg {
-      width: 20px;
-      height: 20px;
-      stroke: white;
+    @keyframes markPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.045); }
     }
 
-    .brand strong {
-      display: block;
-      font-size: 15px;
-      letter-spacing: -.03em;
-      line-height: 1;
+    .brand-title {
+      font-size: 18px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
     }
 
-    .brand small {
-      display: block;
+    .brand-sub {
       margin-top: 3px;
+      font-size: 12px;
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
     }
 
-    .links {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 2px;
-    }
-
-    .links a {
-      padding: 9px 11px;
+      gap: 6px;
+      padding: 5px;
       border-radius: 999px;
-      color: #56483f;
+      background: rgba(255,255,255,.42);
+    }
+
+    .nav-links a {
       font-size: 13px;
-      font-weight: 750;
-      transition: .22s ease;
-    }
-
-    .links a:hover {
-      background: rgba(185, 120, 67, .12);
-      color: #8b582e;
-    }
-
-    .nav-call {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
+      font-weight: 800;
+      color: #604236;
+      padding: 12px 14px;
       border-radius: 999px;
-      color: #fffaf4;
-      background: #231915;
-      font-size: 13px;
-      font-weight: 850;
-      box-shadow: 0 12px 28px rgba(35,25,21,.2);
-      transition: .22s ease;
+      transition: .25s ease;
     }
 
-    .nav-call:hover {
-      transform: translateY(-2px);
-      background: #7b4d2c;
+    .nav-links a:hover {
+      background: #fff;
+      color: var(--brown);
+      transform: translateY(-1px);
     }
 
     .menu-btn {
       display: none;
-      width: 40px;
-      height: 40px;
-      border: 0;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      color: #fffaf4;
-      background: #231915;
-      cursor: pointer;
+      background: var(--brown-dark);
+      color: white;
+      font-size: 22px;
+      align-items: center;
+      justify-content: center;
     }
 
     .mobile-menu {
       position: fixed;
-      z-index: 45;
-      top: 74px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-10px);
-      width: min(420px, calc(100% - 28px));
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 24px;
-      background: rgba(255, 250, 244, .95);
+      top: 86px;
+      left: 18px;
+      right: 18px;
+      z-index: 99;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 14px;
+      border-radius: 28px;
+      background: rgba(255, 247, 238, 0.96);
+      backdrop-filter: blur(20px);
       box-shadow: var(--shadow);
-      opacity: 0;
-      visibility: hidden;
-      transition: .25s ease;
-      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.68);
     }
 
-    .mobile-menu.open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
+    .mobile-menu.is-open {
+      display: flex;
+      animation: menuIn .28s ease both;
+    }
+
+    @keyframes menuIn {
+      from { opacity: 0; transform: translateY(-8px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .mobile-menu a {
-      display: block;
-      padding: 13px 14px;
-      border-radius: 16px;
-      color: #4f4037;
-      font-weight: 800;
-    }
-
-    .mobile-menu a:hover {
-      background: rgba(185,120,67,.1);
+      padding: 14px 15px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.6);
+      color: #50352a;
+      font-weight: 850;
     }
 
     .hero {
       position: relative;
+      padding: 142px 0 58px;
       min-height: 100vh;
       display: grid;
-      place-items: center;
-      padding: 128px 0 74px;
+      align-items: center;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.04fr .96fr;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
       align-items: center;
-      gap: 44px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-      padding: 8px 12px;
-      border: 1px solid rgba(185,120,67,.18);
+      gap: 10px;
+      width: fit-content;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      color: #865832;
-      background: rgba(255,255,255,.7);
-      box-shadow: var(--soft-shadow);
-      font-size: 13px;
-      font-weight: 850;
+      background: rgba(255,255,255,.58);
+      box-shadow: 0 10px 35px rgba(80,44,24,.06);
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      animation: fadeUp .7s ease .05s both;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
+    .dot {
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 7px rgba(185,120,67,.12);
-      animation: pulse 1.8s ease-in-out infinite;
+      background: var(--gold);
+      box-shadow: 0 0 0 7px rgba(200, 132, 63, .14);
+      animation: dotBlink 1.6s ease-in-out infinite;
     }
 
-    h1 {
-      max-width: 700px;
-      margin-bottom: 18px;
-      font-size: clamp(40px, 6vw, 78px);
-      line-height: .94;
-      letter-spacing: -.07em;
+    @keyframes dotBlink {
+      0%,100% { transform: scale(1); opacity: .9; }
+      50% { transform: scale(.72); opacity: .55; }
     }
 
-    .hero-text p {
-      max-width: 610px;
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 19px;
+      font-size: clamp(44px, 6.7vw, 88px);
+      line-height: .91;
+      letter-spacing: -0.075em;
+      font-weight: 950;
+      animation: fadeUp .7s ease .14s both;
+    }
+
+    .hero h1 span {
+      color: var(--brown);
+      position: relative;
+    }
+
+    .hero p {
+      max-width: 660px;
+      margin-top: 23px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.75;
+      animation: fadeUp .7s ease .23s both;
     }
 
     .hero-actions {
+      margin-top: 30px;
       display: flex;
-      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 26px;
+      animation: fadeUp .7s ease .32s both;
     }
 
     .btn {
+      min-height: 52px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 13px 18px;
-      border: 0;
+      gap: 10px;
+      padding: 14px 20px;
       border-radius: 999px;
-      cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 900;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
+      letter-spacing: -0.01em;
+      transition: .25s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-primary {
-      color: #fffaf4;
-      background: linear-gradient(135deg, #231915, #7c4b2b 58%, #b97843);
-      box-shadow: 0 16px 34px rgba(91, 54, 32, .24);
+      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.25), transparent 25%),
+        linear-gradient(135deg, var(--brown-dark), var(--brown), var(--gold));
+      box-shadow: 0 18px 45px rgba(94, 50, 27, .26);
     }
 
-    .btn-soft {
-      color: #6d4729;
-      background: rgba(255,255,255,.76);
-      border: 1px solid rgba(185,120,67,.18);
-      box-shadow: var(--soft-shadow);
+    .btn-light {
+      color: var(--brown);
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(96, 65, 49, .12);
+      box-shadow: 0 12px 35px rgba(94, 50, 27, .08);
     }
 
-    .hero-note {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 26px;
-      color: #6d5a4e;
-      font-size: 14px;
-      line-height: 1.5;
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
-    .hero-note span {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(136,168,137,.18);
-      color: #557b58;
-      font-weight: 900;
-    }
-
-    .visual {
+    .hero-panel {
       position: relative;
-      min-height: 560px;
+      min-height: 620px;
+      border-radius: 44px;
+      padding: 15px;
+      border: 1px solid rgba(255,255,255,.7);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.7), rgba(255, 239, 220,.48)),
+        radial-gradient(circle at 20% 18%, rgba(255,215,154,.42), transparent 30%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: fadeLeft .85s ease .15s both;
     }
 
-    .art-card {
+    .painting-card {
       position: absolute;
-      inset: 0 0 0 34px;
-      border-radius: 42px;
+      inset: 15px;
+      border-radius: 34px;
       overflow: hidden;
       background:
-        linear-gradient(150deg, rgba(35,25,21,.18), rgba(35,25,21,.08)),
-        url("https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1100&q=85");
+        linear-gradient(to bottom, rgba(0,0,0,.04), rgba(0,0,0,.22)),
+        url("https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=85");
       background-size: cover;
       background-position: center;
-      box-shadow: 0 28px 80px rgba(74,45,26,.22);
-      transform: rotate(1.6deg);
-      animation: imageFloat 7s ease-in-out infinite;
+      transform: translateZ(0);
     }
 
-    .art-card::before {
-      content: "";
+    .floating-badge {
       position: absolute;
-      inset: 16px;
-      border-radius: 32px;
-      border: 1px solid rgba(255,255,255,.42);
-      pointer-events: none;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 28px;
+      background: rgba(255, 253, 248, .78);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 20px 60px rgba(30, 14, 8, .18);
+      animation: floatSoft 4s ease-in-out infinite;
     }
 
-    .paint-blob {
+    @keyframes floatSoft {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+
+    .badge-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-line strong {
+      font-size: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 10px;
+      background: rgba(123, 69, 40, .1);
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .badge-text {
+      color: #6a5145;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .orb {
       position: absolute;
       border-radius: 999px;
-      filter: blur(2px);
-      opacity: .9;
-      animation: blobMove 6.5s ease-in-out infinite alternate;
+      filter: blur(.2px);
+      opacity: .78;
+      pointer-events: none;
+      animation: orbMove 7s ease-in-out infinite;
     }
 
-    .blob-a {
+    .orb.one {
       width: 110px;
       height: 110px;
-      left: 0;
-      top: 42px;
-      background: linear-gradient(135deg, var(--rose), var(--accent-2));
+      right: -20px;
+      top: 90px;
+      background: rgba(255, 215, 154, .48);
     }
 
-    .blob-b {
-      width: 86px;
-      height: 86px;
-      right: -12px;
-      top: 38%;
-      background: linear-gradient(135deg, var(--sage), #d8e9c7);
-      animation-delay: -2s;
+    .orb.two {
+      width: 74px;
+      height: 74px;
+      left: 24px;
+      top: 44px;
+      background: rgba(217, 139, 115, .38);
+      animation-delay: -2.2s;
     }
 
-    .blob-c {
-      width: 78px;
-      height: 78px;
-      left: 36px;
-      bottom: 34px;
-      background: linear-gradient(135deg, var(--lavender), #f0d7ff);
-      animation-delay: -4s;
+    @keyframes orbMove {
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(-18px, 20px,0) scale(1.08); }
     }
 
-    .floating-info {
-      position: absolute;
-      left: 0;
-      bottom: 54px;
-      width: min(310px, 78%);
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 24px;
-      background: rgba(255,250,244,.84);
-      backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-      animation: cardFloat 4.8s ease-in-out infinite;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .floating-info strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 17px;
-    }
-
-    .floating-info p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(24px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .section {
-      padding: 82px 0;
+      padding: 74px 0;
+      position: relative;
     }
 
     .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 28px;
-      margin-bottom: 30px;
+      max-width: 760px;
+      margin-bottom: 32px;
     }
 
-    .kicker {
-      margin-bottom: 9px;
-      color: #956334;
-      font-size: 12px;
+    .section-kicker {
+      color: var(--brown);
       font-weight: 950;
       text-transform: uppercase;
-      letter-spacing: .13em;
+      letter-spacing: .16em;
+      font-size: 12px;
     }
 
-    h2 {
-      max-width: 720px;
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: 1;
-      letter-spacing: -.055em;
+    .section h2 {
+      margin-top: 10px;
+      font-size: clamp(32px, 4.4vw, 58px);
+      line-height: .98;
+      letter-spacing: -0.06em;
     }
 
     .section-head p {
-      max-width: 430px;
+      margin-top: 15px;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.72;
+      font-size: 17px;
     }
 
-    .about-card {
+    .about-box {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
+      grid-template-columns: .95fr 1.05fr;
       gap: 24px;
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: calc(var(--radius) + 8px);
-      background: rgba(255,255,255,.58);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+      align-items: stretch;
     }
 
     .about-photo {
-      min-height: 430px;
-      border-radius: var(--radius);
+      min-height: 520px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
       background:
-        linear-gradient(rgba(35,25,21,.04), rgba(35,25,21,.18)),
-        url("https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1000&q=85");
+        linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1100&q=85");
       background-size: cover;
       background-position: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .about-photo::after {
-      content: "";
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      right: -40px;
-      bottom: -40px;
-      border-radius: 50%;
-      background: rgba(231,195,127,.42);
-      animation: blobMove 5.5s ease-in-out infinite alternate;
     }
 
     .about-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 24px;
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.68);
+      box-shadow: 0 14px 45px rgba(77, 42, 22, .08);
+    }
+
+    .about-content h3 {
+      font-size: clamp(27px, 3.4vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
     }
 
     .about-content p {
+      color: var(--muted);
+      line-height: 1.78;
       margin-top: 14px;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.82;
+      font-size: 16.5px;
     }
 
-    .signature {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      width: max-content;
-      margin-top: 24px;
-      padding: 10px 13px;
-      border-radius: 999px;
-      background: #fff5e8;
-      color: #7d532f;
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .grid-4,
-    .grid-3 {
-      display: grid;
-      gap: 18px;
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .service-card,
-    .simple-card,
-    .benefit-card,
-    .faq details {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--soft-shadow);
-      backdrop-filter: blur(16px);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-
-    .service-card:hover,
-    .simple-card:hover,
-    .benefit-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(185,120,67,.22);
-      box-shadow: var(--shadow);
-    }
-
-    .service-card {
-      padding: 24px;
-      min-height: 250px;
-    }
-
-    .service-card::after,
-    .simple-card::after {
-      content: "";
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      right: -60px;
-      bottom: -60px;
-      border-radius: 50%;
-      background: rgba(231,195,127,.22);
-      transition: .25s ease;
-    }
-
-    .service-card:hover::after,
-    .simple-card:hover::after {
-      transform: scale(1.25);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      border-radius: 18px;
-      color: #fffaf4;
-      background: linear-gradient(135deg, #231915, #b97843);
-      box-shadow: 0 12px 24px rgba(35,25,21,.13);
-    }
-
-    .icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: currentColor;
-    }
-
-    .service-card h3,
-    .simple-card h3,
-    .benefit-card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      letter-spacing: -.03em;
-    }
-
-    .service-card p,
-    .simple-card p,
-    .benefit-card p {
-      position: relative;
-      z-index: 1;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .simple-card {
-      padding: 22px;
-      min-height: 190px;
-    }
-
-    .simple-card .dot {
-      width: 10px;
-      height: 10px;
-      margin-bottom: 18px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 8px rgba(185,120,67,.12);
-    }
-
-    .benefits {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .benefit-photo {
-      min-height: 460px;
-      border-radius: calc(var(--radius) + 6px);
-      background:
-        linear-gradient(rgba(35,25,21,.08), rgba(35,25,21,.35)),
-        url("https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1000&q=85");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .benefit-photo::before {
-      content: "";
-      position: absolute;
-      inset: 22px;
-      border: 1px solid rgba(255,255,255,.36);
-      border-radius: var(--radius);
-    }
-
-    .benefit-note {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.55);
-      border-radius: 22px;
-      color: #fffaf4;
-      background: rgba(35,25,21,.34);
-      backdrop-filter: blur(14px);
-    }
-
-    .benefit-note strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 19px;
-    }
-
-    .benefit-note p {
-      color: rgba(255,250,244,.82);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .benefit-list {
+    .mini-list {
+      margin-top: 22px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 12px;
     }
 
-    .benefit-card {
-      padding: 24px;
-    }
-
-    .program {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .program-card,
-    .paint-card {
-      padding: 34px;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: calc(var(--radius) + 8px);
-      background: rgba(255,255,255,.72);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
-
-    .program-card p,
-    .paint-card p {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .tag-row span {
-      padding: 9px 12px;
-      border: 1px solid rgba(185,120,67,.16);
-      border-radius: 999px;
-      color: #735035;
-      background: #fff7ec;
-      font-size: 13px;
+    .mini-list span {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 247, 238, .82);
+      color: #50352a;
       font-weight: 850;
+      font-size: 14px;
+      border: 1px solid var(--line);
     }
 
-    .program-photo {
-      min-height: 420px;
-      border-radius: calc(var(--radius) + 8px);
-      background:
-        linear-gradient(rgba(35,25,21,.06), rgba(35,25,21,.32)),
-        url("https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=1000&q=85");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .program-photo::after {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      left: -60px;
-      bottom: -70px;
-      border-radius: 50%;
-      background: rgba(212,139,123,.42);
-      animation: blobMove 5.4s ease-in-out infinite alternate;
-    }
-
-    .paint-layout {
+    .cards {
       display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 22px;
-      align-items: stretch;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
     }
 
-    .paint-photo {
-      min-height: 420px;
-      border-radius: calc(var(--radius) + 8px);
-      background:
-        linear-gradient(rgba(35,25,21,.04), rgba(35,25,21,.22)),
-        url("https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1000&q=85");
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr .9fr;
-      grid-auto-rows: 230px;
-      gap: 16px;
-    }
-
-    .gallery-item {
+    .card {
       position: relative;
       overflow: hidden;
-      border-radius: var(--radius);
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--soft-shadow);
+      border-radius: 26px;
+      padding: 24px;
+      min-height: 238px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 16px 45px rgba(77, 42, 22, .08);
       transition: .28s ease;
     }
 
-    .gallery-item:hover {
-      transform: translateY(-5px) scale(1.01);
-      box-shadow: var(--shadow);
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      right: -80px;
+      top: -80px;
+      border-radius: 999px;
+      background: rgba(200, 132, 63, .18);
+      transition: .28s ease;
     }
 
-    .gallery-item::after {
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 70px rgba(77, 42, 22, .13);
+    }
+
+    .card:hover::before {
+      transform: scale(1.5);
+    }
+
+    .icon {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 22px;
+      background: linear-gradient(135deg, #c8843f, #8b4b2a);
+      box-shadow: 0 13px 30px rgba(123,69,40,.2);
+      margin-bottom: 17px;
+    }
+
+    .card h3 {
+      position: relative;
+      font-size: 20px;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      position: relative;
+      color: var(--muted);
+      line-height: 1.64;
+      font-size: 14.5px;
+    }
+
+    .simple-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .soft-panel {
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255,215,154,.32), transparent 32%),
+        rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 16px 45px rgba(77, 42, 22, .08);
+    }
+
+    .soft-panel h3 {
+      font-size: 28px;
+      letter-spacing: -0.055em;
+      margin-bottom: 12px;
+    }
+
+    .soft-panel p {
+      color: var(--muted);
+      line-height: 1.72;
+      margin-top: 10px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .chip {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(123,69,40,.09);
+      color: var(--brown);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .9fr;
+      gap: 14px;
+    }
+
+    .gallery-card {
+      min-height: 330px;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 18px 50px rgba(77, 42, 22, .12);
+    }
+
+    .gallery-card.small {
+      min-height: 250px;
+    }
+
+    .gallery-card.tall {
+      min-height: 530px;
+    }
+
+    .gallery-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(transparent 28%, rgba(35,25,21,.66));
+      background: linear-gradient(to bottom, transparent 30%, rgba(20, 11, 7, .62));
     }
 
-    .gallery-item.tall {
-      grid-row: span 2;
-    }
-
-    .g1 { background-image: url("https://images.unsplash.com/photo-1499892477393-f675706cbe6e?auto=format&fit=crop&w=900&q=85"); }
-    .g2 { background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=900&q=85"); }
-    .g3 { background-image: url("https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&w=900&q=85"); }
-    .g4 { background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85"); }
-    .g5 { background-image: url("https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=85"); }
-
-    .caption {
+    .gallery-card span {
       position: absolute;
-      z-index: 1;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      color: #fffaf4;
-    }
-
-    .caption strong {
-      display: block;
-      margin-bottom: 5px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      color: white;
       font-size: 18px;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+      text-shadow: 0 8px 30px rgba(0,0,0,.35);
     }
 
-    .caption span {
-      color: rgba(255,250,244,.82);
-      font-size: 13px;
-      line-height: 1.45;
+    .g1 { background-image: url("https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1000&q=85"); }
+    .g2 { background-image: url("https://images.unsplash.com/photo-1499892477393-f675706cbe6e?auto=format&fit=crop&w=900&q=85"); }
+    .g3 { background-image: url("https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&w=900&q=85"); }
+    .g4 { background-image: url("https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=900&q=85"); }
+
+    .gallery-side {
+      display: grid;
+      gap: 14px;
     }
 
-    .contact-simple {
+    .call-section {
+      padding: 78px 0;
+    }
+
+    .call-card {
       position: relative;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 24px;
-      padding: 34px;
-      border-radius: calc(var(--radius) + 10px);
-      color: #fffaf4;
+      border-radius: 38px;
+      padding: 36px;
       background:
-        radial-gradient(circle at 12% 0%, rgba(231,195,127,.36), transparent 34%),
-        linear-gradient(135deg, #231915, #6f4328 58%, #b97843);
-      box-shadow: 0 24px 70px rgba(74,45,26,.24);
+        radial-gradient(circle at 100% 0%, rgba(255, 215, 154, .34), transparent 34%),
+        linear-gradient(135deg, #2a1711, #734126 60%, #bd7636);
+      color: white;
+      box-shadow: 0 28px 80px rgba(75, 38, 17, .25);
     }
 
-    .contact-simple::before {
+    .call-card::before {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
-      right: -80px;
-      top: -80px;
+      width: 260px;
+      height: 260px;
+      top: -120px;
+      right: -90px;
       border-radius: 50%;
-      background: rgba(255,255,255,.13);
-      animation: blobMove 6s ease-in-out infinite alternate;
-    }
-
-    .contact-simple h2 {
-      color: #fffaf4;
-    }
-
-    .contact-simple p {
-      max-width: 620px;
-      margin-top: 13px;
-      color: rgba(255,250,244,.8);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .call-box {
-      position: relative;
-      z-index: 1;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.24);
-      border-radius: 24px;
-      background: rgba(255,255,255,.12);
-      backdrop-filter: blur(12px);
-    }
-
-    .call-box strong {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 28px;
-      letter-spacing: -.04em;
-    }
-
-    .call-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .call-actions .btn-primary {
-      background: #fffaf4;
-      color: #231915;
-      box-shadow: none;
-    }
-
-    .social-btn {
-      display: inline-flex;
-      min-height: 42px;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,.24);
-      border-radius: 999px;
-      color: #fffaf4;
+      border: 1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.08);
-      font-size: 13px;
-      font-weight: 850;
-      transition: .22s ease;
+      animation: circleFloat 7s ease-in-out infinite;
     }
 
-    .social-btn:hover {
+    @keyframes circleFloat {
+      0%,100% { transform: translate(0,0); }
+      50% { transform: translate(-18px, 14px); }
+    }
+
+    .call-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .call-kicker {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #ffe1ac;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .call-card h2 {
+      max-width: 650px;
+      font-size: clamp(30px, 4.6vw, 58px);
+      line-height: .98;
+      letter-spacing: -0.065em;
+    }
+
+    .call-card p {
+      max-width: 650px;
+      margin-top: 14px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.72;
+      font-size: 16px;
+    }
+
+    .phone-box {
+      min-width: 290px;
+      padding: 16px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(12px);
+      display: grid;
+      gap: 12px;
+    }
+
+    .phone-number {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      color: #fff;
+      padding: 8px 4px;
+    }
+
+    .call-btn {
+      min-height: 54px;
+      border-radius: 999px;
+      background: #fffdf8;
+      color: #241713;
+      font-size: 16px;
+      font-weight: 950;
+      box-shadow: 0 16px 35px rgba(0,0,0,.14);
+      transition: .25s ease;
+    }
+
+    .call-btn:hover {
       transform: translateY(-2px);
-      background: rgba(255,255,255,.16);
+    }
+
+    .socials {
+      display: flex;
+      gap: 8px;
+    }
+
+    .socials a {
+      flex: 1;
+      min-height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.1);
+      font-size: 13px;
+      font-weight: 900;
+      transition: .25s ease;
+    }
+
+    .socials a:hover {
+      background: rgba(255,255,255,.18);
+      transform: translateY(-2px);
     }
 
     .faq {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 10px;
     }
 
-    .faq details {
-      padding: 0;
+    .faq-item {
+      overflow: hidden;
+      border-radius: 22px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 12px 34px rgba(77,42,22,.06);
     }
 
-    .faq summary {
-      list-style: none;
-      cursor: pointer;
+    .faq-q {
+      width: 100%;
+      min-height: 62px;
       padding: 18px 20px;
-      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: transparent;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 950;
+      text-align: left;
     }
 
-    .faq summary::-webkit-details-marker {
+    .faq-q span:last-child {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(123,69,40,.09);
+      color: var(--brown);
+      flex: 0 0 auto;
+      transition: .25s ease;
+    }
+
+    .faq-a {
       display: none;
-    }
-
-    .faq p {
-      padding: 0 20px 18px;
+      padding: 0 20px 20px;
       color: var(--muted);
+      line-height: 1.7;
       font-size: 15px;
-      line-height: 1.68;
     }
 
-    .footer {
-      padding: 34px 0 92px;
+    .faq-item.open .faq-a {
+      display: block;
+      animation: fadeUp .25s ease both;
+    }
+
+    .faq-item.open .faq-q span:last-child {
+      transform: rotate(45deg);
+    }
+
+    footer {
+      padding: 36px 0 110px;
       color: var(--muted);
+      text-align: center;
       font-size: 14px;
     }
 
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-
     .mobile-call {
-      display: none;
       position: fixed;
       left: 14px;
       right: 14px;
       bottom: 14px;
-      z-index: 60;
-      padding: 12px 14px;
-      border: 1px solid rgba(255,255,255,.36);
-      border-radius: 20px;
-      color: #fffaf4;
-      background: linear-gradient(135deg, #231915, #9a6236);
-      box-shadow: 0 18px 44px rgba(35,25,21,.26);
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-height: 55px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.2), transparent 20%),
+        linear-gradient(135deg, #2a1711, #7b4528, #c8843f);
+      color: white;
       font-weight: 950;
-      text-align: center;
+      box-shadow: 0 18px 46px rgba(54, 27, 14, .32);
+      border: 1px solid rgba(255,255,255,.18);
+      animation: stickyCall 1.8s ease-in-out infinite;
+    }
+
+    @keyframes stickyCall {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .65s ease, transform .65s ease;
+      transform: translateY(18px);
+      transition: .6s ease;
     }
 
-    .reveal.in-view {
+    .reveal.show {
       opacity: 1;
       transform: translateY(0);
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(.76); opacity: .62; }
-    }
+    @media (max-width: 1020px) {
+      .hero-grid,
+      .about-box,
+      .simple-split,
+      .call-inner {
+        grid-template-columns: 1fr;
+      }
 
-    @keyframes markFloat {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-3px) rotate(-4deg); }
-    }
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-    @keyframes imageFloat {
-      0%, 100% { transform: translateY(0) rotate(1.6deg); }
-      50% { transform: translateY(-10px) rotate(.7deg); }
-    }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
 
-    @keyframes blobMove {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(18px, -16px, 0) scale(1.08); }
-    }
+      .gallery-card.tall {
+        min-height: 360px;
+      }
 
-    @keyframes cardFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
+      .phone-box {
+        min-width: 0;
+        width: 100%;
       }
     }
 
-    @media (max-width: 980px) {
-      .links,
-      .nav-call {
+    @media (max-width: 760px) {
+      :root {
+        --radius-xl: 26px;
+      }
+
+      .page {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .navbar {
+        top: 14px;
+        width: calc(100% - 28px);
+        padding: 8px;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 17px;
+      }
+
+      .brand-title {
+        font-size: 16px;
+      }
+
+      .brand-sub {
+        font-size: 11px;
+      }
+
+      .nav-links {
         display: none;
       }
 
       .menu-btn {
-        display: grid;
-        place-items: center;
+        display: flex;
       }
 
       .hero {
+        padding: 118px 0 42px;
         min-height: auto;
-        padding-top: 112px;
       }
 
-      .hero-grid,
-      .about-card,
-      .benefits,
-      .program,
-      .paint-layout,
-      .contact-simple {
-        grid-template-columns: 1fr;
-      }
-
-      .visual {
-        min-height: 500px;
-      }
-
-      .art-card {
-        left: 10px;
-      }
-
-      .grid-4,
-      .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-head p {
-        margin-top: 14px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(100% - 26px, var(--container));
-      }
-
-      .nav {
-        top: 10px;
-        width: calc(100% - 20px);
-        padding: 9px 10px 9px 12px;
-      }
-
-      .brand-mark {
-        width: 35px;
-        height: 35px;
-        border-radius: 14px;
-      }
-
-      .brand strong {
-        font-size: 14px;
-      }
-
-      .brand small {
-        font-size: 10px;
-      }
-
-      .hero {
-        padding: 96px 0 48px;
+      .hero-grid {
+        gap: 22px;
       }
 
       .eyebrow {
-        padding: 7px 10px;
-        font-size: 11px;
+        font-size: 10.5px;
+        padding: 8px 11px;
+        letter-spacing: .1em;
       }
 
-      h1 {
-        margin-bottom: 14px;
-        font-size: clamp(37px, 13vw, 54px);
-        letter-spacing: -.065em;
+      .hero h1 {
+        margin-top: 17px;
+        font-size: clamp(40px, 13vw, 58px);
+        line-height: .92;
       }
 
-      .hero-text p {
+      .hero p {
+        margin-top: 18px;
         font-size: 15.5px;
         line-height: 1.68;
       }
 
       .hero-actions {
-        margin-top: 20px;
+        margin-top: 22px;
         gap: 9px;
       }
 
       .btn {
         width: 100%;
-        min-height: 45px;
-        padding: 12px 14px;
-        font-size: 13px;
+        min-height: 50px;
+        font-size: 14px;
       }
 
-      .hero-note {
-        margin-top: 18px;
-        font-size: 13px;
-      }
-
-      .visual {
-        min-height: 390px;
-      }
-
-      .art-card {
-        inset: 10px 0 0 0;
+      .hero-panel {
+        min-height: 460px;
         border-radius: 30px;
-        transform: none;
+        padding: 10px;
       }
 
-      .floating-info {
-        left: 12px;
+      .painting-card {
+        inset: 10px;
+        border-radius: 23px;
+      }
+
+      .floating-badge {
+        left: 18px;
+        right: 18px;
         bottom: 18px;
-        width: calc(100% - 44px);
-        padding: 14px;
-        border-radius: 20px;
-      }
-
-      .blob-a {
-        width: 78px;
-        height: 78px;
-        top: 0;
-      }
-
-      .blob-b {
-        width: 62px;
-        height: 62px;
-        right: 8px;
-      }
-
-      .blob-c {
-        width: 58px;
-        height: 58px;
-        left: 24px;
-        bottom: 4px;
-      }
-
-      .section {
-        padding: 54px 0;
-      }
-
-      h2 {
-        font-size: clamp(28px, 10vw, 38px);
-      }
-
-      .section-head {
-        margin-bottom: 20px;
-      }
-
-      .section-head p {
-        font-size: 14.5px;
-        line-height: 1.62;
-      }
-
-      .about-card,
-      .program-card,
-      .paint-card,
-      .contact-simple {
-        padding: 14px;
-        border-radius: 26px;
-      }
-
-      .about-photo,
-      .program-photo,
-      .paint-photo,
-      .benefit-photo {
-        min-height: 280px;
+        padding: 15px;
         border-radius: 22px;
       }
 
-      .about-content {
-        padding: 8px 4px 4px;
+      .badge-line strong {
+        font-size: 16px;
       }
 
-      .about-content p,
-      .program-card p,
-      .paint-card p,
-      .contact-simple p {
-        font-size: 14.5px;
+      .badge-text {
+        font-size: 13px;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .section-head {
+        margin-bottom: 24px;
+      }
+
+      .section-kicker {
+        font-size: 10.5px;
+        letter-spacing: .14em;
+      }
+
+      .section h2 {
+        font-size: clamp(30px, 10.5vw, 43px);
+      }
+
+      .section-head p {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .about-photo {
+        min-height: 340px;
+      }
+
+      .about-content {
+        padding: 22px;
+      }
+
+      .about-content h3 {
+        font-size: 29px;
+      }
+
+      .about-content p {
+        font-size: 15px;
         line-height: 1.68;
       }
 
-      .grid-4,
-      .grid-3,
-      .benefit-list,
-      .faq {
+      .mini-list {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .mini-list span {
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      .cards {
         grid-template-columns: 1fr;
         gap: 12px;
       }
 
-      .service-card,
-      .simple-card,
-      .benefit-card {
+      .card {
         min-height: auto;
-        padding: 18px;
+        padding: 20px;
         border-radius: 22px;
       }
 
       .icon {
         width: 42px;
         height: 42px;
-        margin-bottom: 13px;
         border-radius: 15px;
+        font-size: 19px;
+        margin-bottom: 13px;
       }
 
-      .service-card h3,
-      .simple-card h3,
-      .benefit-card h3 {
+      .card h3 {
         font-size: 18px;
       }
 
-      .service-card p,
-      .simple-card p,
-      .benefit-card p {
+      .card p {
         font-size: 14px;
-        line-height: 1.62;
+        line-height: 1.58;
       }
 
-      .benefit-note {
-        left: 14px;
-        right: 14px;
-        bottom: 14px;
-        padding: 14px;
+      .soft-panel {
+        padding: 22px;
+        border-radius: 25px;
       }
 
-      .tag-row {
-        gap: 7px;
-        margin-top: 18px;
-      }
-
-      .tag-row span {
-        padding: 8px 10px;
-        font-size: 12px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 210px;
-        gap: 12px;
-      }
-
-      .gallery-item.tall {
-        grid-row: span 1;
-      }
-
-      .call-box {
-        padding: 14px;
-        border-radius: 20px;
-      }
-
-      .call-box strong {
+      .soft-panel h3 {
         font-size: 24px;
       }
 
-      .social-btn {
-        flex: 1;
-        font-size: 12px;
+      .soft-panel p {
+        font-size: 14.5px;
       }
 
-      .faq summary {
-        padding: 16px;
-        font-size: 14px;
+      .chip {
+        font-size: 12.5px;
+        padding: 9px 10px;
       }
 
-      .faq p {
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .gallery-side {
+        gap: 12px;
+      }
+
+      .gallery-card,
+      .gallery-card.small,
+      .gallery-card.tall {
+        min-height: 255px;
+        border-radius: 24px;
+      }
+
+      .gallery-card span {
+        font-size: 16px;
+      }
+
+      .call-section {
+        padding: 48px 0;
+      }
+
+      .call-card {
+        padding: 22px;
+        border-radius: 28px;
+      }
+
+      .call-card h2 {
+        font-size: clamp(30px, 9.5vw, 42px);
+        line-height: 1;
+      }
+
+      .call-card p {
+        font-size: 14.5px;
+        line-height: 1.62;
+      }
+
+      .phone-box {
+        padding: 12px;
+        border-radius: 22px;
+      }
+
+      .phone-number {
+        font-size: 25px;
+      }
+
+      .call-btn {
+        min-height: 50px;
+        font-size: 15px;
+      }
+
+      .socials {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .socials a {
+        min-height: 39px;
+        font-size: 11.5px;
+      }
+
+      .faq-q {
+        min-height: 56px;
+        padding: 15px 16px;
+        font-size: 14.5px;
+      }
+
+      .faq-a {
         padding: 0 16px 16px;
         font-size: 14px;
       }
 
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 13px;
-      }
-
       .mobile-call {
-        display: block;
+        display: flex;
       }
 
-      .footer {
-        padding-bottom: 98px;
+      footer {
+        padding-bottom: 94px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .brand-title {
+        font-size: 15px;
+      }
+
+      .brand-sub {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .phone-number {
+        font-size: 22px;
+      }
+
+      .socials a {
+        font-size: 10.5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <nav class="nav" aria-label="Navigație principală">
-      <a class="brand" href="#top" aria-label="Atelier LuminArt">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.4 3.4 4.5 4.9 8 5.5-3.5.6-5.6 2.1-8 5.5-2.4-3.4-4.5-4.9-8-5.5 3.5-.6 5.6-2.1 8-5.5Z"/><path d="M18 14c.9 1.3 1.8 1.9 3 2.2-1.2.3-2.1.9-3 2.2-.9-1.3-1.8-1.9-3-2.2 1.2-.3 2.1-.9 3-2.2Z"/></svg>
-        </span>
-        <span>
-          <strong>Atelier LuminArt</strong>
-          <small>artă • cursuri • tabere</small>
-        </span>
-      </a>
+  <div class="top-blur"></div>
 
-      <div class="links">
-        <a href="#despre">Despre</a>
-        <a href="#servicii">Servicii</a>
-        <a href="#tabere">Tabere</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#contact">Contact</a>
+  <nav class="navbar">
+    <a href="#acasa" class="brand" aria-label="Atelier LuminArt">
+      <div class="brand-mark">✧</div>
+      <div>
+        <div class="brand-title">Atelier LuminArt</div>
+        <div class="brand-sub">artă • cursuri • tabere</div>
       </div>
+    </a>
 
-      <a class="nav-call" href="tel:+40723456789">Sună acum</a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Deschide meniul" aria-expanded="false">☰</button>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="nav-links">
       <a href="#despre">Despre</a>
       <a href="#servicii">Servicii</a>
-      <a href="#tabere">Tabere</a>
       <a href="#galerie">Galerie</a>
-      <a href="#contact">Contact</a>
-      <a href="tel:+40723456789">Sună acum</a>
+      <a href="#contact">Sună</a>
+      <a href="#faq">Întrebări</a>
     </div>
 
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-text reveal">
-            <div class="eyebrow">Terapie prin artă • Cursuri copii • Pictură</div>
-            <h1>Un atelier de artă cald, simplu și plin de culoare.</h1>
-            <p>
-              Terapie prin artă, cursuri pentru copii, tabere creative și picturi personalizate — toate prezentate într-un mod elegant, clar și ușor de înțeles.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="tel:+40723456789">Sună acum</a>
-              <a class="btn btn-soft" href="#servicii">Vezi activitățile</a>
-            </div>
-            <div class="hero-note">
-              <span>✓</span>
-              <p>Programările se fac telefonic, pentru detalii rapide și clare despre fiecare activitate.</p>
-            </div>
-          </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Deschide meniul">☰</button>
+  </nav>
 
-          <div class="visual reveal" aria-label="Imagine atelier de artă">
-            <div class="art-card"></div>
-            <div class="paint-blob blob-a"></div>
-            <div class="paint-blob blob-b"></div>
-            <div class="paint-blob blob-c"></div>
-            <div class="floating-info">
-              <strong>Artă cu sens</strong>
-              <p>Un loc în care culoarea, emoția și creativitatea se întâlnesc într-o experiență personală.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="despre">
-        <div class="container">
-          <div class="about-card reveal">
-            <div class="about-photo"></div>
-            <div class="about-content">
-              <div class="kicker">Despre artistă</div>
-              <h2>Experiență artistică și lucru cu oamenii.</h2>
-              <p>
-                Sunt terapeut prin artă într-un centru dedicat persoanelor cu dizabilități, profesoară de artă pentru copii, organizez tabere de artă și activez ca pictoriță.
-              </p>
-              <p>
-                Prin ateliere, cursuri și lucrări, arta devine o formă de exprimare, relaxare și descoperire personală.
-              </p>
-              <div class="signature">Atelier creativ • Sibiu, România</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="servicii">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <div class="kicker">Activități</div>
-              <h2>Servicii prezentate simplu și frumos.</h2>
-            </div>
-            <p>Site-ul pune toate activitățile într-un singur loc, fără aglomerație și fără texte inutile.</p>
-          </div>
-
-          <div class="grid-4">
-            <article class="service-card reveal">
-              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><path d="M12 11h.01"/></svg></div>
-              <h3>Terapie prin artă</h3>
-              <p>Activități creative adaptate, într-un cadru calm, sigur și atent coordonat.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 3-1 11-11-2-2L4 18l-1 3Z"/><path d="m14 6 2 2"/></svg></div>
-              <h3>Cursuri copii</h3>
-              <p>Desen, pictură, imaginație, răbdare și încredere în propriile idei.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 16h10"/></svg></div>
-              <h3>Tabere creative</h3>
-              <p>Experiențe artistice pentru grupuri, cu activități practice și atmosferă caldă.</p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19c5-6 7-10 10-10 2 0 3 2 5 2 1.3 0 2.2-.5 3-1"/><path d="M4 5c2 1 3 1 5 0"/></svg></div>
-              <h3>Picturi</h3>
-              <p>Lucrări originale, picturi personalizate și creații pentru cadouri sau decor.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="pentru-cine">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <div class="kicker">Pentru cine</div>
-              <h2>Ateliere pentru oameni, grupuri și povești diferite.</h2>
-            </div>
-            <p>Fără numerotări inutile. Doar carduri clare, cu informații ușor de citit pe telefon.</p>
-          </div>
-
-          <div class="grid-4">
-            <article class="simple-card reveal">
-              <div class="dot"></div>
-              <h3>Copii creativi</h3>
-              <p>Activități pentru copii care vor să deseneze, să picteze și să se exprime liber.</p>
-            </article>
-            <article class="simple-card reveal">
-              <div class="dot"></div>
-              <h3>Persoane cu dizabilități</h3>
-              <p>Ateliere adaptate, unde arta devine comunicare, calm și bucurie.</p>
-            </article>
-            <article class="simple-card reveal">
-              <div class="dot"></div>
-              <h3>Familii</h3>
-              <p>O variantă educativă și frumoasă pentru timpul liber al copiilor.</p>
-            </article>
-            <article class="simple-card reveal">
-              <div class="dot"></div>
-              <h3>Centre & colaborări</h3>
-              <p>Activități pentru școli, centre, grupuri și proiecte creative tematice.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="beneficii">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <div class="kicker">Beneficii</div>
-              <h2>De ce artă terapeutică?</h2>
-            </div>
-            <p>O explicație scurtă, elegantă și ușor de înțeles pentru părinți sau colaboratori.</p>
-          </div>
-
-          <div class="benefits">
-            <div class="benefit-photo reveal">
-              <div class="benefit-note">
-                <strong>Arta poate deveni un limbaj.</strong>
-                <p>Prin culoare și formă, oamenii pot exprima emoții greu de pus în cuvinte.</p>
-              </div>
-            </div>
-            <div class="benefit-list">
-              <article class="benefit-card reveal"><h3>Exprimare emoțională</h3><p>Desenul și pictura ajută la comunicare într-un mod blând și natural.</p></article>
-              <article class="benefit-card reveal"><h3>Încredere</h3><p>Fiecare lucrare finalizată oferă sentimentul unei reușite personale.</p></article>
-              <article class="benefit-card reveal"><h3>Relaxare</h3><p>Activitățile creative pot aduce calm, atenție și stare de bine.</p></article>
-              <article class="benefit-card reveal"><h3>Creativitate</h3><p>Participanții sunt încurajați să exploreze idei, culori și forme proprii.</p></article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="tabere">
-        <div class="container">
-          <div class="program">
-            <div class="program-card reveal">
-              <div class="kicker">Tabere creative</div>
-              <h2>Experiențe artistice pentru copii și grupuri.</h2>
-              <p>
-                Taberele pot include pictură, jocuri artistice, proiecte creative, activități de grup și momente în care fiecare participant își descoperă propriul stil.
-              </p>
-              <div class="tag-row">
-                <span>Pictură ghidată</span>
-                <span>Jocuri creative</span>
-                <span>Lucru în echipă</span>
-                <span>Activități tematice</span>
-              </div>
-            </div>
-            <div class="program-photo reveal"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="picturi">
-        <div class="container">
-          <div class="paint-layout">
-            <div class="paint-photo reveal"></div>
-            <div class="paint-card reveal">
-              <div class="kicker">Picturi personalizate</div>
-              <h2>Lucrări originale, create cu atenție la detalii.</h2>
-              <p>
-                Pe lângă cursuri și tabere, site-ul poate prezenta și partea de pictoriță: tablouri la comandă, lucrări decorative, cadouri personalizate și proiecte artistice speciale.
-              </p>
-              <div class="tag-row">
-                <span>Tablouri la comandă</span>
-                <span>Cadouri</span>
-                <span>Decor interior</span>
-                <span>Lucrări originale</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="galerie">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <div class="kicker">Galerie</div>
-              <h2>O prezentare vizuală simplă și caldă.</h2>
-            </div>
-            <p>Imaginile pot fi schimbate oricând cu poze reale din ateliere, tabere sau lucrări.</p>
-          </div>
-
-          <div class="gallery-grid">
-            <article class="gallery-item tall g1 reveal"><div class="caption"><strong>Ateliere de pictură</strong><span>Activități creative cu materiale și culoare.</span></div></article>
-            <article class="gallery-item g2 reveal"><div class="caption"><strong>Cursuri copii</strong><span>Exerciții vizuale și imaginație.</span></div></article>
-            <article class="gallery-item g3 reveal"><div class="caption"><strong>Lucrări originale</strong><span>Picturi și compoziții personalizate.</span></div></article>
-            <article class="gallery-item g4 reveal"><div class="caption"><strong>Tabere creative</strong><span>Experiențe de grup și proiecte tematice.</span></div></article>
-            <article class="gallery-item g5 reveal"><div class="caption"><strong>Artă cu emoție</strong><span>Un spațiu cald, potrivit pentru fiecare participant.</span></div></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container">
-          <div class="contact-simple reveal">
-            <div>
-              <div class="kicker" style="color:#f0d59c;">Programări telefonice</div>
-              <h2>Sună acum pentru detalii.</h2>
-              <p>Pentru cursuri, tabere, terapie prin artă sau picturi personalizate, discuția se face simplu și direct la telefon.</p>
-            </div>
-            <div class="call-box">
-              <strong>0723 456 789</strong>
-              <div class="call-actions">
-                <a class="btn btn-primary" href="tel:+40723456789">Sună acum</a>
-                <a class="social-btn" href="#" onclick="return false;">Facebook</a>
-                <a class="social-btn" href="#" onclick="return false;">Instagram</a>
-                <a class="social-btn" href="#" onclick="return false;">WhatsApp</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="faq">
-        <div class="container">
-          <div class="section-head reveal">
-            <div>
-              <div class="kicker">Întrebări</div>
-              <h2>Informații utile.</h2>
-            </div>
-            <p>Întrebări scurte, pentru ca vizitatorii să înțeleagă rapid cum funcționează activitățile.</p>
-          </div>
-
-          <div class="faq reveal">
-            <details>
-              <summary>Cum se fac programările?</summary>
-              <p>Programările se fac telefonic, pentru ca detaliile să fie discutate clar înainte.</p>
-            </details>
-            <details>
-              <summary>Pentru ce vârste sunt cursurile?</summary>
-              <p>Cursurile pot fi adaptate în funcție de vârstă, nivel și interesul copilului.</p>
-            </details>
-            <details>
-              <summary>Se pot organiza activități pentru grupuri?</summary>
-              <p>Da, se pot discuta ateliere pentru grupuri, centre, școli sau evenimente speciale.</p>
-            </details>
-            <details>
-              <summary>Se pot comanda picturi personalizate?</summary>
-              <p>Da, tema, dimensiunea și stilul se stabilesc telefonic.</p>
-            </details>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>© 2026 Atelier LuminArt</div>
-        <div>Sibiu, România • Artă, cursuri, tabere și picturi personalizate</div>
-      </div>
-    </footer>
-
-    <a class="mobile-call" href="tel:+40723456789">Sună acum • 0723 456 789</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#despre">Despre</a>
+    <a href="#servicii">Servicii</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Sună acum</a>
+    <a href="#faq">Întrebări</a>
   </div>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+  <main id="acasa">
+    <section class="hero">
+      <div class="page hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Demo site artistic
+          </div>
 
-    menuBtn.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          <h1>
+            Artă cu emoție, <span>cursuri</span> și ateliere creative.
+          </h1>
+
+          <p>
+            Un demo premium pentru o pictoriță care lucrează prin artă cu persoane cu dizabilități,
+            predă copiilor, organizează tabere și creează lucrări personalizate.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+40723456789">Sună acum • 0723 456 789</a>
+            <a class="btn btn-light" href="#servicii">Vezi activitățile</a>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="Imagine artistică">
+          <div class="painting-card"></div>
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+
+          <div class="floating-badge">
+            <div class="badge-line">
+              <strong>Atelier cu suflet</strong>
+              <span class="pill">Sibiu</span>
+            </div>
+            <div class="badge-text">
+              Terapie prin artă, cursuri pentru copii, tabere creative și picturi la comandă.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="despre">
+      <div class="page">
+        <div class="section-head reveal">
+          <div class="section-kicker">Despre</div>
+          <h2>O prezentare clară pentru tot ce face.</h2>
+          <p>
+            Site-ul pune toate activitățile într-un singur loc, într-un mod simplu, cald și ușor de înțeles.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <div class="about-photo reveal"></div>
+
+          <div class="about-content reveal">
+            <h3>Terapeut prin artă, profesoară, organizatoare de tabere și pictoriță.</h3>
+            <p>
+              Sunt terapeut prin artă într-un centru dedicat persoanelor cu dizabilități,
+              profesoară de artă pentru copii, organizez tabere creative și activez ca pictoriță.
+            </p>
+            <p>
+              Prin artă creez un spațiu de exprimare, răbdare și descoperire. Fiecare curs,
+              atelier sau lucrare este construit cu grijă, sensibilitate și atenție la fiecare persoană.
+            </p>
+
+            <div class="mini-list">
+              <span>Terapie prin artă</span>
+              <span>Cursuri pentru copii</span>
+              <span>Tabere creative</span>
+              <span>Picturi personalizate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicii">
+      <div class="page">
+        <div class="section-head reveal">
+          <div class="section-kicker">Servicii</div>
+          <h2>Activități prezentate simplu și elegant.</h2>
+          <p>
+            Fără text încărcat inutil. Vizitatorul înțelege rapid ce poate găsi la atelier.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon">✦</div>
+            <h3>Terapie prin artă</h3>
+            <p>
+              Activități creative pentru exprimare, relaxare și conectare prin culoare,
+              potrivite pentru persoane cu nevoi speciale.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">✎</div>
+            <h3>Cursuri pentru copii</h3>
+            <p>
+              Lecții de artă pentru dezvoltarea imaginației, răbdării și încrederii în propriile idei.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">☀</div>
+            <h3>Tabere creative</h3>
+            <p>
+              Experiențe de grup cu pictură, proiecte practice, jocuri artistice și activități educative.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">◈</div>
+            <h3>Pictură</h3>
+            <p>
+              Lucrări originale, tablouri decorative și picturi personalizate pentru cadouri sau spații speciale.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page simple-split">
+        <div class="soft-panel reveal">
+          <div class="section-kicker">Pentru cine</div>
+          <h3>Ateliere pentru copii, familii și grupuri.</h3>
+          <p>
+            Activitățile pot fi adaptate pentru copii, grupuri mici, centre, colaborări educaționale
+            sau persoane care au nevoie de o formă blândă de exprimare.
+          </p>
+
+          <div class="chips">
+            <span class="chip">copii creativi</span>
+            <span class="chip">grupuri mici</span>
+            <span class="chip">centre educaționale</span>
+            <span class="chip">părinți</span>
+            <span class="chip">colaborări</span>
+          </div>
+        </div>
+
+        <div class="soft-panel reveal">
+          <div class="section-kicker">Beneficii</div>
+          <h3>Arta ajută oamenii să se exprime mai ușor.</h3>
+          <p>
+            Prin desen, pictură și joacă vizuală, participanții pot comunica emoții,
+            își pot dezvolta creativitatea și pot câștiga mai multă încredere.
+          </p>
+
+          <div class="chips">
+            <span class="chip">relaxare</span>
+            <span class="chip">creativitate</span>
+            <span class="chip">încredere</span>
+            <span class="chip">expresie emoțională</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galerie">
+      <div class="page">
+        <div class="section-head reveal">
+          <div class="section-kicker">Galerie</div>
+          <h2>Un aspect vizual care vinde povestea.</h2>
+          <p>
+            Pozele sunt demo. În varianta finală pot fi puse fotografii reale cu lucrări, atelier, tabere și activități.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-card tall g1 reveal"><span>Ateliere pentru copii</span></div>
+
+          <div class="gallery-side">
+            <div class="gallery-card small g2 reveal"><span>Pictură și culoare</span></div>
+            <div class="gallery-card small g3 reveal"><span>Proiecte creative</span></div>
+          </div>
+
+          <div class="gallery-card g4 reveal"><span>Lucrări personalizate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="call-section" id="contact">
+      <div class="page">
+        <div class="call-card reveal">
+          <div class="call-inner">
+            <div>
+              <div class="call-kicker">Programări telefonice</div>
+              <h2>Sună acum pentru detalii.</h2>
+              <p>
+                Pentru cursuri, tabere, terapie prin artă sau picturi personalizate,
+                programările se fac direct la telefon.
+              </p>
+            </div>
+
+            <div class="phone-box">
+              <div class="phone-number">0723 456 789</div>
+              <a class="call-btn" href="tel:+40723456789">Sună acum</a>
+
+              <div class="socials">
+                <a href="#" onclick="fakeSocial(event, 'Facebook')">Facebook</a>
+                <a href="#" onclick="fakeSocial(event, 'Instagram')">Instagram</a>
+                <a href="https://wa.me/40723456789" target="_blank">WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="page">
+        <div class="section-head reveal">
+          <div class="section-kicker">Întrebări</div>
+          <h2>Informații rapide pentru vizitatori.</h2>
+          <p>
+            O secțiune simplă, ca oamenii să înțeleagă rapid cum funcționează activitățile.
+          </p>
+        </div>
+
+        <div class="faq">
+          <div class="faq-item reveal">
+            <button class="faq-q">
+              <span>Cum se fac programările?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-a">
+              Programările se fac telefonic, la numărul 0723 456 789.
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q">
+              <span>Pentru ce vârste sunt cursurile?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-a">
+              Cursurile pot fi adaptate în funcție de vârstă, nivel și nevoile grupului.
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q">
+              <span>Se pot organiza activități de grup?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-a">
+              Da, se pot organiza ateliere pentru grupuri, centre, școli sau tabere creative.
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q">
+              <span>Se pot comanda picturi personalizate?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-a">
+              Da, se pot discuta telefonic detaliile pentru tablouri, cadouri sau lucrări decorative.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="mobile-call" href="tel:+40723456789">Sună acum • 0723 456 789</a>
+
+  <footer>
+    <div class="page">
+      © 2026 Atelier LuminArt. Website demo pentru prezentare.
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("is-open");
+      menuBtn.textContent = mobileMenu.classList.contains("is-open") ? "×" : "☰";
     });
 
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("is-open");
+        menuBtn.textContent = "☰";
       });
     });
 
-    const revealItems = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll(".reveal");
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
+          entry.target.style.transitionDelay = `${Math.min(index * 45, 180)}ms`;
+          entry.target.classList.add("show");
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
-
-    revealItems.forEach((item, index) => {
-      item.style.transitionDelay = `${Math.min(index * 35, 180)}ms`;
-      observer.observe(item);
+    }, {
+      threshold: 0.14
     });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    document.querySelectorAll(".faq-q").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        item.classList.toggle("open");
+      });
+    });
+
+    function fakeSocial(event, name) {
+      event.preventDefault();
+      alert(name + " este buton demo. În site-ul final se pune linkul real.");
+    }
   </script>
 </body>
 </html>
