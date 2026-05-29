@@ -99,14 +99,19 @@
       transform: translateY(0);
     }
 
+    .nav-link.active {
+      color: #0d9488;
+    }
+
+    /* LOADING SCREEN NOU */
     .loading-screen {
       position: fixed;
       inset: 0;
       z-index: 9999;
       background:
-        radial-gradient(circle at top left, rgba(13, 148, 136, 0.18), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(225, 29, 72, 0.16), transparent 35%),
-        #fdfbf7;
+        radial-gradient(circle at 20% 20%, rgba(13, 148, 136, 0.16), transparent 30%),
+        radial-gradient(circle at 80% 75%, rgba(225, 29, 72, 0.12), transparent 32%),
+        linear-gradient(135deg, #fdfbf7 0%, #ffffff 48%, #f7f1e8 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -119,53 +124,132 @@
       pointer-events: none;
     }
 
-    .loader-card {
-      width: 170px;
-      min-height: 150px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.84);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
-      backdrop-filter: blur(18px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      animation: loaderFloat 1.8s ease-in-out infinite;
-    }
-
-    .loader-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0d9488;
-      background: rgba(13, 148, 136, 0.1);
-      margin-bottom: 14px;
+    .loader-minimal {
+      width: min(86vw, 320px);
+      text-align: center;
       position: relative;
+      padding: 34px 22px;
     }
 
-    .loader-icon::after {
-      content: "";
-      position: absolute;
-      inset: -7px;
+    .loader-mark {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: rgba(13, 148, 136, 0.1);
+      color: #0d9488;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow:
+        0 18px 42px rgba(13, 148, 136, 0.15),
+        inset 0 0 0 1px rgba(13, 148, 136, 0.16);
+      animation: softPulse 1.8s ease-in-out infinite;
+    }
+
+    .loader-minimal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .loader-minimal p {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 18px;
+    }
+
+    .loader-line {
+      width: 150px;
+      height: 3px;
+      margin: 0 auto;
       border-radius: 999px;
-      border: 2px solid rgba(13, 148, 136, 0.18);
-      border-top-color: #0d9488;
-      animation: spin 0.9s linear infinite;
+      background: rgba(17, 24, 39, 0.08);
+      overflow: hidden;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .loader-line span {
+      display: block;
+      width: 45%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0d9488, #e11d48, #f59e0b);
+      animation: loadingLine 1.2s ease-in-out infinite;
     }
 
-    @keyframes loaderFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+    .loader-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 16px;
     }
 
+    .loader-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0d9488;
+      opacity: 0.35;
+      animation: dotFade 1.2s ease-in-out infinite;
+    }
+
+    .loader-dots span:nth-child(2) {
+      animation-delay: 0.15s;
+      background: #e11d48;
+    }
+
+    .loader-dots span:nth-child(3) {
+      animation-delay: 0.3s;
+      background: #f59e0b;
+    }
+
+    @keyframes softPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow:
+          0 18px 42px rgba(13, 148, 136, 0.15),
+          inset 0 0 0 1px rgba(13, 148, 136, 0.16);
+      }
+
+      50% {
+        transform: scale(1.06);
+        box-shadow:
+          0 24px 54px rgba(13, 148, 136, 0.2),
+          inset 0 0 0 1px rgba(13, 148, 136, 0.22);
+      }
+    }
+
+    @keyframes loadingLine {
+      0% {
+        transform: translateX(-115%);
+      }
+
+      55% {
+        transform: translateX(85%);
+      }
+
+      100% {
+        transform: translateX(220%);
+      }
+    }
+
+    @keyframes dotFade {
+      0%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateY(-4px);
+      }
+    }
+
+    /* HAMBURGER */
     .hamburger-btn {
       position: fixed;
       top: calc(env(safe-area-inset-top, 0px) + 14px);
@@ -342,6 +426,30 @@
         padding: 9px 10px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+      }
+
+      .loader-mark,
+      .loader-line span,
+      .loader-dots span,
+      .float-anim {
+        animation: none !important;
+      }
+
+      .loading-screen,
+      .tab-content,
+      .hamburger-btn,
+      .menu-overlay,
+      .menu-drawer,
+      .menu-link {
+        transition-duration: 0.15s !important;
+      }
+    }
   </style>
 </head>
 
@@ -349,12 +457,23 @@
 
   <!-- Loading Screen -->
   <div id="loading-screen" class="loading-screen">
-    <div class="loader-card">
-      <div class="loader-icon">
-        <i class="fa-solid fa-palette text-xl"></i>
+    <div class="loader-minimal">
+      <div class="loader-mark">
+        <i class="fa-solid fa-palette"></i>
       </div>
-      <p class="font-serif text-lg font-bold text-gray-900">Elena Art</p>
-      <p class="text-[11px] text-gray-500 mt-1" data-i18n="loadingText">Pregătim culorile...</p>
+
+      <h2>Elena Art</h2>
+      <p data-i18n="loadingText">Pregătim culorile...</p>
+
+      <div class="loader-line">
+        <span></span>
+      </div>
+
+      <div class="loader-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </div>
 
@@ -583,26 +702,79 @@
 
       <!-- Contact -->
       <section class="py-12 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
-          <h2 class="text-2xl font-serif font-bold text-gray-900 mb-4" data-i18n="contactTitle">Contactează-mă</h2>
-          <p class="text-gray-600 text-sm mb-6" data-i18n="contactText">Pentru ședințe, cursuri, tabere sau comenzi de tablouri, te aștept cu drag.</p>
+        <div class="max-w-5xl mx-auto px-4" data-aos="fade-up">
 
-          <div class="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-gray-700">
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-phone text-primary"></i>
-              <a href="tel:0700123456" class="hover:text-primary font-medium transition">0700 123 456</a>
-            </div>
+          <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
 
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-location-dot text-primary"></i>
-              <span data-i18n="locationText">Strada Speranței, Nr. 14, București</span>
-            </div>
+              <div class="lg:col-span-6 text-center lg:text-left">
+                <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold text-primary mb-3">
+                  <i class="fa-solid fa-phone-volume"></i>
+                  <span data-i18n="contactSmallLabel">Programări telefonice</span>
+                </span>
 
-            <div class="flex items-center gap-3 mt-2 sm:mt-0">
-              <a href="#" class="text-gray-400 hover:text-[#1877F2] transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="#" class="text-gray-400 hover:text-[#e6683c] transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-3" data-i18n="contactTitle">
+                  Contactează-mă
+                </h2>
+
+                <p class="text-gray-600 text-sm leading-relaxed" data-i18n="contactText">
+                  Pentru ședințe, cursuri, tabere sau comenzi de tablouri, te aștept cu drag.
+                </p>
+              </div>
+
+              <div class="lg:col-span-6">
+                <div class="flex flex-col sm:flex-row lg:justify-end gap-3">
+
+                  <a href="tel:0700123456" class="group flex items-center justify-between gap-4 bg-primary hover:bg-primaryLight text-white rounded-2xl px-5 py-4 shadow-lg shadow-primary/20 transition transform hover:-translate-y-0.5">
+                    <div class="flex items-center gap-3">
+                      <span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
+                        <i class="fa-solid fa-phone"></i>
+                      </span>
+
+                      <div class="text-left">
+                        <p class="text-[11px] uppercase tracking-[0.18em] text-white/75 font-semibold" data-i18n="callNow">
+                          Sună acum
+                        </p>
+                        <p class="text-base font-bold leading-tight">
+                          0700 123 456
+                        </p>
+                      </div>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right text-sm opacity-70 group-hover:translate-x-1 transition"></i>
+                  </a>
+
+                  <div class="flex items-center justify-center sm:justify-start gap-3 bg-warmBg rounded-2xl px-5 py-4 border border-gray-100">
+                    <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                      <i class="fa-solid fa-location-dot"></i>
+                    </span>
+
+                    <div class="text-left">
+                      <p class="text-[11px] uppercase tracking-[0.18em] text-gray-400 font-semibold" data-i18n="locationLabel">
+                        Locație
+                      </p>
+                      <p class="text-sm text-gray-700 font-medium" data-i18n="locationText">
+                        Strada Speranței, Nr. 14, București
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="flex justify-center lg:justify-end items-center gap-3 mt-4">
+                  <a href="#" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:bg-[#1877F2] hover:text-white transition flex items-center justify-center">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+
+                  <a href="#" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:bg-[#e6683c] hover:text-white transition flex items-center justify-center">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
+
         </div>
       </section>
 
@@ -819,8 +991,10 @@
         roleCamps: "Organizator Tabere",
         roleCampsText: "Creez spații în natură pentru conectare prin artă.",
         readMore: "Citește mai mult",
+        contactSmallLabel: "Programări telefonice",
         contactTitle: "Contactează-mă",
         contactText: "Pentru ședințe, cursuri, tabere sau comenzi de tablouri, te aștept cu drag.",
+        locationLabel: "Locație",
         locationText: "Strada Speranței, Nr. 14, București",
         backBtn: "Înapoi",
         aboutBadge: "Despre mine",
@@ -874,8 +1048,10 @@
         roleCamps: "Creative Camp Organizer",
         roleCampsText: "I create spaces in nature for connection through art.",
         readMore: "Read more",
+        contactSmallLabel: "Phone appointments",
         contactTitle: "Contact me",
         contactText: "For sessions, classes, camps or custom paintings, I would be happy to hear from you.",
+        locationLabel: "Location",
         locationText: "Speranței Street, No. 14, Bucharest",
         backBtn: "Back",
         aboutBadge: "About me",
