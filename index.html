@@ -594,7 +594,6 @@
           <button onclick="openTab('tab-home')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-home" data-i18n="navHome">Acasă</button>
           <button onclick="openTab('tab-about')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-about" data-i18n="navAbout">Despre mine</button>
           <button onclick="openTab('tab-portofoliu')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-portofoliu" data-i18n="navPortfolio">Portofoliu</button>
-          <button onclick="openTab('tab-company')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-company" data-i18n="navCompany">Date firmă</button>
         </div>
 
         <!-- Desktop Call Button -->
@@ -665,10 +664,6 @@
             <span data-i18n="navPortfolio">Portofoliu</span>
           </button>
 
-          <button onclick="openTab('tab-company')" class="menu-link mobile-link" data-tab-target="tab-company">
-            <i class="fa-solid fa-building"></i>
-            <span data-i18n="navCompany">Date firmă</span>
-          </button>
 
           <button onclick="openTab('tab-termeni')" class="menu-link mobile-link" data-tab-target="tab-termeni">
             <i class="fa-solid fa-file-lines"></i>
@@ -1004,9 +999,6 @@
                   <span data-i18n="ctaPortfolio">Vezi Portofoliul</span>
                 </button>
 
-                <button onclick="openTab('tab-company')" class="bg-white border border-gray-100 hover:bg-gray-50 text-gray-800 text-sm px-6 py-2.5 rounded-full font-medium transition">
-                  <span data-i18n="ctaCompany">Vezi datele firmei</span>
-                </button>
 
                 <a href="tel:0700123456" class="bg-primary hover:bg-primaryLight text-white text-sm px-6 py-2.5 rounded-full font-medium transition">
                   <span data-i18n="callNow">Sună acum</span>
@@ -1031,259 +1023,239 @@
           </button>
         </div>
 
-        <div class="text-center mb-10">
-          <span class="text-primary font-semibold tracking-wider uppercase text-xs mb-2 block" data-i18n="portfolioBadge">Portofoliu organizat</span>
-          <h2 class="text-3xl font-serif font-bold text-gray-900 mb-2" data-i18n="portfolioTitle">Portofoliu Artistic</h2>
-          <p class="text-gray-500 text-sm max-w-2xl mx-auto" data-i18n="portfolioText">
-            Categoriile sunt separate clar, ca vizitatorul să găsească rapid picturile, cursurile pentru copii, taberele sau activitățile de terapie prin artă.
+        <div class="text-center mb-8">
+          <span class="text-primary font-semibold tracking-wider uppercase text-xs mb-2 block" data-i18n="portfolioBadge">Portofoliu pe categorii</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-3" data-i18n="portfolioTitle">Portofoliu Artistic</h2>
+          <p class="text-gray-500 text-sm max-w-2xl mx-auto leading-relaxed" data-i18n="portfolioText">
+            Am separat portofoliul pe servicii, ca vizitatorul să vadă rapid picturile, cursurile, taberele și terapia prin artă. Prețurile sunt fictive/orientative și pot fi schimbate cu cele reale.
           </p>
         </div>
 
-        <!-- Categoria: Picturi -->
-        <section class="mb-14">
-          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
-            <div>
-              <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagPainting">Pictură</span>
-              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-1" data-i18n="categoryPaintingTitle">Picturi & comenzi personalizate</h3>
-              <p class="text-sm text-gray-500 mt-2 max-w-2xl" data-i18n="categoryPaintingText">Lucrări pictate manual, tablouri decorative și comenzi realizate la cerere.</p>
-            </div>
-            <a href="tel:0700123456" class="inline-flex items-center justify-center rounded-full bg-gray-900 text-white text-xs font-semibold px-4 py-2 hover:bg-gray-800 transition">
-              <i class="fa-solid fa-phone mr-2 text-[11px]"></i>
-              <span data-i18n="askPrice">Întreabă prețul</span>
+        <!-- Navigare categorii -->
+        <div class="bg-warmBg border border-gray-100 rounded-3xl p-4 sm:p-5 mb-10 shadow-sm" data-aos="fade-up">
+          <p class="text-[11px] uppercase tracking-[0.22em] text-gray-400 font-semibold mb-3" data-i18n="portfolioChooseCategory">Alege categoria</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <a href="#cat-pictura" class="bg-white hover:bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 flex items-center gap-3 transition">
+              <span class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center"><i class="fa-solid fa-palette"></i></span>
+              <span class="text-sm font-semibold text-gray-800" data-i18n="catPaintingShort">Pictură</span>
+            </a>
+
+            <a href="#cat-cursuri" class="bg-white hover:bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 flex items-center gap-3 transition">
+              <span class="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center"><i class="fa-solid fa-child-reaching"></i></span>
+              <span class="text-sm font-semibold text-gray-800" data-i18n="catKidsShort">Cursuri copii</span>
+            </a>
+
+            <a href="#cat-tabere" class="bg-white hover:bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 flex items-center gap-3 transition">
+              <span class="w-9 h-9 rounded-full bg-accent/10 text-accent flex items-center justify-center"><i class="fa-solid fa-campground"></i></span>
+              <span class="text-sm font-semibold text-gray-800" data-i18n="catCampsShort">Tabere</span>
+            </a>
+
+            <a href="#cat-terapie" class="bg-white hover:bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 flex items-center gap-3 transition">
+              <span class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center"><i class="fa-solid fa-hands-holding-child"></i></span>
+              <span class="text-sm font-semibold text-gray-800" data-i18n="catTherapyShort">Terapie prin artă</span>
             </a>
           </div>
+        </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tablou abstract" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
+        <!-- Categoria: Pictură -->
+        <section id="cat-pictura" class="mb-12 scroll-mt-28" data-aos="fade-up">
+          <div class="bg-white border border-gray-100 rounded-[2rem] shadow-sm overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              <div class="lg:col-span-4 bg-warmBg p-6 sm:p-7 border-b lg:border-b-0 lg:border-r border-gray-100">
                 <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagPainting">Pictură</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem1Title">Tablou abstract</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem1Text">Lucrare decorativă pictată manual. Poza și prețul pot fi înlocuite.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
-                </div>
-              </div>
-            </article>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-2" data-i18n="categoryPaintingTitle">Picturi & comenzi personalizate</h3>
+                <p class="text-sm text-gray-500 mt-3 leading-relaxed" data-i18n="categoryPaintingText">Tablouri decorative, portrete stilizate și lucrări făcute la comandă.</p>
 
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare colorată" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
-                <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagPainting">Pictură</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem2Title">Lucrare colorată</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem2Text">Model de card pentru picturi, portrete, lucrări decorative sau comenzi.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
+                <div class="mt-5 space-y-2">
+                  <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
+                    <span data-i18n="pricePaintingSmall">Tablou mic</span>
+                    <strong data-i18n="pricePaintingSmallValue">de la 180 lei</strong>
+                  </div>
+                  <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
+                    <span data-i18n="pricePaintingMedium">Tablou mediu</span>
+                    <strong data-i18n="pricePaintingMediumValue">de la 350 lei</strong>
+                  </div>
+                  <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
+                    <span data-i18n="pricePaintingCustom">Comandă personalizată</span>
+                    <strong data-i18n="pricePaintingCustomValue">de la 500 lei</strong>
+                  </div>
                 </div>
               </div>
-            </article>
 
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Comandă personalizată" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
-                <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagCustom">Personalizat</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem5Title">Comandă personalizată</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem5Text">Pentru picturi făcute la cerere, cadouri sau decor personalizat.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
+              <div class="lg:col-span-8 p-5 sm:p-7">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-44 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tablou abstract" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem1Title">Tablou abstract</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem1Text">Lucrare decorativă pictată manual.</p>
+                      <p class="text-sm font-bold text-primary mt-3" data-i18n="price250">250 lei</p>
+                    </div>
+                  </article>
+
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-44 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare colorată" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem2Title">Lucrare colorată</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem2Text">Model pentru picturi decorative.</p>
+                      <p class="text-sm font-bold text-primary mt-3" data-i18n="price350">350 lei</p>
+                    </div>
+                  </article>
+
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-44 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Comandă personalizată" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem5Title">Comandă personalizată</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem5Text">Cadouri sau decor personalizat.</p>
+                      <p class="text-sm font-bold text-primary mt-3" data-i18n="priceFrom500">de la 500 lei</p>
+                    </div>
+                  </article>
                 </div>
               </div>
-            </article>
+            </div>
           </div>
         </section>
 
         <!-- Categoria: Cursuri copii -->
-        <section class="mb-14">
-          <div class="mb-5">
-            <span class="text-[10px] uppercase tracking-[0.18em] text-secondary font-semibold" data-i18n="portfolioTagKids">Cursuri copii</span>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-1" data-i18n="categoryKidsTitle">Cursuri de artă pentru copii</h3>
-            <p class="text-sm text-gray-500 mt-2 max-w-2xl" data-i18n="categoryKidsText">Ateliere și lecții creative pentru copii, gândite pentru exprimare liberă, răbdare și încredere.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier pentru copii" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
+        <section id="cat-cursuri" class="mb-12 scroll-mt-28" data-aos="fade-up">
+          <div class="bg-white border border-gray-100 rounded-[2rem] shadow-sm overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              <div class="lg:col-span-4 bg-warmBg p-6 sm:p-7 border-b lg:border-b-0 lg:border-r border-gray-100">
                 <span class="text-[10px] uppercase tracking-[0.18em] text-secondary font-semibold" data-i18n="portfolioTagKids">Cursuri copii</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem3Title">Atelier pentru copii</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem3Text">Spațiu pentru poze de la activități, ateliere sau cursuri de artă.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-2" data-i18n="categoryKidsTitle">Cursuri de artă pentru copii</h3>
+                <p class="text-sm text-gray-500 mt-3 leading-relaxed" data-i18n="categoryKidsText">Ateliere creative pentru exprimare liberă, răbdare și încredere.</p>
+
+                <ul class="mt-5 space-y-2 text-sm text-gray-700">
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="kidsBullet1">Ședință individuală</span> — <strong data-i18n="kidsPrice1">80 lei</strong></li>
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="kidsBullet2">Atelier de grup</span> — <strong data-i18n="kidsPrice2">60 lei/copil</strong></li>
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="kidsBullet3">Abonament 4 ședințe</span> — <strong data-i18n="kidsPrice3">250 lei</strong></li>
+                </ul>
+              </div>
+
+              <div class="lg:col-span-8 p-5 sm:p-7">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier copii" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem3Title">Atelier pentru copii</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem3Text">Activități de desen și pictură.</p>
+                      <p class="text-sm font-bold text-secondary mt-3" data-i18n="price60Child">60 lei/copil</p>
+                    </div>
+                  </article>
+
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lecție de desen" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem7Title">Lecție de desen</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem7Text">Program săptămânal sau atelier tematic.</p>
+                      <p class="text-sm font-bold text-secondary mt-3" data-i18n="price80Session">80 lei/ședință</p>
+                    </div>
+                  </article>
                 </div>
               </div>
-            </article>
-
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lecție de desen" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
-                <span class="text-[10px] uppercase tracking-[0.18em] text-secondary font-semibold" data-i18n="portfolioTagKids">Cursuri copii</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem7Title">Lecție de desen</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem7Text">Card pentru programe săptămânale, grupe de copii sau ateliere tematice.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
         </section>
 
-        <!-- Categoria: Tabere de artă -->
-        <section class="mb-14">
-          <div class="mb-5">
-            <span class="text-[10px] uppercase tracking-[0.18em] text-accent font-semibold" data-i18n="portfolioTagCamp">Tabere</span>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-1" data-i18n="categoryCampsTitle">Tabere de artă</h3>
-            <p class="text-sm text-gray-500 mt-2 max-w-2xl" data-i18n="categoryCampsText">Activități creative de grup, potrivite pentru experiențe educative, joacă și explorare prin culoare.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1456086272160-b22364c9ca36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tabără creativă" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
+        <!-- Categoria: Tabere -->
+        <section id="cat-tabere" class="mb-12 scroll-mt-28" data-aos="fade-up">
+          <div class="bg-white border border-gray-100 rounded-[2rem] shadow-sm overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              <div class="lg:col-span-4 bg-warmBg p-6 sm:p-7 border-b lg:border-b-0 lg:border-r border-gray-100">
                 <span class="text-[10px] uppercase tracking-[0.18em] text-accent font-semibold" data-i18n="portfolioTagCamp">Tabere</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem4Title">Tabără creativă</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem4Text">Card pregătit pentru imagini din tabere de artă și activități în grup.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-2" data-i18n="categoryCampsTitle">Tabere de artă</h3>
+                <p class="text-sm text-gray-500 mt-3 leading-relaxed" data-i18n="categoryCampsText">Experiențe creative de grup, cu ateliere, pictură și activități educative.</p>
+
+                <ul class="mt-5 space-y-2 text-sm text-gray-700">
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="campBullet1">Zi creativă</span> — <strong data-i18n="campPrice1">180 lei/copil</strong></li>
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="campBullet2">Weekend creativ</span> — <strong data-i18n="campPrice2">de la 450 lei</strong></li>
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="campBullet3">Program complet</span> — <strong data-i18n="portfolioPriceRequest">Preț la cerere</strong></li>
+                </ul>
+              </div>
+
+              <div class="lg:col-span-8 p-5 sm:p-7">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1456086272160-b22364c9ca36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tabără creativă" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem4Title">Tabără creativă</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem4Text">Activități de grup și pictură.</p>
+                      <p class="text-sm font-bold text-accent mt-3" data-i18n="priceFrom450">de la 450 lei</p>
+                    </div>
+                  </article>
+
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier în natură" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem8Title">Atelier în natură</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem8Text">Activități în aer liber și lucru în grup.</p>
+                      <p class="text-sm font-bold text-accent mt-3" data-i18n="price180Child">180 lei/copil</p>
+                    </div>
+                  </article>
                 </div>
               </div>
-            </article>
-
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier în natură" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
-                <span class="text-[10px] uppercase tracking-[0.18em] text-accent font-semibold" data-i18n="portfolioTagCamp">Tabere</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem8Title">Atelier în natură</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem8Text">Loc pentru poze din tabere, activități în aer liber sau sesiuni de grup.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
         </section>
 
         <!-- Categoria: Terapie prin artă -->
-        <section>
-          <div class="mb-5">
-            <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagTherapy">Terapie prin artă</span>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-1" data-i18n="categoryTherapyTitle">Terapie prin artă & activități expresive</h3>
-            <p class="text-sm text-gray-500 mt-2 max-w-2xl" data-i18n="categoryTherapyText">Activități prin desen și culoare, cu accent pe exprimare, comunicare și lucru atent cu fiecare persoană.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Activitate creativă" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
+        <section id="cat-terapie" class="scroll-mt-28" data-aos="fade-up">
+          <div class="bg-white border border-gray-100 rounded-[2rem] shadow-sm overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              <div class="lg:col-span-4 bg-warmBg p-6 sm:p-7 border-b lg:border-b-0 lg:border-r border-gray-100">
                 <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagTherapy">Terapie prin artă</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem6Title">Activitate creativă</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem6Text">Spațiu pentru activități educaționale sau terapeutice prin culoare.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 mt-2" data-i18n="categoryTherapyTitle">Terapie prin artă</h3>
+                <p class="text-sm text-gray-500 mt-3 leading-relaxed" data-i18n="categoryTherapyText">Activități prin desen și culoare, cu accent pe exprimare, comunicare și lucru atent cu fiecare persoană.</p>
+
+                <ul class="mt-5 space-y-2 text-sm text-gray-700">
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="therapyBullet1">Ședință individuală</span> — <strong data-i18n="therapyPrice1">120 lei</strong></li>
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="therapyBullet2">Sesiune de grup</span> — <strong data-i18n="therapyPrice2">70 lei/pers.</strong></li>
+                  <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="therapyBullet3">Pachet 4 ședințe</span> — <strong data-i18n="therapyPrice3">420 lei</strong></li>
+                </ul>
+              </div>
+
+              <div class="lg:col-span-8 p-5 sm:p-7">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Activitate creativă" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem6Title">Activitate creativă</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem6Text">Exprimare prin culoare și desen.</p>
+                      <p class="text-sm font-bold text-primary mt-3" data-i18n="price120Session">120 lei/ședință</p>
+                    </div>
+                  </article>
+
+                  <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
+                    <div class="h-48 overflow-hidden">
+                      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Exprimare prin artă" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                      <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem9Title">Exprimare prin artă</h4>
+                      <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem9Text">Comunicare și lucru cu emoțiile.</p>
+                      <p class="text-sm font-bold text-primary mt-3" data-i18n="price420Package">420 lei / 4 ședințe</p>
+                    </div>
+                  </article>
                 </div>
               </div>
-            </article>
-
-            <article class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm group">
-              <div class="h-60 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sesiune de exprimare prin artă" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-5">
-                <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagTherapy">Terapie prin artă</span>
-                <h3 class="font-serif text-xl font-bold text-gray-900 mt-1" data-i18n="portfolioItem9Title">Exprimare prin artă</h3>
-                <p class="text-sm text-gray-500 mt-2" data-i18n="portfolioItem9Text">Card pentru activități de exprimare, comunicare și lucru cu emoțiile prin artă.</p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span class="text-sm font-bold text-gray-900" data-i18n="portfolioPriceRequest">Preț la cerere</span>
-                  <a href="tel:0700123456" class="text-primary text-sm font-semibold hover:text-primaryLight transition" data-i18n="askPrice">Întreabă prețul</a>
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
         </section>
-
-      </div>
-    </div>
-
-
-    <!-- TAB: DATE FIRMĂ -->
-    <div id="tab-company" class="tab-content bg-warmBg min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="backBtn">Înapoi</span>
-          </button>
-        </div>
-
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm">
-          <span class="text-primary font-semibold tracking-wider uppercase text-xs mb-3 block" data-i18n="companyBadge">Date de identificare</span>
-
-          <h2 class="text-3xl font-serif font-bold text-gray-900 mb-3">RM ELIART 2020 SRL</h2>
-          <p class="text-gray-600 text-sm leading-relaxed mb-7" data-i18n="companyIntro">
-            Informații utile pentru identificarea firmei și pentru transparență profesională.
-          </p>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-warmBg rounded-2xl p-5 border border-gray-100">
-              <p class="text-[11px] uppercase tracking-[0.18em] text-gray-400 font-semibold mb-1" data-i18n="companyNameLabel">Denumire</p>
-              <p class="font-semibold text-gray-900">RM ELIART 2020 SRL</p>
-            </div>
-
-            <div class="bg-warmBg rounded-2xl p-5 border border-gray-100">
-              <p class="text-[11px] uppercase tracking-[0.18em] text-gray-400 font-semibold mb-1">CUI</p>
-              <p class="font-semibold text-gray-900">43192503</p>
-            </div>
-
-            <div class="bg-warmBg rounded-2xl p-5 border border-gray-100 md:col-span-2">
-              <p class="text-[11px] uppercase tracking-[0.18em] text-gray-400 font-semibold mb-1" data-i18n="regComLabel">Nr. Registrul Comerțului</p>
-              <p class="font-semibold text-gray-900">J14/351/2020</p>
-            </div>
-
-            <div class="bg-warmBg rounded-2xl p-5 border border-gray-100 md:col-span-2">
-              <p class="text-[11px] uppercase tracking-[0.18em] text-gray-400 font-semibold mb-1" data-i18n="companyAddressLabel">Sediu social</p>
-              <p class="font-semibold text-gray-900" data-i18n="companyAddress">Sâncraiu nr. 550, cod poștal 527107, sat Sâncraiu, com. Ilieni, jud. Covasna</p>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sancraiu%20550%20Ilieni%20Covasna%20Romania" target="_blank" class="bg-white hover:bg-gray-50 border border-gray-100 text-gray-700 text-xs font-semibold rounded-full px-4 py-2 flex items-center gap-2 transition">
-                  <i class="fa-solid fa-map-location-dot text-primary"></i>
-                  <span data-i18n="openMaps">Google Maps</span>
-                </a>
-
-                <a href="https://waze.com/ul?q=Sancraiu%20550%20Ilieni%20Covasna%20Romania&navigate=yes&utm_source=elena_art_website" target="_blank" class="bg-white hover:bg-gray-50 border border-gray-100 text-gray-700 text-xs font-semibold rounded-full px-4 py-2 flex items-center gap-2 transition">
-                  <i class="fa-brands fa-waze text-primary"></i>
-                  <span data-i18n="openWaze">Waze</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <p class="text-xs text-gray-400 mt-6" data-i18n="companyNote">
-            Notă: datele de identificare trebuie verificate de proprietarul firmei înainte de publicarea finală a site-ului.
-          </p>
-        </div>
 
       </div>
     </div>
@@ -1340,6 +1312,7 @@
     <div class="max-w-5xl mx-auto">
       <p class="text-gray-300 font-semibold">RM ELIART 2020 SRL</p>
       <p class="mt-1" data-i18n="footerCompany">CUI 43192503 • J14/351/2020</p>
+      <p class="mt-1" data-i18n="footerAddress">Sediu social: Sâncraiu nr. 550, sat Sâncraiu, com. Ilieni, jud. Covasna</p>
       <p class="mt-2" data-i18n="footerText">© 2026 Elena Art - Terapie și Creație. Toate drepturile rezervate.</p>
     </div>
   </footer>
@@ -1412,31 +1385,31 @@
         value3Text: "Activități pentru încredere și exprimare.",
         portfolioBadge: "Portofoliu organizat",
         portfolioTitle: "Portofoliu Artistic",
-        portfolioText: "Categoriile sunt separate clar, ca vizitatorul să găsească rapid picturile, cursurile pentru copii, taberele sau activitățile de terapie prin artă.",
+        portfolioText: "Am separat portofoliul pe servicii, ca vizitatorul să vadă rapid picturile, cursurile, taberele și terapia prin artă. Prețurile sunt fictive/orientative și pot fi schimbate cu cele reale.",
         portfolioTagPainting: "Pictură",
         portfolioTagKids: "Cursuri copii",
         portfolioTagCamp: "Tabere",
         portfolioTagCustom: "Personalizat",
         portfolioTagTherapy: "Terapie prin artă",
         portfolioItem1Title: "Tablou abstract",
-        portfolioItem1Text: "Lucrare decorativă pictată manual. Poza și prețul pot fi înlocuite.",
+        portfolioItem1Text: "Lucrare decorativă pictată manual.",
         portfolioItem2Title: "Lucrare colorată",
-        portfolioItem2Text: "Model de card pentru picturi, portrete, lucrări decorative sau comenzi.",
+        portfolioItem2Text: "Model pentru picturi decorative.",
         portfolioItem3Title: "Atelier pentru copii",
-        portfolioItem3Text: "Spațiu pentru poze de la activități, ateliere sau cursuri de artă.",
+        portfolioItem3Text: "Activități de desen și pictură.",
         portfolioItem4Title: "Tabără creativă",
-        portfolioItem4Text: "Card pregătit pentru imagini din tabere de artă și activități în grup.",
+        portfolioItem4Text: "Activități de grup și pictură.",
         portfolioItem5Title: "Comandă personalizată",
-        portfolioItem5Text: "Pentru picturi făcute la cerere, cadouri sau decor personalizat.",
+        portfolioItem5Text: "Cadouri sau decor personalizat.",
         portfolioItem6Title: "Activitate creativă",
-        portfolioItem6Text: "Spațiu pentru activități educaționale sau terapeutice prin culoare.",
+        portfolioItem6Text: "Exprimare prin culoare și desen.",
         categoryPaintingTitle: "Picturi & comenzi personalizate",
-        categoryPaintingText: "Lucrări pictate manual, tablouri decorative și comenzi realizate la cerere.",
+        categoryPaintingText: "Tablouri decorative, portrete stilizate și lucrări făcute la comandă.",
         categoryKidsTitle: "Cursuri de artă pentru copii",
-        categoryKidsText: "Ateliere și lecții creative pentru copii, gândite pentru exprimare liberă, răbdare și încredere.",
+        categoryKidsText: "Ateliere creative pentru exprimare liberă, răbdare și încredere.",
         categoryCampsTitle: "Tabere de artă",
         categoryCampsText: "Activități creative de grup, potrivite pentru experiențe educative, joacă și explorare prin culoare.",
-        categoryTherapyTitle: "Terapie prin artă & activități expresive",
+        categoryTherapyTitle: "Terapie prin artă",
         categoryTherapyText: "Activități prin desen și culoare, cu accent pe exprimare, comunicare și lucru atent cu fiecare persoană.",
         portfolioItem7Title: "Lecție de desen",
         portfolioItem7Text: "Card pentru programe săptămânale, grupe de copii sau ateliere tematice.",
@@ -1446,6 +1419,43 @@
         portfolioItem9Text: "Card pentru activități de exprimare, comunicare și lucru cu emoțiile prin artă.",
         portfolioPriceRequest: "Preț la cerere",
         askPrice: "Întreabă prețul",
+        portfolioChooseCategory: "Alege categoria",
+        catPaintingShort: "Pictură",
+        catKidsShort: "Cursuri copii",
+        catCampsShort: "Tabere",
+        catTherapyShort: "Terapie prin artă",
+        pricePaintingSmall: "Tablou mic",
+        pricePaintingSmallValue: "de la 180 lei",
+        pricePaintingMedium: "Tablou mediu",
+        pricePaintingMediumValue: "de la 350 lei",
+        pricePaintingCustom: "Comandă personalizată",
+        pricePaintingCustomValue: "de la 500 lei",
+        kidsBullet1: "Ședință individuală",
+        kidsPrice1: "80 lei",
+        kidsBullet2: "Atelier de grup",
+        kidsPrice2: "60 lei/copil",
+        kidsBullet3: "Abonament 4 ședințe",
+        kidsPrice3: "250 lei",
+        campBullet1: "Zi creativă",
+        campPrice1: "180 lei/copil",
+        campBullet2: "Weekend creativ",
+        campPrice2: "de la 450 lei",
+        campBullet3: "Program complet",
+        therapyBullet1: "Ședință individuală",
+        therapyPrice1: "120 lei",
+        therapyBullet2: "Sesiune de grup",
+        therapyPrice2: "70 lei/pers.",
+        therapyBullet3: "Pachet 4 ședințe",
+        therapyPrice3: "420 lei",
+        price250: "250 lei",
+        price350: "350 lei",
+        priceFrom500: "de la 500 lei",
+        price60Child: "60 lei/copil",
+        price80Session: "80 lei/ședință",
+        priceFrom450: "de la 450 lei",
+        price180Child: "180 lei/copil",
+        price120Session: "120 lei/ședință",
+        price420Package: "420 lei / 4 ședințe",
         companyBadge: "Date de identificare",
         companyIntro: "Informații utile pentru identificarea firmei și pentru transparență profesională.",
         companyNameLabel: "Denumire",
@@ -1465,6 +1475,7 @@
         terms4Title: "4. Despre acest site",
         terms4Text: "Acest site web are rol de prezentare. Informațiile prezentate au caracter informativ și pot fi actualizate la cererea proprietarului.",
         footerCompany: "CUI 43192503 • J14/351/2020",
+        footerAddress: "Sediu social: Sâncraiu nr. 550, sat Sâncraiu, com. Ilieni, jud. Covasna",
         footerText: "© 2026 Elena Art - Terapie și Creație. Toate drepturile rezervate."
       },
 
@@ -1532,24 +1543,24 @@
         portfolioTagCustom: "Custom",
         portfolioTagTherapy: "Art therapy",
         portfolioItem1Title: "Abstract painting",
-        portfolioItem1Text: "Hand-painted decorative artwork. Photo and price can be replaced.",
+        portfolioItem1Text: "Hand-painted decorative artwork.",
         portfolioItem2Title: "Colorful artwork",
-        portfolioItem2Text: "Card model for paintings, portraits, decorative works or orders.",
+        portfolioItem2Text: "Model for decorative paintings.",
         portfolioItem3Title: "Children’s workshop",
-        portfolioItem3Text: "Space for photos from activities, workshops or art classes.",
+        portfolioItem3Text: "Drawing and painting activities.",
         portfolioItem4Title: "Creative camp",
-        portfolioItem4Text: "Card prepared for images from art camps and group activities.",
+        portfolioItem4Text: "Group activities and painting.",
         portfolioItem5Title: "Custom order",
-        portfolioItem5Text: "For commissioned paintings, gifts or personalized decor.",
+        portfolioItem5Text: "Gifts or personalized decor.",
         portfolioItem6Title: "Creative activity",
-        portfolioItem6Text: "Space for educational or therapeutic activities through color.",
+        portfolioItem6Text: "Expression through color and drawing.",
         categoryPaintingTitle: "Paintings & custom orders",
         categoryPaintingText: "Hand-painted artworks, decorative paintings and custom-made orders.",
         categoryKidsTitle: "Art classes for children",
-        categoryKidsText: "Creative workshops and lessons for children, designed for free expression, patience and confidence.",
+        categoryKidsText: "Creative workshops for free expression, patience and confidence.",
         categoryCampsTitle: "Art camps",
         categoryCampsText: "Creative group activities suitable for educational experiences, play and exploration through color.",
-        categoryTherapyTitle: "Art therapy & expressive activities",
+        categoryTherapyTitle: "Art therapy",
         categoryTherapyText: "Drawing and color activities focused on expression, communication and attentive work with each person.",
         portfolioItem7Title: "Drawing lesson",
         portfolioItem7Text: "Card for weekly programs, children’s groups or themed workshops.",
@@ -1559,6 +1570,51 @@
         portfolioItem9Text: "Card for expression, communication and emotion-focused activities through art.",
         portfolioPriceRequest: "Price on request",
         askPrice: "Ask price",
+        portfolioChooseCategory: "Choose category",
+        catPaintingShort: "Painting",
+        catKidsShort: "Kids classes",
+        catCampsShort: "Camps",
+        catTherapyShort: "Art therapy",
+        categoryPaintingTitle: "Paintings & custom orders",
+        categoryPaintingText: "Decorative paintings, stylized portraits and custom works.",
+        categoryKidsTitle: "Art classes for children",
+        categoryKidsText: "Creative workshops for free expression, patience and confidence.",
+        categoryCampsTitle: "Art camps",
+        categoryCampsText: "Creative group experiences with workshops, painting and educational activities.",
+        categoryTherapyTitle: "Art therapy",
+        categoryTherapyText: "Activities through drawing and color, focused on expression, communication and attentive work with each person.",
+        pricePaintingSmall: "Small painting",
+        pricePaintingSmallValue: "from 180 lei",
+        pricePaintingMedium: "Medium painting",
+        pricePaintingMediumValue: "from 350 lei",
+        pricePaintingCustom: "Custom order",
+        pricePaintingCustomValue: "from 500 lei",
+        kidsBullet1: "Individual session",
+        kidsPrice1: "80 lei",
+        kidsBullet2: "Group workshop",
+        kidsPrice2: "60 lei/child",
+        kidsBullet3: "4-session package",
+        kidsPrice3: "250 lei",
+        campBullet1: "Creative day",
+        campPrice1: "180 lei/child",
+        campBullet2: "Creative weekend",
+        campPrice2: "from 450 lei",
+        campBullet3: "Full program",
+        therapyBullet1: "Individual session",
+        therapyPrice1: "120 lei",
+        therapyBullet2: "Group session",
+        therapyPrice2: "70 lei/person",
+        therapyBullet3: "4-session package",
+        therapyPrice3: "420 lei",
+        price250: "250 lei",
+        price350: "350 lei",
+        priceFrom500: "from 500 lei",
+        price60Child: "60 lei/child",
+        price80Session: "80 lei/session",
+        priceFrom450: "from 450 lei",
+        price180Child: "180 lei/child",
+        price120Session: "120 lei/session",
+        price420Package: "420 lei / 4 sessions",
         companyBadge: "Identification details",
         companyIntro: "Useful information for company identification and professional transparency.",
         companyNameLabel: "Company name",
@@ -1578,6 +1634,7 @@
         terms4Title: "4. About this website",
         terms4Text: "This website is designed for presentation purposes. The information shown here is informative and may be updated at the owner’s request.",
         footerCompany: "CUI 43192503 • J14/351/2020",
+        footerAddress: "Registered office: Sâncraiu no. 550, Sâncraiu village, Ilieni commune, Covasna county",
         footerText: "© 2026 Elena Art - Therapy and Creation. All rights reserved."
       }
     };
