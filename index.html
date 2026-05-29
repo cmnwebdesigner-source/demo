@@ -1,1694 +1,595 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Atelier LuminArt | Terapie prin artă, cursuri pentru copii și tabere creative</title>
+  <title>Elena | Terapeut de Artă & Artist</title>
 
-  <meta name="description" content="Atelier LuminArt - demo site pentru terapie prin artă, cursuri pentru copii, tabere creative și pictură. Programări telefonice." />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            primary: '#0d9488',
+            primaryLight: '#14b8a6',
+            secondary: '#e11d48',
+            accent: '#f59e0b',
+            warmBg: '#fdfbf7',
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    :root {
-      --bg: #fff8ef;
-      --cream: #fffdf8;
-      --paper: #fff6eb;
-      --card: rgba(255, 255, 255, 0.78);
-      --text: #241713;
-      --muted: #765f55;
-      --brown: #7b4528;
-      --brown-dark: #2a1711;
-      --gold: #c8843f;
-      --gold-soft: #ffd79a;
-      --rose: #d98b73;
-      --line: rgba(88, 52, 32, 0.14);
-      --shadow: 0 22px 70px rgba(77, 42, 22, 0.12);
-      --max: 1180px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+    html,
+    body {
       overflow-x: hidden;
+      max-width: 100%;
+      background-color: #fdfbf7;
     }
 
     body {
       min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(255, 200, 131, 0.32), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(217, 139, 115, 0.2), transparent 26%),
-        linear-gradient(180deg, #fff7ed 0%, #fffaf5 48%, #fff1e5 100%);
-      color: var(--text);
-      overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      background-image:
-        linear-gradient(rgba(92, 58, 37, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(92, 58, 37, 0.025) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      border: 0;
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    .top-blur {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      z-index: 80;
-      pointer-events: none;
-      background: linear-gradient(to bottom, rgba(255, 248, 240, 0.96), rgba(255, 248, 240, 0));
-    }
-
-    .navbar {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(var(--max), calc(100% - 48px));
-      z-index: 100;
-      border: 1px solid rgba(255,255,255,0.7);
-      background: rgba(255, 246, 235, 0.84);
-      backdrop-filter: blur(22px);
-      border-radius: 999px;
-      box-shadow: 0 18px 55px rgba(58, 31, 18, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 12px 10px 14px;
-      animation: navDown 0.8s ease both;
-    }
-
-    @keyframes navDown {
-      from { opacity: 0; transform: translate(-50%, -18px); }
-      to { opacity: 1; transform: translate(-50%, 0); }
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 19px;
-      display: grid;
-      place-items: center;
-      color: white;
-      font-weight: 900;
-      background:
-        radial-gradient(circle at 35% 28%, #ffe7ba, transparent 23%),
-        linear-gradient(135deg, #d99a6c, #9c5532 56%, #2f1a13);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 10px 25px rgba(123, 69, 40, .20);
-      animation: markPulse 3.6s ease-in-out infinite;
-      flex: 0 0 auto;
-    }
-
-    @keyframes markPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.045); }
-    }
-
-    .brand-title {
-      font-size: 18px;
-      line-height: 1.05;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      white-space: nowrap;
-    }
-
-    .brand-sub {
-      margin-top: 3px;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.42);
-      flex: 0 0 auto;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 800;
-      color: #604236;
-      padding: 12px 14px;
-      border-radius: 999px;
-      transition: .25s ease;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      background: #fff;
-      color: var(--brown);
-      transform: translateY(-1px);
-    }
-
-    .menu-btn {
-      display: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--brown-dark);
-      color: white;
-      font-size: 22px;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 auto;
-    }
-
-    .mobile-menu {
-      position: fixed;
-      top: 86px;
-      left: 18px;
-      right: 18px;
-      z-index: 99;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      padding: 14px;
-      border-radius: 28px;
-      background: rgba(255, 247, 238, 0.96);
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.68);
-    }
-
-    .mobile-menu.is-open {
-      display: flex;
-      animation: menuIn .28s ease both;
-    }
-
-    @keyframes menuIn {
-      from { opacity: 0; transform: translateY(-8px) scale(.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .mobile-menu a {
-      padding: 14px 15px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.6);
-      color: #50352a;
-      font-weight: 850;
-    }
-
-    .hero {
-      position: relative;
-      padding: 138px 0 70px;
-      min-height: 760px;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 500px);
-      gap: clamp(28px, 4vw, 48px);
-      align-items: center;
-      width: 100%;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      width: fit-content;
-      padding: 9px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.58);
-      box-shadow: 0 10px 35px rgba(80,44,24,.06);
-      color: var(--brown);
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      animation: fadeUp .7s ease .05s both;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 7px rgba(200, 132, 63, .14);
-      animation: dotBlink 1.6s ease-in-out infinite;
-      flex: 0 0 auto;
-    }
-
-    @keyframes dotBlink {
-      0%,100% { transform: scale(1); opacity: .9; }
-      50% { transform: scale(.72); opacity: .55; }
-    }
-
-    .hero h1 {
-      max-width: 720px;
-      margin-top: 19px;
-      font-size: clamp(50px, 6vw, 86px);
-      line-height: .93;
-      letter-spacing: -0.075em;
-      font-weight: 950;
-      animation: fadeUp .7s ease .14s both;
-    }
-
-    .hero h1 span {
-      color: var(--brown);
-    }
-
-    .hero p {
-      max-width: 640px;
-      margin-top: 23px;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.7;
-      animation: fadeUp .7s ease .23s both;
-    }
-
-    .hero-actions {
-      margin-top: 30px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      animation: fadeUp .7s ease .32s both;
-    }
-
-    .btn {
-      min-height: 52px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 999px;
-      font-size: 15px;
-      font-weight: 900;
-      letter-spacing: -0.01em;
-      transition: .25s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .btn-primary {
-      color: white;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.25), transparent 25%),
-        linear-gradient(135deg, var(--brown-dark), var(--brown), var(--gold));
-      box-shadow: 0 18px 45px rgba(94, 50, 27, .26);
-    }
-
-    .btn-light {
-      color: var(--brown);
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(96, 65, 49, .12);
-      box-shadow: 0 12px 35px rgba(94, 50, 27, .08);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .hero-panel {
-      position: relative;
-      width: 100%;
-      height: min(620px, calc(100vh - 180px));
-      min-height: 500px;
-      max-height: 640px;
-      border-radius: 44px;
-      padding: 15px;
-      border: 1px solid rgba(255,255,255,.7);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.7), rgba(255, 239, 220,.48)),
-        radial-gradient(circle at 20% 18%, rgba(255,215,154,.42), transparent 30%);
-      box-shadow: var(--shadow);
+    body.menu-open {
       overflow: hidden;
-      animation: fadeLeft .85s ease .15s both;
+      touch-action: none;
     }
 
-    .painting-card {
-      position: absolute;
-      inset: 15px;
-      border-radius: 34px;
-      overflow: hidden;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,.04), rgba(0,0,0,.22)),
-        url("https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=85");
-      background-size: cover;
+    .text-gradient {
+      background: linear-gradient(to right, #0d9488, #e11d48);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .float-anim {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    .bg-parallax {
+      background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+      background-attachment: fixed;
       background-position: center;
-      transform: translateZ(0);
-    }
-
-    .floating-badge {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 28px;
-      display: grid;
-      gap: 12px;
-      padding: 18px;
-      border-radius: 28px;
-      background: rgba(255, 253, 248, .78);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,.55);
-      box-shadow: 0 20px 60px rgba(30, 14, 8, .18);
-      animation: floatSoft 4s ease-in-out infinite;
-    }
-
-    @keyframes floatSoft {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-9px); }
-    }
-
-    .badge-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .badge-line strong {
-      font-size: 18px;
-      letter-spacing: -0.04em;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      padding: 8px 10px;
-      background: rgba(123, 69, 40, .1);
-      color: var(--brown);
-      font-size: 12px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .badge-text {
-      color: #6a5145;
-      line-height: 1.55;
-      font-size: 14px;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(.2px);
-      opacity: .78;
-      pointer-events: none;
-      animation: orbMove 7s ease-in-out infinite;
-    }
-
-    .orb.one {
-      width: 110px;
-      height: 110px;
-      right: -20px;
-      top: 90px;
-      background: rgba(255, 215, 154, .48);
-    }
-
-    .orb.two {
-      width: 74px;
-      height: 74px;
-      left: 24px;
-      top: 44px;
-      background: rgba(217, 139, 115, .38);
-      animation-delay: -2.2s;
-    }
-
-    @keyframes orbMove {
-      0%,100% { transform: translate3d(0,0,0) scale(1); }
-      50% { transform: translate3d(-18px, 20px,0) scale(1.08); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeLeft {
-      from { opacity: 0; transform: translateX(24px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .section {
-      padding: 78px 0;
-      position: relative;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 32px;
-    }
-
-    .section-kicker {
-      color: var(--brown);
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      font-size: 12px;
-    }
-
-    .section h2 {
-      margin-top: 10px;
-      font-size: clamp(34px, 4.2vw, 58px);
-      line-height: .98;
-      letter-spacing: -0.06em;
-    }
-
-    .section-head p {
-      margin-top: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 17px;
-    }
-
-    .about-box {
-      display: grid;
-      grid-template-columns: minmax(340px, .9fr) minmax(0, 1.1fr);
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .about-photo {
-      min-height: 500px;
-      border-radius: 34px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,.18)),
-        url("https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1100&q=85");
+      background-repeat: no-repeat;
       background-size: cover;
-      background-position: center;
     }
 
-    .about-content {
-      border-radius: 34px;
-      padding: 34px;
-      background: rgba(255,255,255,.68);
-      border: 1px solid rgba(255,255,255,.68);
-      box-shadow: 0 14px 45px rgba(77, 42, 22, .08);
-      min-width: 0;
+    @media (max-width: 768px) {
+      .bg-parallax {
+        background-attachment: scroll;
+      }
     }
 
-    .about-content h3 {
-      font-size: clamp(28px, 3vw, 42px);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      margin-bottom: 18px;
-    }
-
-    .about-content p {
-      color: var(--muted);
-      line-height: 1.72;
-      margin-top: 14px;
-      font-size: 16.5px;
-    }
-
-    .mini-list {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .mini-list span {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255, 247, 238, .82);
-      color: #50352a;
-      font-weight: 850;
-      font-size: 14px;
-      border: 1px solid var(--line);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 26px;
-      padding: 24px;
-      min-height: 238px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.72);
-      box-shadow: 0 16px 45px rgba(77, 42, 22, .08);
-      transition: .28s ease;
-      min-width: 0;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      right: -80px;
-      top: -80px;
-      border-radius: 999px;
-      background: rgba(200, 132, 63, .18);
-      transition: .28s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 28px 70px rgba(77, 42, 22, .13);
-    }
-
-    .card:hover::before {
-      transform: scale(1.5);
-    }
-
-    .icon {
-      position: relative;
-      width: 48px;
-      height: 48px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      color: white;
-      font-size: 22px;
-      background: linear-gradient(135deg, #c8843f, #8b4b2a);
-      box-shadow: 0 13px 30px rgba(123,69,40,.2);
-      margin-bottom: 17px;
-    }
-
-    .card h3 {
-      position: relative;
-      font-size: 20px;
-      letter-spacing: -0.035em;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      position: relative;
-      color: var(--muted);
-      line-height: 1.62;
-      font-size: 14.5px;
-    }
-
-    .simple-split {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .soft-panel {
-      border-radius: 34px;
-      padding: 30px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(255,215,154,.32), transparent 32%),
-        rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.72);
-      box-shadow: 0 16px 45px rgba(77, 42, 22, .08);
-      min-width: 0;
-    }
-
-    .soft-panel h3 {
-      font-size: 28px;
-      letter-spacing: -0.055em;
-      margin-bottom: 12px;
-      line-height: 1.08;
-    }
-
-    .soft-panel p {
-      color: var(--muted);
-      line-height: 1.68;
-      margin-top: 10px;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 20px;
-    }
-
-    .chip {
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(123,69,40,.09);
-      color: var(--brown);
-      font-size: 13px;
-      font-weight: 850;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr .9fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-
-    .gallery-card {
-      min-height: 330px;
-      border-radius: 30px;
-      overflow: hidden;
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 18px 50px rgba(77, 42, 22, .12);
-    }
-
-    .gallery-card.small {
-      min-height: 250px;
-    }
-
-    .gallery-card.tall {
-      min-height: 530px;
-    }
-
-    .gallery-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 30%, rgba(20, 11, 7, .62));
-    }
-
-    .gallery-card span {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      z-index: 2;
-      color: white;
-      font-size: 18px;
-      font-weight: 950;
-      letter-spacing: -0.035em;
-      text-shadow: 0 8px 30px rgba(0,0,0,.35);
-    }
-
-    .g1 { background-image: url("https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1000&q=85"); }
-    .g2 { background-image: url("https://images.unsplash.com/photo-1499892477393-f675706cbe6e?auto=format&fit=crop&w=900&q=85"); }
-    .g3 { background-image: url("https://images.unsplash.com/photo-1461344577544-4e5dc9487184?auto=format&fit=crop&w=900&q=85"); }
-    .g4 { background-image: url("https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=900&q=85"); }
-
-    .gallery-side {
-      display: grid;
-      gap: 14px;
-    }
-
-    .call-section {
-      padding: 78px 0;
-    }
-
-    .call-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 38px;
-      padding: 36px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(255, 215, 154, .34), transparent 34%),
-        linear-gradient(135deg, #2a1711, #734126 60%, #bd7636);
-      color: white;
-      box-shadow: 0 28px 80px rgba(75, 38, 17, .25);
-    }
-
-    .call-card::before {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      top: -120px;
-      right: -90px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      animation: circleFloat 7s ease-in-out infinite;
-    }
-
-    @keyframes circleFloat {
-      0%,100% { transform: translate(0,0); }
-      50% { transform: translate(-18px, 14px); }
-    }
-
-    .call-inner {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(290px, 350px);
-      gap: 24px;
-      align-items: center;
-    }
-
-    .call-kicker {
-      display: inline-flex;
-      width: fit-content;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.11);
-      border: 1px solid rgba(255,255,255,.18);
-      color: #ffe1ac;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      font-size: 11px;
-      font-weight: 950;
-    }
-
-    .call-card h2 {
-      max-width: 650px;
-      font-size: clamp(34px, 4vw, 58px);
-      line-height: .98;
-      letter-spacing: -0.065em;
-    }
-
-    .call-card p {
-      max-width: 650px;
-      margin-top: 14px;
-      color: rgba(255,255,255,.78);
-      line-height: 1.68;
-      font-size: 16px;
-    }
-
-    .phone-box {
-      min-width: 0;
-      padding: 16px;
-      border-radius: 28px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(12px);
-      display: grid;
-      gap: 12px;
-    }
-
-    .phone-number {
-      text-align: center;
-      font-size: 30px;
-      font-weight: 950;
-      letter-spacing: -0.04em;
-      color: #fff;
-      padding: 8px 4px;
-    }
-
-    .call-btn {
-      min-height: 54px;
-      border-radius: 999px;
-      background: #fffdf8;
-      color: #241713;
-      font-size: 16px;
-      font-weight: 950;
-      box-shadow: 0 16px 35px rgba(0,0,0,.14);
-      transition: .25s ease;
-      display: grid;
-      place-items: center;
-    }
-
-    .call-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .socials {
-      display: flex;
-      gap: 8px;
-    }
-
-    .socials a {
-      flex: 1;
-      min-height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      color: rgba(255,255,255,.88);
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.1);
-      font-size: 13px;
-      font-weight: 900;
-      transition: .25s ease;
-    }
-
-    .socials a:hover {
-      background: rgba(255,255,255,.18);
-      transform: translateY(-2px);
-    }
-
-    .faq {
-      display: grid;
-      gap: 10px;
-    }
-
-    .faq-item {
-      overflow: hidden;
-      border-radius: 22px;
-      background: rgba(255,255,255,.7);
-      border: 1px solid rgba(255,255,255,.72);
-      box-shadow: 0 12px 34px rgba(77,42,22,.06);
-    }
-
-    .faq-q {
-      width: 100%;
-      min-height: 62px;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      background: transparent;
-      color: var(--text);
-      font-size: 16px;
-      font-weight: 950;
-      text-align: left;
-    }
-
-    .faq-q span:last-child {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(123,69,40,.09);
-      color: var(--brown);
-      flex: 0 0 auto;
-      transition: .25s ease;
-    }
-
-    .faq-a {
+    .tab-content {
       display: none;
-      padding: 0 20px 20px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .faq-item.open .faq-a {
-      display: block;
-      animation: fadeUp .25s ease both;
-    }
-
-    .faq-item.open .faq-q span:last-child {
-      transform: rotate(45deg);
-    }
-
-    footer {
-      padding: 36px 0 60px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .mobile-call {
-      position: fixed;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      z-index: 120;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      min-height: 55px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.2), transparent 20%),
-        linear-gradient(135deg, #2a1711, #7b4528, #c8843f);
-      color: white;
-      font-weight: 950;
-      box-shadow: 0 18px 46px rgba(54, 27, 14, .32);
-      border: 1px solid rgba(255,255,255,.18);
-      animation: stickyCall 1.8s ease-in-out infinite;
-    }
-
-    @keyframes stickyCall {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: .6s ease;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    .reveal.show {
+    .tab-content.active {
+      display: block;
       opacity: 1;
       transform: translateY(0);
     }
 
-    @media (max-width: 1120px) {
-      .nav-links a {
-        padding: 11px 10px;
-        font-size: 12.5px;
-      }
-
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(330px, 430px);
-      }
-
-      .hero h1 {
-        font-size: clamp(48px, 5.6vw, 74px);
-      }
-
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .card {
-        min-height: 210px;
-      }
+    .mobile-floating-menu {
+      position: fixed;
+      top: calc(env(safe-area-inset-top, 0px) + 12px);
+      right: 14px;
+      z-index: 75;
     }
 
-    @media (max-width: 920px) {
-      .page {
-        width: min(var(--max), calc(100% - 36px));
-      }
-
-      .navbar {
-        width: calc(100% - 36px);
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .menu-btn {
-        display: flex;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-grid,
-      .about-box,
-      .simple-split,
-      .call-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-panel {
-        height: 520px;
-        min-height: 460px;
-      }
-
-      .about-photo {
-        min-height: 420px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .gallery-card.tall {
-        min-height: 360px;
-      }
+    .back-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: 0.2s ease;
     }
 
-    @media (max-width: 760px) {
-      .page {
-        width: min(100% - 28px, var(--max));
-      }
-
-      .navbar {
-        top: 14px;
-        width: calc(100% - 28px);
-        padding: 8px;
-      }
-
-      .brand-mark {
-        width: 44px;
-        height: 44px;
-        border-radius: 17px;
-      }
-
-      .brand-title {
-        font-size: 16px;
-      }
-
-      .brand-sub {
-        font-size: 11px;
-      }
-
-      .hero {
-        padding: 118px 0 42px;
-      }
-
-      .hero-grid {
-        gap: 22px;
-      }
-
-      .eyebrow {
-        font-size: 10.5px;
-        padding: 8px 11px;
-        letter-spacing: .1em;
-      }
-
-      .hero h1 {
-        margin-top: 17px;
-        font-size: clamp(40px, 13vw, 58px);
-        line-height: .92;
-      }
-
-      .hero p {
-        margin-top: 18px;
-        font-size: 15.5px;
-        line-height: 1.68;
-      }
-
-      .hero-actions {
-        margin-top: 22px;
-        gap: 9px;
-      }
-
-      .btn {
-        width: 100%;
-        min-height: 50px;
-        font-size: 14px;
-      }
-
-      .hero-panel {
-        height: 460px;
-        min-height: 460px;
-        border-radius: 30px;
-        padding: 10px;
-      }
-
-      .painting-card {
-        inset: 10px;
-        border-radius: 23px;
-      }
-
-      .floating-badge {
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-        padding: 15px;
-        border-radius: 22px;
-      }
-
-      .badge-line strong {
-        font-size: 16px;
-      }
-
-      .badge-text {
-        font-size: 13px;
-      }
-
-      .section {
-        padding: 52px 0;
-      }
-
-      .section-head {
-        margin-bottom: 24px;
-      }
-
-      .section-kicker {
-        font-size: 10.5px;
-        letter-spacing: .14em;
-      }
-
-      .section h2 {
-        font-size: clamp(30px, 10.5vw, 43px);
-      }
-
-      .section-head p {
-        font-size: 15px;
-        line-height: 1.65;
-      }
-
-      .about-photo {
-        min-height: 340px;
-        border-radius: 26px;
-      }
-
-      .about-content {
-        padding: 22px;
-        border-radius: 26px;
-      }
-
-      .about-content h3 {
-        font-size: 29px;
-      }
-
-      .about-content p {
-        font-size: 15px;
-        line-height: 1.68;
-      }
-
-      .mini-list {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .mini-list span {
-        padding: 12px;
-        font-size: 13px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .card {
-        min-height: auto;
-        padding: 20px;
-        border-radius: 22px;
-      }
-
-      .icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 15px;
-        font-size: 19px;
-        margin-bottom: 13px;
-      }
-
-      .card h3 {
-        font-size: 18px;
-      }
-
-      .card p {
-        font-size: 14px;
-        line-height: 1.58;
-      }
-
-      .soft-panel {
-        padding: 22px;
-        border-radius: 25px;
-      }
-
-      .soft-panel h3 {
-        font-size: 24px;
-      }
-
-      .soft-panel p {
-        font-size: 14.5px;
-      }
-
-      .chip {
-        font-size: 12.5px;
-        padding: 9px 10px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .gallery-side {
-        gap: 12px;
-      }
-
-      .gallery-card,
-      .gallery-card.small,
-      .gallery-card.tall {
-        min-height: 255px;
-        border-radius: 24px;
-      }
-
-      .gallery-card span {
-        font-size: 16px;
-      }
-
-      .call-section {
-        padding: 48px 0;
-      }
-
-      .call-card {
-        padding: 22px;
-        border-radius: 28px;
-      }
-
-      .call-card h2 {
-        font-size: clamp(30px, 9.5vw, 42px);
-        line-height: 1;
-      }
-
-      .call-card p {
-        font-size: 14.5px;
-        line-height: 1.62;
-      }
-
-      .phone-box {
-        padding: 12px;
-        border-radius: 22px;
-      }
-
-      .phone-number {
-        font-size: 25px;
-      }
-
-      .call-btn {
-        min-height: 50px;
-        font-size: 15px;
-      }
-
-      .socials {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      .socials a {
-        min-height: 39px;
-        font-size: 11.5px;
-      }
-
-      .faq-q {
-        min-height: 56px;
-        padding: 15px 16px;
-        font-size: 14.5px;
-      }
-
-      .faq-a {
-        padding: 0 16px 16px;
-        font-size: 14px;
-      }
-
-      .mobile-call {
-        display: flex;
-      }
-
-      footer {
-        padding-bottom: 94px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .brand-title {
-        font-size: 15px;
-      }
-
-      .brand-sub {
-        max-width: 150px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .hero h1 {
-        font-size: 38px;
-      }
-
-      .phone-number {
-        font-size: 22px;
-      }
-
-      .socials a {
-        font-size: 10.5px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
+    .back-tab-btn:hover {
+      color: #0d9488;
+      border-color: rgba(13, 148, 136, 0.25);
+      transform: translateX(-2px);
     }
   </style>
 </head>
 
-<body>
-  <div class="top-blur"></div>
+<body class="font-sans text-gray-800 antialiased flex flex-col min-h-screen">
 
-  <nav class="navbar">
-    <a href="#acasa" class="brand" aria-label="Atelier LuminArt">
-      <div class="brand-mark">✧</div>
-      <div>
-        <div class="brand-title">Atelier LuminArt</div>
-        <div class="brand-sub">artă • cursuri • tabere</div>
+  <!-- Navigation -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-40 top-0 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 sm:h-20">
+
+        <!-- Logo -->
+        <button type="button" class="flex-shrink-0 flex items-center cursor-pointer group text-left" onclick="openTab('tab-home')">
+          <i class="fa-solid fa-palette text-primary text-2xl sm:text-3xl mr-2 group-hover:rotate-12 transition-transform duration-300"></i>
+          <div>
+            <h1 class="font-serif text-xl sm:text-2xl font-bold text-gray-900 leading-tight">Elena Art</h1>
+            <p class="text-[10px] sm:text-xs text-gray-500 font-medium">Terapie & Creație</p>
+          </div>
+        </button>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <button onclick="openTab('tab-home')" class="text-sm text-gray-600 hover:text-primary transition font-medium">Acasă</button>
+          <button onclick="openTab('tab-portofoliu')" class="text-sm text-gray-600 hover:text-primary transition font-medium">Portofoliu</button>
+          <button onclick="openTab('tab-termeni')" class="text-sm text-gray-600 hover:text-primary transition font-medium">Termeni și Condiții</button>
+        </div>
+
+        <!-- Desktop Call Button -->
+        <div class="hidden md:flex items-center">
+          <a href="tel:0700123456" class="bg-primary hover:bg-primaryLight text-white text-sm px-5 py-2 rounded-full font-semibold transition shadow-md shadow-primary/30 flex items-center transform hover:scale-105">
+            <i class="fa-solid fa-phone mr-2 text-xs"></i> Sună
+          </a>
+        </div>
+
       </div>
-    </a>
-
-    <div class="nav-links">
-      <a href="#despre">Despre</a>
-      <a href="#servicii">Servicii</a>
-      <a href="#galerie">Galerie</a>
-      <a href="#contact">Sună</a>
-      <a href="#faq">Întrebări</a>
     </div>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Deschide meniul">☰</button>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#despre">Despre</a>
-    <a href="#servicii">Servicii</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#contact">Sună acum</a>
-    <a href="#faq">Întrebări</a>
-  </div>
+  <!-- Hamburger fix în colț, doar pe mobil -->
+  <button
+    id="open-menu-btn"
+    type="button"
+    aria-label="Deschide meniul"
+    aria-expanded="false"
+    aria-controls="mobile-sidebar"
+    class="mobile-floating-menu md:hidden bg-white text-gray-900 w-11 h-11 rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-xl hover:text-primary transition-all duration-300"
+  >
+    <i class="fa-solid fa-bars"></i>
+  </button>
 
-  <main id="acasa">
-    <section class="hero">
-      <div class="page hero-grid">
+  <!-- Mobile Overlay -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-900/60 z-[60] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm md:hidden"></div>
+
+  <!-- Mobile Sidebar -->
+  <aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-[82%] max-w-[320px] bg-white z-[80] shadow-2xl translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col">
+
+    <div class="flex items-center justify-between p-5 border-b border-gray-100">
+      <div class="flex items-center">
+        <i class="fa-solid fa-palette text-primary text-2xl mr-2"></i>
         <div>
-          <div class="eyebrow">
-            <span class="dot"></span>
-            Demo site artistic
-          </div>
-
-          <h1>
-            Artă cu emoție, <span>cursuri</span> și ateliere creative.
-          </h1>
-
-          <p>
-            Un demo premium pentru o pictoriță care lucrează prin artă cu persoane cu dizabilități,
-            predă copiilor, organizează tabere și creează lucrări personalizate.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+40723456789">Sună acum • 0723 456 789</a>
-            <a class="btn btn-light" href="#servicii">Vezi activitățile</a>
-          </div>
-        </div>
-
-        <div class="hero-panel" aria-label="Imagine artistică">
-          <div class="painting-card"></div>
-          <div class="orb one"></div>
-          <div class="orb two"></div>
-
-          <div class="floating-badge">
-            <div class="badge-line">
-              <strong>Atelier cu suflet</strong>
-              <span class="pill">Sibiu</span>
-            </div>
-            <div class="badge-text">
-              Terapie prin artă, cursuri pentru copii, tabere creative și picturi la comandă.
-            </div>
-          </div>
+          <h2 class="font-serif text-xl font-bold text-gray-900">Elena Art</h2>
+          <p class="text-xs text-gray-500">Terapie & Creație</p>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="despre">
-      <div class="page">
-        <div class="section-head reveal">
-          <div class="section-kicker">Despre</div>
-          <h2>O prezentare clară pentru tot ce face.</h2>
-          <p>
-            Site-ul pune toate activitățile într-un singur loc, într-un mod simplu, cald și ușor de înțeles.
-          </p>
-        </div>
+      <button id="close-menu-btn" type="button" aria-label="Închide meniul" class="text-gray-500 hover:text-primary focus:outline-none p-2 text-2xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
 
-        <div class="about-box">
-          <div class="about-photo reveal"></div>
+    <div class="flex flex-col px-6 pt-6 gap-3">
+      <button onclick="openTab('tab-home')" class="mobile-link text-left text-lg font-serif text-gray-800 hover:text-primary border-b border-gray-100 pb-3">Acasă</button>
+      <button onclick="openTab('tab-portofoliu')" class="mobile-link text-left text-lg font-serif text-gray-800 hover:text-primary border-b border-gray-100 pb-3">Portofoliu</button>
+      <button onclick="openTab('tab-termeni')" class="mobile-link text-left text-lg font-serif text-gray-800 hover:text-primary border-b border-gray-100 pb-3">Termeni și Condiții</button>
+    </div>
 
-          <div class="about-content reveal">
-            <h3>Terapeut prin artă, profesoară, organizatoare de tabere și pictoriță.</h3>
-            <p>
-              Sunt terapeut prin artă într-un centru dedicat persoanelor cu dizabilități,
-              profesoară de artă pentru copii, organizez tabere creative și activez ca pictoriță.
-            </p>
-            <p>
-              Prin artă creez un spațiu de exprimare, răbdare și descoperire. Fiecare curs,
-              atelier sau lucrare este construit cu grijă, sensibilitate și atenție la fiecare persoană.
-            </p>
+    <div class="mt-auto p-6 border-t border-gray-100">
+      <a href="tel:0700123456" class="w-full bg-primary hover:bg-primaryLight text-white text-sm px-5 py-3 rounded-full font-semibold transition shadow-md flex items-center justify-center">
+        <i class="fa-solid fa-phone mr-2 text-xs"></i> Sună acum
+      </a>
+    </div>
 
-            <div class="mini-list">
-              <span>Terapie prin artă</span>
-              <span>Cursuri pentru copii</span>
-              <span>Tabere creative</span>
-              <span>Picturi personalizate</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  </aside>
 
-    <section class="section" id="servicii">
-      <div class="page">
-        <div class="section-head reveal">
-          <div class="section-kicker">Servicii</div>
-          <h2>Activități prezentate simplu și elegant.</h2>
-          <p>
-            Fără text încărcat inutil. Vizitatorul înțelege rapid ce poate găsi la atelier.
-          </p>
-        </div>
+  <!-- Main Content -->
+  <main class="flex-grow pt-16 sm:pt-20">
 
-        <div class="cards">
-          <article class="card reveal">
-            <div class="icon">✦</div>
-            <h3>Terapie prin artă</h3>
-            <p>
-              Activități creative pentru exprimare, relaxare și conectare prin culoare,
-              potrivite pentru persoane cu nevoi speciale.
-            </p>
-          </article>
+    <!-- TAB: HOME -->
+    <div id="tab-home" class="tab-content active">
 
-          <article class="card reveal">
-            <div class="icon">✎</div>
-            <h3>Cursuri pentru copii</h3>
-            <p>
-              Lecții de artă pentru dezvoltarea imaginației, răbdării și încrederii în propriile idei.
-            </p>
-          </article>
+      <!-- Hero Section -->
+      <section class="relative pt-16 pb-16 lg:pt-28 lg:pb-24 overflow-hidden bg-parallax">
+        <div class="absolute inset-0 bg-white/90"></div>
 
-          <article class="card reveal">
-            <div class="icon">☀</div>
-            <h3>Tabere creative</h3>
-            <p>
-              Experiențe de grup cu pictură, proiecte practice, jocuri artistice și activități educative.
-            </p>
-          </article>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-          <article class="card reveal">
-            <div class="icon">◈</div>
-            <h3>Pictură</h3>
-            <p>
-              Lucrări originale, tablouri decorative și picturi personalizate pentru cadouri sau spații speciale.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+            <div data-aos="fade-up-right" data-aos-duration="1000">
+              <span class="text-primary font-semibold tracking-wider uppercase text-xs sm:text-sm mb-3 block">
+                <i class="fa-solid fa-sparkles mr-1"></i> Vindecare și Expresie
+              </span>
 
-    <section class="section">
-      <div class="page simple-split">
-        <div class="soft-panel reveal">
-          <div class="section-kicker">Pentru cine</div>
-          <h3>Ateliere pentru copii, familii și grupuri.</h3>
-          <p>
-            Activitățile pot fi adaptate pentru copii, grupuri mici, centre, colaborări educaționale
-            sau persoane care au nevoie de o formă blândă de exprimare.
-          </p>
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
+                Arta ca limbaj al <span class="text-gradient">sufletului</span>
+              </h1>
 
-          <div class="chips">
-            <span class="chip">copii creativi</span>
-            <span class="chip">grupuri mici</span>
-            <span class="chip">centre educaționale</span>
-            <span class="chip">părinți</span>
-            <span class="chip">colaborări</span>
-          </div>
-        </div>
-
-        <div class="soft-panel reveal">
-          <div class="section-kicker">Beneficii</div>
-          <h3>Arta ajută oamenii să se exprime mai ușor.</h3>
-          <p>
-            Prin desen, pictură și joacă vizuală, participanții pot comunica emoții,
-            își pot dezvolta creativitatea și pot câștiga mai multă încredere.
-          </p>
-
-          <div class="chips">
-            <span class="chip">relaxare</span>
-            <span class="chip">creativitate</span>
-            <span class="chip">încredere</span>
-            <span class="chip">expresie emoțională</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="galerie">
-      <div class="page">
-        <div class="section-head reveal">
-          <div class="section-kicker">Galerie</div>
-          <h2>Un aspect vizual care vinde povestea.</h2>
-          <p>
-            Pozele sunt demo. În varianta finală pot fi puse fotografii reale cu lucrări, atelier, tabere și activități.
-          </p>
-        </div>
-
-        <div class="gallery">
-          <div class="gallery-card tall g1 reveal"><span>Ateliere pentru copii</span></div>
-
-          <div class="gallery-side">
-            <div class="gallery-card small g2 reveal"><span>Pictură și culoare</span></div>
-            <div class="gallery-card small g3 reveal"><span>Proiecte creative</span></div>
-          </div>
-
-          <div class="gallery-card g4 reveal"><span>Lucrări personalizate</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="call-section" id="contact">
-      <div class="page">
-        <div class="call-card reveal">
-          <div class="call-inner">
-            <div>
-              <div class="call-kicker">Programări telefonice</div>
-              <h2>Sună acum pentru detalii.</h2>
-              <p>
-                Pentru cursuri, tabere, terapie prin artă sau picturi personalizate,
-                programările se fac direct la telefon.
+              <p class="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                Sunt Elena, <strong class="text-primary font-medium">terapeut de artă la un centru pentru persoane cu dizabilități</strong>. Îndrum pașii copiilor în lumea culorilor, organizez tabere și pictez din pasiune.
               </p>
-            </div>
 
-            <div class="phone-box">
-              <div class="phone-number">0723 456 789</div>
-              <a class="call-btn" href="tel:+40723456789">Sună acum</a>
+              <div class="flex flex-wrap gap-3">
+                <button onclick="openTab('tab-portofoliu')" class="bg-gray-900 hover:bg-gray-800 text-white text-sm px-6 py-2.5 rounded-full font-medium transition shadow-md transform hover:-translate-y-1">
+                  Vezi Portofoliul
+                </button>
 
-              <div class="socials">
-                <a href="#" onclick="fakeSocial(event, 'Facebook')">Facebook</a>
-                <a href="#" onclick="fakeSocial(event, 'Instagram')">Instagram</a>
-                <a href="https://wa.me/40723456789" target="_blank">WhatsApp</a>
+                <button onclick="openTab('tab-termeni')" class="bg-white hover:bg-gray-50 text-gray-800 text-sm px-6 py-2.5 rounded-full font-medium transition shadow-md border border-gray-100">
+                  Termeni
+                </button>
               </div>
             </div>
+
+            <div class="relative mt-8 lg:mt-0" data-aos="fade-up-left" data-aos-duration="1000" data-aos-delay="200">
+              <div class="relative rounded-2xl overflow-hidden shadow-xl float-anim border-4 border-white max-w-md mx-auto lg:max-w-full">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Materiale de pictură" class="w-full h-auto object-cover">
+              </div>
+            </div>
+
           </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="py-12 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+            <div class="md:col-span-5 relative" data-aos="zoom-in-right">
+              <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artist la lucru" class="rounded-xl shadow-md w-full h-[300px] sm:h-[400px] object-cover">
+            </div>
+
+            <div class="md:col-span-7" data-aos="fade-up" data-aos-delay="100">
+              <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-4">Povestea Mea</h2>
+
+              <p class="text-gray-600 mb-6 text-sm leading-relaxed">
+                Ofer o voce celor care au nevoie, prin culori și forme. Rolurile mele se împletesc firesc:
+              </p>
+
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start bg-warmBg p-3 rounded-lg border border-gray-100">
+                  <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10 text-primary mt-0.5 mr-3">
+                    <i class="fa-solid fa-wheelchair text-sm"></i>
+                  </span>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 text-sm">Terapeut de Artă</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Folosesc arta pentru comunicare și procesare emoțională la centrul de dizabilități.</p>
+                  </div>
+                </li>
+
+                <li class="flex items-start p-2">
+                  <span class="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-secondary/10 text-secondary mt-0.5 mr-3">
+                    <i class="fa-solid fa-child-reaching text-xs"></i>
+                  </span>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 text-sm">Profesoară pentru Copii</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Îndrum copiii să se exprime liber prin desen.</p>
+                  </div>
+                </li>
+
+                <li class="flex items-start p-2">
+                  <span class="flex-shrink-0 w-7 h-7 flex items-center justify-center rounded-full bg-accent/10 text-accent mt-0.5 mr-3">
+                    <i class="fa-solid fa-campground text-xs"></i>
+                  </span>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 text-sm">Organizator Tabere</h4>
+                    <p class="text-gray-500 text-xs mt-0.5">Creez spații în natură pentru conectare prin artă.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="py-12 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
+          <h2 class="text-2xl font-serif font-bold text-gray-900 mb-4">Contactează-mă</h2>
+          <p class="text-gray-600 text-sm mb-6">Pentru ședințe, cursuri, tabere sau comenzi de tablouri, te aștept cu drag.</p>
+
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-gray-700">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-primary"></i>
+              <a href="tel:0700123456" class="hover:text-primary font-medium transition">0700 123 456</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-primary"></i>
+              <span>Strada Speranței, Nr. 14, București</span>
+            </div>
+
+            <div class="flex items-center gap-3 mt-2 sm:mt-0">
+              <a href="#" class="text-gray-400 hover:text-[#1877F2] transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="text-gray-400 hover:text-[#e6683c] transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TAB: PORTOFOLIU -->
+    <div id="tab-portofoliu" class="tab-content bg-white min-h-[70vh] py-10 sm:py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="mb-6">
+          <button type="button" onclick="goBackTab()" class="back-tab-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Înapoi
+          </button>
+        </div>
+
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-serif font-bold text-gray-900 mb-2">Portofoliu Artistic</h2>
+          <p class="text-gray-500 text-sm">O selecție din lucrările mele și activitățile de la cursuri.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="overflow-hidden rounded-xl h-64 shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Abstract" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+          </div>
+
+          <div class="overflow-hidden rounded-xl h-64 shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Arta" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+          </div>
+
+          <div class="overflow-hidden rounded-xl h-64 shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Copii" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+          </div>
+
+          <div class="overflow-hidden rounded-xl h-64 shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1456086272160-b22364c9ca36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pensule" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+          </div>
+
+          <div class="overflow-hidden rounded-xl h-64 shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+          </div>
+
+          <div class="overflow-hidden rounded-xl h-64 shadow-sm group">
+            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Culori" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB: TERMENI -->
+    <div id="tab-termeni" class="tab-content bg-warmBg min-h-[70vh] py-10 sm:py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="mb-6">
+          <button type="button" onclick="goBackTab()" class="back-tab-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Înapoi
+          </button>
+        </div>
+
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 class="text-2xl font-serif font-bold text-gray-900 mb-6 border-b pb-4">Termeni și Condiții</h2>
+
+          <div class="space-y-6 text-gray-600 text-sm leading-relaxed">
+            <section>
+              <h3 class="font-bold text-gray-800 text-base mb-2">1. Confidențialitate</h3>
+              <p>Toate informațiile și detaliile personale discutate în cadrul ședințelor de terapie prin artă sunt tratate cu strictă confidențialitate și nu vor fi divulgate terților fără acordul explicit.</p>
+            </section>
+
+            <section>
+              <h3 class="font-bold text-gray-800 text-base mb-2">2. Programări și Anulări</h3>
+              <p>Programările pentru ședințele individuale sau participarea la tabere se fac în prealabil. Orice anulare sau reprogramare trebuie anunțată cu cel puțin 24 de ore înainte, pentru a nu fi tarifată.</p>
+            </section>
+
+            <section>
+              <h3 class="font-bold text-gray-800 text-base mb-2">3. Drepturi de Autor</h3>
+              <p>Toate lucrările artistice expuse în secțiunea "Portofoliu" aparțin artistei. Copierea, reproducerea sau utilizarea acestora în scopuri comerciale fără acord scris este interzisă.</p>
+            </section>
+
+            <section>
+              <h3 class="font-bold text-gray-800 text-base mb-2">4. Despre acest site</h3>
+              <p>Acest site web are un rol de prezentare a serviciilor și portofoliului. Informațiile prezentate aici au caracter informativ.</p>
+            </section>
+          </div>
+
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section" id="faq">
-      <div class="page">
-        <div class="section-head reveal">
-          <div class="section-kicker">Întrebări</div>
-          <h2>Informații rapide pentru vizitatori.</h2>
-          <p>
-            O secțiune simplă, ca oamenii să înțeleagă rapid cum funcționează activitățile.
-          </p>
-        </div>
-
-        <div class="faq">
-          <div class="faq-item reveal">
-            <button class="faq-q">
-              <span>Cum se fac programările?</span>
-              <span>+</span>
-            </button>
-            <div class="faq-a">
-              Programările se fac telefonic, la numărul 0723 456 789.
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-q">
-              <span>Pentru ce vârste sunt cursurile?</span>
-              <span>+</span>
-            </button>
-            <div class="faq-a">
-              Cursurile pot fi adaptate în funcție de vârstă, nivel și nevoile grupului.
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-q">
-              <span>Se pot organiza activități de grup?</span>
-              <span>+</span>
-            </button>
-            <div class="faq-a">
-              Da, se pot organiza ateliere pentru grupuri, centre, școli sau tabere creative.
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-q">
-              <span>Se pot comanda picturi personalizate?</span>
-              <span>+</span>
-            </button>
-            <div class="faq-a">
-              Da, se pot discuta telefonic detaliile pentru tablouri, cadouri sau lucrări decorative.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <a class="mobile-call" href="tel:+40723456789">Sună acum • 0723 456 789</a>
-
-  <footer>
-    <div class="page">
-      © 2026 Atelier LuminArt. Website demo pentru prezentare.
-    </div>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center text-xs border-t border-white/5 mt-auto px-4">
+    <p>&copy; 2026 Elena Art - Terapie și Creație. Toate drepturile rezervate.</p>
   </footer>
 
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/40700123456" target="_blank" class="fixed bottom-4 right-4 z-30 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("is-open");
-      menuBtn.textContent = mobileMenu.classList.contains("is-open") ? "×" : "☰";
+    AOS.init({
+      once: true,
+      offset: 30,
+      duration: 700
     });
 
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("is-open");
-        menuBtn.textContent = "☰";
-      });
-    });
+    const openBtn = document.getElementById('open-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const overlay = document.getElementById('mobile-menu-overlay');
 
-    const revealElements = document.querySelectorAll(".reveal");
+    let menuIsOpen = false;
+    let activeTabId = 'tab-home';
+    let tabHistory = [];
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = `${Math.min(index * 45, 180)}ms`;
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
+    function refreshAnimations() {
+      setTimeout(() => {
+        if (window.AOS) {
+          AOS.refresh();
         }
-      });
-    }, {
-      threshold: 0.14
-    });
-
-    revealElements.forEach(el => observer.observe(el));
-
-    document.querySelectorAll(".faq-q").forEach(button => {
-      button.addEventListener("click", () => {
-        const item = button.closest(".faq-item");
-        item.classList.toggle("open");
-      });
-    });
-
-    function fakeSocial(event, name) {
-      event.preventDefault();
-      alert(name + " este buton demo. În site-ul final se pune linkul real.");
+      }, 250);
     }
+
+    function showTab(tabId) {
+      const target = document.getElementById(tabId);
+      if (!target) return;
+
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+        tab.style.display = 'none';
+      });
+
+      target.style.display = 'block';
+
+      requestAnimationFrame(() => {
+        target.classList.add('active');
+      });
+
+      activeTabId = tabId;
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+      refreshAnimations();
+    }
+
+    function openTab(tabId) {
+      if (tabId === activeTabId) {
+        closeMenu();
+        return;
+      }
+
+      if (activeTabId) {
+        tabHistory.push(activeTabId);
+      }
+
+      showTab(tabId);
+      closeMenu();
+    }
+
+    function goBackTab() {
+      const previousTab = tabHistory.pop();
+
+      if (previousTab && document.getElementById(previousTab)) {
+        showTab(previousTab);
+      } else {
+        showTab('tab-home');
+      }
+
+      closeMenu();
+    }
+
+    function openMenu() {
+      menuIsOpen = true;
+
+      overlay.classList.remove('hidden');
+
+      requestAnimationFrame(() => {
+        overlay.classList.remove('opacity-0');
+        sidebar.classList.remove('translate-x-full');
+
+        document.body.classList.add('menu-open');
+
+        openBtn.setAttribute('aria-expanded', 'true');
+        openBtn.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+      });
+    }
+
+    function closeMenu() {
+      menuIsOpen = false;
+
+      sidebar.classList.add('translate-x-full');
+      overlay.classList.add('opacity-0');
+
+      document.body.classList.remove('menu-open');
+
+      openBtn.setAttribute('aria-expanded', 'false');
+      openBtn.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
+
+      setTimeout(() => {
+        if (!menuIsOpen) {
+          overlay.classList.add('hidden');
+        }
+      }, 300);
+    }
+
+    openBtn.addEventListener('click', () => {
+      if (menuIsOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = 'none';
+        tab.classList.remove('active');
+      });
+
+      const home = document.getElementById('tab-home');
+
+      home.style.display = 'block';
+
+      requestAnimationFrame(() => {
+        home.classList.add('active');
+      });
+
+      activeTabId = 'tab-home';
+      tabHistory = [];
+    });
   </script>
+
 </body>
 </html>
