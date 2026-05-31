@@ -1,0 +1,177 @@
+body {
+            background-color: #F4EBE1;
+            color: #2C241B;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .img-placeholder {
+            background-color: #EBE0D3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E8DCC4;
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+        }
+
+        /* Smooth fade for loader */
+        #loader {
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+        #loader.hidden-loader {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Nav Link Hover */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #C5A059;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active-nav::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Transitions */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-overlay {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Scroll Animations */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+/* Loader animation */
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Animație fină pentru poza din secțiunea Despre mine */
+#about .lg\:col-span-5 .shadow-passepartout {
+    animation: aboutPhotoFloat 5.5s ease-in-out infinite;
+    transform-origin: center center;
+    will-change: transform, box-shadow;
+}
+
+#about .lg\:col-span-5 .shadow-passepartout img {
+    animation: aboutPhotoBreath 7s ease-in-out infinite;
+    will-change: transform, filter;
+}
+
+@keyframes aboutPhotoFloat {
+    0%, 100% {
+        transform: rotate(1deg) translateY(0) scale(1);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        transform: rotate(-0.6deg) translateY(-10px) scale(1.015);
+        box-shadow: 0 28px 55px -14px rgba(0, 0, 0, 0.22);
+    }
+}
+
+@keyframes aboutPhotoBreath {
+    0%, 100% {
+        transform: scale(1);
+        filter: contrast(1.05) saturate(1);
+    }
+    50% {
+        transform: scale(1.025);
+        filter: contrast(1.08) saturate(1.04);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #about .lg\:col-span-5 .shadow-passepartout,
+    #about .lg\:col-span-5 .shadow-passepartout img {
+        animation: none;
+    }
+}
+
+/* Artwork cards */
+.artwork-card {
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(232,220,196,.75);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 10px 28px -18px rgba(44,36,27,.28);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.artwork-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 48px -24px rgba(44,36,27,.42);
+    border-color: rgba(197,160,89,.45);
+}
+.artwork-img-wrap {
+    aspect-ratio: 4 / 5;
+    background: #EBE0D3;
+    overflow: hidden;
+}
+.artwork-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease, filter .6s ease;
+}
+.artwork-card:hover .artwork-img-wrap img {
+    transform: scale(1.045);
+    filter: saturate(1.03) contrast(1.03);
+}
+.artwork-desc {
+    white-space: pre-line;
+}
+.artwork-modal {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .28s ease, visibility .28s ease;
+}
+.artwork-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.artwork-modal-panel {
+    transform: translateY(18px) scale(.98);
+    transition: transform .28s ease;
+}
+.artwork-modal.is-open .artwork-modal-panel {
+    transform: translateY(0) scale(1);
+}
+.modal-thumb.active {
+    outline: 2px solid #C5A059;
+    outline-offset: 2px;
+}
