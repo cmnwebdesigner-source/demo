@@ -116,6 +116,53 @@
         }
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
+
+
+        /* Animație fină pentru poza din secțiunea Despre mine */
+        #about .lg\:col-span-5 .shadow-passepartout {
+            animation: aboutPhotoFloat 5.5s ease-in-out infinite;
+            transform-origin: center center;
+            will-change: transform, box-shadow;
+        }
+
+        #about .lg\:col-span-5 .shadow-passepartout img {
+            animation: aboutPhotoBreath 7s ease-in-out infinite;
+            will-change: transform, filter;
+        }
+
+        #about.active .lg\:col-span-5 .shadow-passepartout {
+            animation-play-state: running;
+        }
+
+        @keyframes aboutPhotoFloat {
+            0%, 100% {
+                transform: rotate(1deg) translateY(0) scale(1);
+                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            }
+            50% {
+                transform: rotate(-0.6deg) translateY(-10px) scale(1.015);
+                box-shadow: 0 28px 55px -14px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+        @keyframes aboutPhotoBreath {
+            0%, 100% {
+                transform: scale(1);
+                filter: contrast(1.05) saturate(1);
+            }
+            50% {
+                transform: scale(1.025);
+                filter: contrast(1.08) saturate(1.04);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #about .lg\:col-span-5 .shadow-passepartout,
+            #about .lg\:col-span-5 .shadow-passepartout img {
+                animation: none;
+            }
+        }
+
     </style>
 </head>
 <body class="font-sans min-h-screen flex flex-col relative overflow-x-hidden" onload="initApp()">
@@ -131,7 +178,54 @@
                 0% { transform: translateX(-100%); }
                 100% { transform: translateX(100%); }
             }
-        </style>
+    
+
+        /* Animație fină pentru poza din secțiunea Despre mine */
+        #about .lg\:col-span-5 .shadow-passepartout {
+            animation: aboutPhotoFloat 5.5s ease-in-out infinite;
+            transform-origin: center center;
+            will-change: transform, box-shadow;
+        }
+
+        #about .lg\:col-span-5 .shadow-passepartout img {
+            animation: aboutPhotoBreath 7s ease-in-out infinite;
+            will-change: transform, filter;
+        }
+
+        #about.active .lg\:col-span-5 .shadow-passepartout {
+            animation-play-state: running;
+        }
+
+        @keyframes aboutPhotoFloat {
+            0%, 100% {
+                transform: rotate(1deg) translateY(0) scale(1);
+                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            }
+            50% {
+                transform: rotate(-0.6deg) translateY(-10px) scale(1.015);
+                box-shadow: 0 28px 55px -14px rgba(0, 0, 0, 0.22);
+            }
+        }
+
+        @keyframes aboutPhotoBreath {
+            0%, 100% {
+                transform: scale(1);
+                filter: contrast(1.05) saturate(1);
+            }
+            50% {
+                transform: scale(1.025);
+                filter: contrast(1.08) saturate(1.04);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #about .lg\:col-span-5 .shadow-passepartout,
+            #about .lg\:col-span-5 .shadow-passepartout img {
+                animation: none;
+            }
+        }
+
+    </style>
     </div>
 
     <!-- Navbar -->
