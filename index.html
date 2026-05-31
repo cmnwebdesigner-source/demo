@@ -149,7 +149,7 @@
             <!-- Desktop Menu -->
             <nav class="hidden xl:flex items-center gap-6 lg:gap-8 text-[11px] lg:text-xs uppercase tracking-wider font-light">
                 <button onclick="navigateTo('home')" class="nav-link">Acasă</button>
-                <button onclick="navigateTo('shop')" class="nav-link font-medium text-gold">Shop / Lucrări</button>
+                <button onclick="navigateTo('shop')" class="nav-link">Shop / Lucrări</button>
                 <button onclick="navigateTo('custom-orders')" class="nav-link">Comenzi</button>
                 <button onclick="navigateTo('portfolio')" class="nav-link">Portofoliu</button>
                 <button onclick="navigateTo('services')" class="nav-link">Servicii</button>
@@ -177,7 +177,7 @@
         </div>
         <nav class="flex-1 overflow-y-auto py-6 px-5 flex flex-col gap-4 text-[15px] md:text-base font-light tracking-wide">
             <button onclick="navigateTo('home')" class="text-left py-2 border-b border-beige/30">Acasă</button>
-            <button onclick="navigateTo('shop')" class="text-left py-2 border-b border-beige/30 text-gold font-medium">Shop / Lucrări</button>
+            <button onclick="navigateTo('shop')" class="text-left py-2 border-b border-beige/30">Shop / Lucrări</button>
             <button onclick="navigateTo('custom-orders')" class="text-left py-2 border-b border-beige/30">Comenzi personalizate</button>
             <button onclick="navigateTo('portfolio')" class="text-left py-2 border-b border-beige/30">Portofoliu</button>
             <button onclick="navigateTo('certificate')" class="text-left py-2 border-b border-beige/30">Certificat de autenticitate</button>
@@ -201,9 +201,6 @@
                 <div class="max-w-4xl w-full text-center bg-white/60 backdrop-blur-md p-6 md:p-16 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
                     <span class="text-gold uppercase tracking-[0.3em] text-[10px] md:text-sm font-semibold mb-4 md:mb-6 block">Artist: Biró Melinda</span>
                     <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-elegantBlack mb-4 md:mb-6 tracking-wide">ELIART_2020</h1>
-                    <p class="text-darkBrown text-[9px] sm:text-[11px] md:text-sm lg:text-base font-medium mb-8 md:mb-10 tracking-[0.15em] md:tracking-[0.2em] uppercase leading-relaxed">
-                        Original Paintings <span class="text-gold mx-1 md:mx-2">•</span> Contemporary Art <span class="text-gold mx-1 md:mx-2">•</span> Custom Commissions
-                    </p>
                     <div class="italic font-serif text-xl sm:text-2xl md:text-3xl text-darkBrown/80 mb-8 md:mb-12 relative inline-block px-4">
                         <i class="fas fa-quote-left absolute -top-3 -left-2 md:-top-4 md:-left-6 text-gold/30 text-xl md:text-2xl"></i>
                         “Every painting begins where words end.”
@@ -589,30 +586,8 @@
                 <p class="text-[13px] md:text-lg font-light text-darkBrown mb-2">O selecție de lucrări realizate și vândute.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <div class="bg-white rounded-2xl border border-beige/40 overflow-hidden shadow-sm reveal-up">
-                    <div class="w-full aspect-[4/5] img-placeholder"><span>Lucrare 1</span></div>
-                    <div class="p-5 md:p-6 flex justify-between items-center">
-                        <h3 class="font-serif text-lg md:text-xl text-elegantBlack">Titlu 1</h3>
-                        <span class="text-[8px] md:text-[9px] uppercase tracking-[0.2em] text-gold border border-gold px-2 py-1 rounded-sm">Vândut</span>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-2xl border border-beige/40 overflow-hidden shadow-sm reveal-up delay-100">
-                    <div class="w-full aspect-[4/5] img-placeholder"><span>Lucrare 2</span></div>
-                    <div class="p-5 md:p-6 flex justify-between items-center">
-                        <h3 class="font-serif text-lg md:text-xl text-elegantBlack">Titlu 2</h3>
-                        <span class="text-[8px] md:text-[9px] uppercase tracking-[0.2em] text-gold border border-gold px-2 py-1 rounded-sm">Vândut</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl border border-beige/40 overflow-hidden shadow-sm reveal-up delay-200">
-                    <div class="w-full aspect-[4/5] img-placeholder"><span>Lucrare 3</span></div>
-                    <div class="p-5 md:p-6 flex justify-between items-center">
-                        <h3 class="font-serif text-lg md:text-xl text-elegantBlack">Titlu 3</h3>
-                        <span class="text-[8px] md:text-[9px] uppercase tracking-[0.2em] text-gold border border-gold px-2 py-1 rounded-sm">Vândut</span>
-                    </div>
-                </div>
+            <div id="portfolio-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- AICI VOR FI ADAUGATE POZELE TALE PENTRU PORTOFOLIU -->
             </div>
             
             <div class="text-center mt-12 md:mt-20 reveal-up">
@@ -688,7 +663,7 @@
                 <p>Sat Sâncraiu nr. 550, Cod 527107, Jud. Covasna</p>
             </div>
             <div class="text-[8px] md:text-[9px] tracking-[0.2em] uppercase font-light text-darkBrown/60 flex flex-col md:items-end">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> ELIART_2020.</p>
+                <p>&copy; <span id="current-year"></span> ELIART_2020.</p>
                 <p class="mt-1">Toate drepturile rezervate.</p>
             </div>
         </div>
@@ -700,6 +675,9 @@
         let intersectionObserver;
 
         function initApp() {
+            /* Setează anul curent în footer fără bug-uri */
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
             setTimeout(() => {
                 const loader = document.getElementById('loader');
                 loader.classList.add('hidden-loader');
@@ -757,7 +735,6 @@
 
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active-nav');
-                link.classList.remove('font-medium', 'text-gold');
             });
             
             const activeLinks = Array.from(document.querySelectorAll('.nav-link')).filter(el => {
@@ -765,7 +742,6 @@
             });
             activeLinks.forEach(link => {
                 link.classList.add('active-nav');
-                if(tabId === 'shop') link.classList.add('font-medium', 'text-gold');
             });
 
             const target = document.getElementById(tabId);
