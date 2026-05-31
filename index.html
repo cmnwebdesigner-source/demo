@@ -42,50 +42,12 @@
 
     <style>
         body {
-            background-color: #F4EBE1;
-            color: #2C241B;
+            background-color: theme('colors.cream');
+            color: theme('colors.darkBrown');
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        img, video, canvas, svg {
-            max-width: 100%;
-        }
-
-        button, a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .tab-content.hidden {
-            display: none !important;
-        }
-
-        .tab-content.active {
-            display: block !important;
-        }
-
-        @media (max-width: 640px) {
-            body {
-                overflow-x: hidden;
-            }
-
-            #mobile-menu {
-                width: min(85vw, 320px);
-            }
-
-            .shadow-passepartout {
-                box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.25);
-            }
-        }
         .tab-content {
             display: none;
             opacity: 0;
@@ -98,12 +60,12 @@
         }
 
         .img-placeholder {
-            background-color: #EBE0D3;
+            background-color: theme('colors.muted');
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #E8DCC4;
-            font-family: "Cormorant Garamond", serif;
+            color: theme('colors.beige');
+            font-family: theme('fontFamily.serif');
             font-style: italic;
         }
 
@@ -127,7 +89,7 @@
             height: 1px;
             bottom: -2px;
             left: 0;
-            background-color: #C5A059;
+            background-color: theme('colors.gold');
             transition: width 0.3s ease;
         }
         .nav-link:hover::after, .nav-link.active-nav::after {
@@ -189,7 +151,6 @@
                 <button onclick="navigateTo('home')" class="nav-link">Acasă</button>
                 <button onclick="navigateTo('shop')" class="nav-link">Shop / Lucrări</button>
                 <button onclick="navigateTo('custom-orders')" class="nav-link">Comenzi</button>
-                <button onclick="navigateTo('portfolio')" class="nav-link">Portofoliu</button>
                 <button onclick="navigateTo('services')" class="nav-link">Servicii</button>
                 <button onclick="navigateTo('about')" class="nav-link">Despre</button>
                 <button onclick="navigateTo('contact')" class="nav-link">Contact</button>
@@ -217,7 +178,6 @@
             <button onclick="navigateTo('home')" class="text-left py-2 border-b border-beige/30">Acasă</button>
             <button onclick="navigateTo('shop')" class="text-left py-2 border-b border-beige/30">Shop / Lucrări</button>
             <button onclick="navigateTo('custom-orders')" class="text-left py-2 border-b border-beige/30">Comenzi personalizate</button>
-            <button onclick="navigateTo('portfolio')" class="text-left py-2 border-b border-beige/30">Portofoliu</button>
             <button onclick="navigateTo('certificate')" class="text-left py-2 border-b border-beige/30">Certificat de autenticitate</button>
             <button onclick="navigateTo('creative-camps')" class="text-left py-2 border-b border-beige/30">Tabere creative</button>
             <button onclick="navigateTo('art-therapy')" class="text-left py-2 border-b border-beige/30">Terapie prin artă</button>
@@ -287,74 +247,13 @@
                 <p class="text-[14px] md:text-lg font-light text-darkBrown">Fiecare lucrare este unică și nu poate fi reprodusă.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-                <!-- Categorie 1 -->
-                <div class="bg-white rounded-2xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group cursor-pointer reveal-up" onclick="navigateTo('contact')">
-                    <div class="w-full aspect-[4/3] img-placeholder relative overflow-hidden">
-                        <div class="absolute inset-0 bg-elegantBlack/10 group-hover:bg-transparent transition-colors z-10"></div>
-                        <span class="z-20 text-xs md:text-base">Imagine Pictură Abstractă</span>
-                    </div>
-                    <div class="p-6 md:p-8 relative z-10 bg-white">
-                        <h3 class="font-serif text-xl md:text-2xl text-elegantBlack mb-2 md:mb-3">Picturi abstracte</h3>
-                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light mb-4 md:mb-6">Explorări cromatice și compoziții emoționale libere.</p>
-                        <div class="flex items-center justify-between border-t border-beige/40 pt-4">
-                            <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium">Preț la cerere</span>
-                            <span class="text-gold group-hover:translate-x-2 transition-transform text-base md:text-lg"><i class="fas fa-long-arrow-alt-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categorie 2 -->
-                <div class="bg-white rounded-2xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group cursor-pointer reveal-up delay-100" onclick="navigateTo('contact')">
-                    <div class="w-full aspect-[4/3] img-placeholder relative overflow-hidden">
-                        <div class="absolute inset-0 bg-elegantBlack/10 group-hover:bg-transparent transition-colors z-10"></div>
-                        <span class="z-20 text-xs md:text-base">Imagine Artă Texturată</span>
-                    </div>
-                    <div class="p-6 md:p-8 relative z-10 bg-white">
-                        <h3 class="font-serif text-xl md:text-2xl text-elegantBlack mb-2 md:mb-3">Artă texturată</h3>
-                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light mb-4 md:mb-6">Lucrări tactile, cu relief și profunzime materială.</p>
-                        <div class="flex items-center justify-between border-t border-beige/40 pt-4">
-                            <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium">Preț la cerere</span>
-                            <span class="text-gold group-hover:translate-x-2 transition-transform text-base md:text-lg"><i class="fas fa-long-arrow-alt-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categorie 3 -->
-                <div class="bg-white rounded-2xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group cursor-pointer reveal-up" onclick="navigateTo('contact')">
-                    <div class="w-full aspect-[4/3] img-placeholder relative overflow-hidden">
-                        <div class="absolute inset-0 bg-elegantBlack/10 group-hover:bg-transparent transition-colors z-10"></div>
-                        <span class="z-20 text-xs md:text-base">Imagine Mixed Media</span>
-                    </div>
-                    <div class="p-6 md:p-8 relative z-10 bg-white">
-                        <h3 class="font-serif text-xl md:text-2xl text-elegantBlack mb-2 md:mb-3">Lucrări mixed media</h3>
-                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light mb-4 md:mb-6">Fuziune de materiale, tehnici și elemente neconvenționale.</p>
-                        <div class="flex items-center justify-between border-t border-beige/40 pt-4">
-                            <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium">Preț la cerere</span>
-                            <span class="text-gold group-hover:translate-x-2 transition-transform text-base md:text-lg"><i class="fas fa-long-arrow-alt-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categorie 4 -->
-                <div class="bg-white rounded-2xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-300 group cursor-pointer reveal-up delay-100" onclick="navigateTo('portfolio')">
-                    <div class="w-full aspect-[4/3] img-placeholder relative overflow-hidden">
-                        <div class="absolute inset-0 bg-elegantBlack/10 group-hover:bg-transparent transition-colors z-10"></div>
-                        <span class="z-20 text-xs md:text-base">Imagine Portofoliu / Arhivă</span>
-                    </div>
-                    <div class="p-6 md:p-8 relative z-10 bg-white">
-                        <h3 class="font-serif text-xl md:text-2xl text-elegantBlack mb-2 md:mb-3">Selecție din arhivă</h3>
-                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light mb-4 md:mb-6">Descoperă lucrări anterioare din portofoliul artistului.</p>
-                        <div class="flex items-center justify-between border-t border-beige/40 pt-4">
-                            <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium text-gold">Vezi lucrările vândute</span>
-                            <span class="text-gold group-hover:translate-x-2 transition-transform text-base md:text-lg"><i class="fas fa-long-arrow-alt-right"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-10 md:mt-16 text-center reveal-up">
-                <p class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-darkBrown/60 font-medium">* Prețuri orientative: de la 500 lei pentru comenzi personalizate</p>
+            <div class="bg-white rounded-2xl border border-beige/60 p-8 md:p-12 text-center shadow-sm reveal-up">
+                <p class="text-[13px] md:text-lg font-light text-darkBrown/80 mb-8 max-w-2xl mx-auto">
+                    Momentan lucrările disponibile pentru shop vor fi adăugate în curând.
+                </p>
+                <button onclick="navigateTo('contact')" class="text-[10px] md:text-xs uppercase tracking-widest text-darkBrown border-b border-darkBrown pb-1 hover:text-gold hover:border-gold transition-colors">
+                    DORESC O LUCRARE SIMILARĂ LA COMANDĂ
+                </button>
             </div>
         </section>
 
@@ -710,13 +609,12 @@
     <!-- Logic / JavaScript -->
     <script>
         let historyStack = ['home'];
-        let intersectionObserver;
-        let overlayHideTimer;
+        let intersectionObserver = null;
 
         function initApp() {
-            const yearElement = document.getElementById('current-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
             }
 
             setupAnimations();
@@ -728,8 +626,8 @@
                     loader.classList.add('hidden-loader');
                     setTimeout(() => {
                         loader.style.display = 'none';
-                    }, 600);
-                }, 900);
+                    }, 650);
+                }, 1000);
             }
         }
 
@@ -741,12 +639,6 @@
                 return;
             }
 
-            const options = {
-                root: null,
-                rootMargin: '0px 0px -30px 0px',
-                threshold: 0.1
-            };
-
             intersectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -754,7 +646,11 @@
                         intersectionObserver.unobserve(entry.target);
                     }
                 });
-            }, options);
+            }, {
+                root: null,
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.1
+            });
         }
 
         function resetAnimationsForTab(tabId) {
@@ -762,16 +658,14 @@
             if (!tab) return;
 
             const elements = tab.querySelectorAll('.reveal-up');
-
-            if (!intersectionObserver) {
-                elements.forEach(el => el.classList.add('is-visible'));
-                return;
-            }
-
             elements.forEach(el => {
                 el.classList.remove('is-visible');
-                intersectionObserver.unobserve(el);
-                intersectionObserver.observe(el);
+
+                if (intersectionObserver) {
+                    intersectionObserver.observe(el);
+                } else {
+                    el.classList.add('is-visible');
+                }
             });
 
             requestAnimationFrame(() => {
@@ -779,42 +673,39 @@
                     const rect = el.getBoundingClientRect();
                     if (rect.top < window.innerHeight && rect.bottom > 0) {
                         el.classList.add('is-visible');
-                        intersectionObserver.unobserve(el);
+                        if (intersectionObserver) intersectionObserver.unobserve(el);
                     }
                 });
             });
         }
 
         function navigateTo(tabId, skipHistory = false) {
-            const target = document.getElementById(tabId) || document.getElementById('home');
+            const target = document.getElementById(tabId);
             if (!target) return;
 
-            const targetId = target.id;
-            const tabs = document.querySelectorAll('.tab-content');
-
-            tabs.forEach(tab => {
+            document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
                 tab.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+
+                const onClickValue = link.getAttribute('onclick') || '';
+                if (onClickValue.includes("'" + tabId + "'")) {
+                    link.classList.add('active-nav');
+                }
             });
 
             target.classList.remove('hidden');
 
             requestAnimationFrame(() => {
                 target.classList.add('active');
-                resetAnimationsForTab(targetId);
+                resetAnimationsForTab(tabId);
             });
 
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav');
-
-                const action = link.getAttribute('onclick') || '';
-                if (action.includes(`'${targetId}'`)) {
-                    link.classList.add('active-nav');
-                }
-            });
-
-            if (!skipHistory && historyStack[historyStack.length - 1] !== targetId) {
-                historyStack.push(targetId);
+            if (!skipHistory && historyStack[historyStack.length - 1] !== tabId) {
+                historyStack.push(tabId);
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -824,17 +715,15 @@
         function goBack() {
             if (historyStack.length > 1) {
                 historyStack.pop();
-                const prevTab = historyStack[historyStack.length - 1];
-                navigateTo(prevTab, true);
-            } else {
-                navigateTo('home', true);
+                navigateTo(historyStack[historyStack.length - 1], true);
+                return;
             }
+
+            navigateTo('home', true);
         }
 
-        const mobileMenu = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('mobile-overlay');
-
         function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
             if (!mobileMenu) return;
 
             if (mobileMenu.classList.contains('translate-x-full')) {
@@ -845,9 +734,10 @@
         }
 
         function openMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
             if (!mobileMenu || !overlay) return;
 
-            clearTimeout(overlayHideTimer);
             mobileMenu.classList.remove('translate-x-full');
             overlay.classList.remove('hidden');
 
@@ -859,18 +749,20 @@
         }
 
         function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
             if (!mobileMenu || !overlay) return;
 
             mobileMenu.classList.add('translate-x-full');
             overlay.classList.add('opacity-0');
 
-            clearTimeout(overlayHideTimer);
-            overlayHideTimer = setTimeout(() => {
+            setTimeout(() => {
                 if (mobileMenu.classList.contains('translate-x-full')) {
                     overlay.classList.add('hidden');
-                    document.body.style.overflow = '';
                 }
             }, 300);
+
+            document.body.style.overflow = '';
         }
 
         document.addEventListener('keydown', (event) => {
