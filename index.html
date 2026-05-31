@@ -418,38 +418,55 @@
         </section>
 
         <!-- ================= DESPRE ARTIST ================= -->
-        <section id="about" class="tab-content max-w-6xl mx-auto px-6 py-12 w-full">
-            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+        <section id="about" class="tab-content max-w-6xl mx-auto px-4 md:px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 text-xs tracking-[0.2em] uppercase font-medium fade-up">
                 <i class="fas fa-arrow-left"></i> Înapoi
             </button>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                <div class="lg:col-span-5 order-2 lg:order-1 fade-up delay-100">
-                    <!-- AICI SE PUNE POZA PENTRU DESPRE ARTIST -->
-                    <img src="https://i.postimg.cc/7YtrLHRF/B683B73D-C547-476B-9823-34F7E07DB400.jpg" alt="Biró Melinda - Artist" class="w-full aspect-[3/4] object-cover rounded-t-full shadow-premium border border-beige/40">
-                </div>
-                <div class="lg:col-span-7 order-1 lg:order-2 lg:py-6 fade-up delay-200">
-                    <h2 class="font-serif text-4xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Despre Artist</h2>
-                    <div class="w-16 h-px bg-gold mb-10"></div>
+            <!-- Fundal premium adaugat pentru vizibilitate -->
+            <div class="bg-white p-6 md:p-12 lg:p-16 rounded-2xl border border-beige/60 shadow-premium relative overflow-hidden fade-up">
+                <!-- Decor subtil in background -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-beige/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start relative z-10">
                     
-                    <div class="space-y-6 text-[15px] font-light text-darkBrown leading-relaxed">
-                        <p class="text-xl font-medium text-elegantBlack font-serif italic">Numele meu este Biró Melinda, cunoscută artistic ca Eliart.</p>
+                    <!-- IMAGINEA: Modificata sa fie order-1 (adica prima si pe mobil, sus) -->
+                    <div class="lg:col-span-5 order-1 fade-up delay-100">
+                        <div class="relative w-full max-w-md mx-auto lg:mx-0">
+                            <!-- Cadru galerie de arta profesional -->
+                            <div class="absolute inset-0 bg-darkBrown translate-x-3 translate-y-3 rounded-sm opacity-10"></div>
+                            <!-- AICI SE PUNE POZA PENTRU DESPRE ARTIST -->
+                            <img src="https://i.postimg.cc/7YtrLHRF/B683B73D-C547-476B-9823-34F7E07DB400.jpg" alt="Biró Melinda - Artist" class="relative w-full aspect-[4/5] object-cover rounded-sm border-[12px] md:border-[16px] border-cream shadow-xl">
+                        </div>
+                    </div>
+                    
+                    <!-- TEXTUL: Modificat sa fie order-2 (sub imagine pe mobil, la dreapta pe desktop) -->
+                    <div class="lg:col-span-7 order-2 lg:py-2 fade-up delay-200">
+                        <h2 class="font-serif text-4xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Despre Artist</h2>
+                        <div class="w-16 h-px bg-gold mb-10"></div>
                         
-                        <p>Am moștenit pasiunea pentru pictură de la părinții mei și consider acest dar una dintre cele mai mari binecuvântări ale vieții mele.</p>
-                        
-                        <p>Lucrez intuitiv, explorând emoția, textura și materialul. Pictez pe pânză, lemn, sticlă, material textil și orice suprafață care mă inspiră.</p>
-                        
-                        <blockquote class="pl-6 border-l-[3px] border-gold italic font-serif text-2xl my-10 text-elegantBlack bg-gradient-to-r from-muted/50 to-transparent py-4">
-                            "Arta mea nu este imitație — este transformare. În timpul creației intru într-un spațiu atemporal, unde emoția devine culoare și gândul devine formă."
-                        </blockquote>
-                        
-                        <p>Pe lângă activitatea artistică, am lucrat ca art-terapeut și profesor de desen. Aceste experiențe mi-au dezvoltat sensibilitatea și înțelegerea expresiei umane.</p>
-                        
-                        <p>Una dintre cele mai mari bucurii ale parcursului meu artistic este lucrul cu copiii. Ei devin adesea profesorii mei, amintindu-mi de puritatea, libertatea și spontaneitatea expresiei autentice.</p>
-                        
-                        <p>Ca art-terapeut, am avut privilegiul de a lucra și cu persoane cu dizabilități, care m-au învățat una dintre cele mai valoroase lecții: să văd cu inima. Ei nu judecă aparențele — ei simt ceea ce este real.</p>
-                        
-                        <p class="font-medium mt-8 text-elegantBlack uppercase tracking-widest text-sm pt-6 border-t border-beige/50">Fiecare lucrare este autentică, emoțională și realizată cu intenție.</p>
+                        <div class="space-y-6 text-[15px] font-light text-darkBrown leading-relaxed">
+                            <p class="text-xl font-medium text-elegantBlack font-serif italic">Numele meu este Biró Melinda, cunoscută artistic ca Eliart.</p>
+                            
+                            <p>Am moștenit pasiunea pentru pictură de la părinții mei și consider acest dar una dintre cele mai mari binecuvântări ale vieții mele.</p>
+                            
+                            <p>Lucrez intuitiv, explorând emoția, textura și materialul. Pictez pe pânză, lemn, sticlă, material textil și orice suprafață care mă inspiră.</p>
+                            
+                            <blockquote class="pl-6 border-l-[3px] border-gold italic font-serif text-2xl my-10 text-elegantBlack bg-gradient-to-r from-beige/20 to-transparent py-5 pr-4 rounded-r-lg shadow-sm">
+                                "Arta mea nu este imitație — este transformare. În timpul creației intru într-un spațiu atemporal, unde emoția devine culoare și gândul devine formă."
+                            </blockquote>
+                            
+                            <p>Pe lângă activitatea artistică, am lucrat ca art-terapeut și profesor de desen. Aceste experiențe mi-au dezvoltat sensibilitatea și înțelegerea expresiei umane.</p>
+                            
+                            <p>Una dintre cele mai mari bucurii ale parcursului meu artistic este lucrul cu copiii. Ei devin adesea profesorii mei, amintindu-mi de puritatea, libertatea și spontaneitatea expresiei autentice.</p>
+                            
+                            <p>Ca art-terapeut, am avut privilegiul de a lucra și cu persoane cu dizabilități, care m-au învățat una dintre cele mai valoroase lecții: să văd cu inima. Ei nu judecă aparențele — ei simt ceea ce este real.</p>
+                            
+                            <div class="pt-6 mt-8 border-t border-beige/60">
+                                <p class="font-medium text-elegantBlack uppercase tracking-widest text-xs inline-block bg-muted/50 px-4 py-2 rounded-sm border border-beige/40">Fiecare lucrare este autentică, emoțională și realizată cu intenție.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
