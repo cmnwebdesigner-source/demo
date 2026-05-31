@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELIART_2020 | Artă Contemporană de Biró Melinda</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="font-sans min-h-screen flex flex-col relative overflow-x-hidden" onload="initApp()">
+
+    <!-- Loading Screen -->
+    <div id="loader" class="fixed inset-0 z-[9999] bg-cream flex flex-col items-center justify-center">
+        <img src="https://i.postimg.cc/52ZcwPbS/97B317FF-A87A-47A2-A6FB-5ED63B937D9D.jpg" alt="ELIART Logo" class="h-24 w-auto mb-6 object-contain mix-blend-multiply opacity-90 animate-pulse">
+        <div class="w-24 h-px bg-beige relative overflow-hidden">
+            <div class="absolute top-0 left-0 h-full bg-gold w-full animate-[loading_1.5s_ease-in-out_infinite]"></div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-[40] bg-cream/90 backdrop-blur-md border-b border-beige/50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+            <!-- Logo & Title -->
+            <button onclick="navigateTo('home')" class="flex items-center gap-2 md:gap-4 group text-left">
+                <img src="https://i.postimg.cc/52ZcwPbS/97B317FF-A87A-47A2-A6FB-5ED63B937D9D.jpg" alt="ELIART_2020" class="h-9 md:h-12 lg:h-14 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-105">
+                <div class="flex flex-col justify-center border-l border-beige pl-2 md:pl-3 lg:pl-4">
+                    <span class="font-serif text-xs lg:text-sm tracking-widest uppercase text-elegantBlack group-hover:text-gold transition-colors">Biró Melinda</span>
+                    <span class="font-sans text-[7px] lg:text-[8px] tracking-[0.2em] text-darkBrown/60 uppercase mt-0.5">RM ELIART 2020 SRL</span>
+                </div>
+            </button>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden xl:flex items-center gap-6 lg:gap-8 text-[11px] lg:text-xs uppercase tracking-wider font-light">
+                <button onclick="navigateTo('home')" class="nav-link">Acasă</button>
+                <button onclick="navigateTo('shop')" class="nav-link">Shop / Lucrări</button>
+                <button onclick="navigateTo('custom-orders')" class="nav-link">Comenzi</button>
+                <button onclick="navigateTo('services')" class="nav-link">Servicii</button>
+                <button onclick="navigateTo('about')" class="nav-link">Despre</button>
+                <button onclick="navigateTo('contact')" class="nav-link">Contact</button>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="hamburger-btn" class="xl:hidden text-xl md:text-2xl text-darkBrown focus:outline-none p-2" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-elegantBlack/40 backdrop-blur-sm z-[45] hidden opacity-0" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-cream z-[50] shadow-2xl translate-x-full flex flex-col">
+        <div class="h-16 md:h-20 px-5 flex items-center justify-between border-b border-beige/50">
+            <span class="font-serif text-base md:text-lg tracking-widest uppercase">Meniu</span>
+            <button onclick="closeMobileMenu()" class="text-xl md:text-2xl text-darkBrown p-2 focus:outline-none hover:text-gold transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-6 px-5 flex flex-col gap-4 text-[15px] md:text-base font-light tracking-wide">
+            <button onclick="navigateTo('home')" class="text-left py-2 border-b border-beige/30">Acasă</button>
+            <button onclick="navigateTo('shop')" class="text-left py-2 border-b border-beige/30">Shop / Lucrări</button>
+            <button onclick="navigateTo('custom-orders')" class="text-left py-2 border-b border-beige/30">Comenzi personalizate</button>
+            <button onclick="navigateTo('certificate')" class="text-left py-2 border-b border-beige/30">Certificat de autenticitate</button>
+            <button onclick="navigateTo('creative-camps')" class="text-left py-2 border-b border-beige/30">Tabere creative</button>
+            <button onclick="navigateTo('art-therapy')" class="text-left py-2 border-b border-beige/30">Terapie prin artă</button>
+            <button onclick="navigateTo('about')" class="text-left py-2 border-b border-beige/30">Despre artist</button>
+            <button onclick="navigateTo('contact')" class="text-left py-2">Contact</button>
+        </nav>
+    </aside>
+
+    <main class="flex-1 pt-16 md:pt-24 pb-12 md:pb-16 flex flex-col">
+        
+        <!-- ================= ACASĂ ================= -->
+        <section id="home" class="tab-content w-full flex-1 flex flex-col">
+            <div class="flex-1 flex items-center justify-center px-4 md:px-6 py-8 md:py-24 relative">
+                <!-- Background visual element -->
+                <div class="absolute inset-0 z-[-1] opacity-30 flex items-center justify-center pointer-events-none">
+                     <div class="w-[200px] h-[200px] md:w-[500px] md:h-[500px] rounded-full bg-gold/10 blur-[80px] md:blur-[100px]"></div>
+                </div>
+
+                <div class="max-w-4xl w-full text-center bg-white/60 backdrop-blur-md p-6 md:p-16 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
+                    <span class="text-gold uppercase tracking-[0.3em] text-[10px] md:text-sm font-semibold mb-4 md:mb-6 block">Artist: Biró Melinda</span>
+                    <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-elegantBlack mb-4 md:mb-6 tracking-wide">ELIART_2020</h1>
+                    <div class="italic font-serif text-xl sm:text-2xl md:text-3xl text-darkBrown/80 mb-8 md:mb-12 relative inline-block px-4">
+                        <i class="fas fa-quote-left absolute -top-3 -left-2 md:-top-4 md:-left-6 text-gold/30 text-xl md:text-2xl"></i>
+                        “Every painting begins where words end.”
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+                        <button onclick="navigateTo('shop')" class="w-full sm:w-auto bg-darkBrown text-cream px-8 py-3 md:px-10 md:py-4 rounded uppercase tracking-widest text-[11px] md:text-sm hover:bg-elegantBlack hover:shadow-lg transition-all duration-300">
+                            Vezi Colecția / Shop Now
+                        </button>
+                        <button onclick="navigateTo('custom-orders')" class="w-full sm:w-auto border border-darkBrown text-darkBrown px-8 py-3 md:px-10 md:py-4 rounded uppercase tracking-widest text-[11px] md:text-sm hover:bg-beige/30 hover:text-elegantBlack transition-all duration-300">
+                            Comandă personalizată
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 md:px-6 pb-8 md:pb-12 w-full reveal-up delay-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 pt-8 md:pt-12 border-t border-beige/50">
+                    <button onclick="navigateTo('creative-camps')" class="group text-left p-5 md:p-8 rounded-2xl bg-white/40 hover:bg-white transition-all shadow-sm hover:shadow-premium border border-beige/30">
+                        <h3 class="font-serif text-lg md:text-xl text-elegantBlack mb-1 md:mb-2 group-hover:text-gold transition-colors">Tabere creative</h3>
+                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light">Programe educative și creative pentru grupuri.</p>
+                    </button>
+                    <button onclick="navigateTo('art-therapy')" class="group text-left p-5 md:p-8 rounded-2xl bg-white/40 hover:bg-white transition-all shadow-sm hover:shadow-premium border border-beige/30">
+                        <h3 class="font-serif text-lg md:text-xl text-elegantBlack mb-1 md:mb-2 group-hover:text-gold transition-colors">Terapie prin artă</h3>
+                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light">Ședințe individuale și de grup pentru dezvoltare personală.</p>
+                    </button>
+                    <button onclick="navigateTo('certificate')" class="group text-left p-5 md:p-8 rounded-2xl bg-white/40 hover:bg-white transition-all shadow-sm hover:shadow-premium border border-beige/30">
+                        <h3 class="font-serif text-lg md:text-xl text-elegantBlack mb-1 md:mb-2 group-hover:text-gold transition-colors">Autenticitate</h3>
+                        <p class="text-[13px] md:text-sm text-darkBrown/70 font-light">Fiecare lucrare vine cu certificat de autenticitate.</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SHOP / LUCRĂRI DISPONIBILE ================= -->
+        <section id="shop" class="tab-content max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 md:mb-16 reveal-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Magazin / Lucrări Disponibile</h2>
+                <div class="w-12 md:w-16 h-px bg-gold mx-auto mb-4 md:mb-6"></div>
+                <p class="text-[14px] md:text-lg font-light text-darkBrown mb-2">Lucrări originale de artă contemporană disponibile pentru vânzare.</p>
+                <p class="text-[14px] md:text-lg font-light text-darkBrown mb-2">Fiecare tablou este unic, realizat manual.</p>
+                <p class="text-[14px] md:text-lg font-light text-darkBrown">Fiecare lucrare este unică și nu poate fi reprodusă.</p>
+            </div>
+
+            <div id="artworks-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+
+            <div class="text-center mt-12 md:mt-16 reveal-up">
+                <button onclick="navigateTo('contact')" class="text-[10px] md:text-xs uppercase tracking-widest text-darkBrown border-b border-darkBrown pb-1 hover:text-gold hover:border-gold transition-colors">
+                    DORESC O LUCRARE SIMILARĂ LA COMANDĂ
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= COMENZI PERSONALIZATE ================= -->
+        <section id="custom-orders" class="tab-content max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-6 md:p-16 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider text-center">Comenzi Personalizate</h2>
+                <div class="w-12 md:w-16 h-px bg-gold mx-auto mb-6 md:mb-10"></div>
+                
+                <p class="text-[15px] md:text-xl font-serif italic text-darkBrown mb-10 md:mb-16 text-center max-w-2xl mx-auto leading-relaxed">
+                    "Realizez picturi personalizate, create în funcție de viziunea, spațiul și emoția ta."
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-10 md:mb-12">
+                    <div class="flex items-start gap-4 md:gap-5">
+                        <div class="text-gold text-xl md:text-2xl mt-1 w-6 md:w-8 text-center"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-1 md:mb-2 text-elegantBlack">Dimensiuni personalizate</h4>
+                            <p class="text-[13px] md:text-sm font-light text-darkBrown/80 leading-relaxed">Lucrarea este adaptată perfect spațiului tău, de la tablouri intime la pânze supradimensionate destinate pereților accent.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 md:gap-5">
+                        <div class="text-gold text-xl md:text-2xl mt-1 w-6 md:w-8 text-center"><i class="fa-regular fa-lightbulb"></i></div>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-1 md:mb-2 text-elegantBlack">Dezvoltarea conceptului</h4>
+                            <p class="text-[13px] md:text-sm font-light text-darkBrown/80 leading-relaxed">Discutăm împreună despre paleta cromatică, texturi și emoția pe care dorești să o transmită lucrarea finală.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 md:gap-5">
+                        <div class="text-gold text-xl md:text-2xl mt-1 w-6 md:w-8 text-center"><i class="fa-solid fa-house-chimney"></i></div>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-1 md:mb-2 text-elegantBlack">Pentru interior și cadouri</h4>
+                            <p class="text-[13px] md:text-sm font-light text-darkBrown/80 leading-relaxed">Opere de artă ideale pentru a înnobila un design interior rezidențial sau comercial, ori pentru a oferi un cadou cu adevărat unic.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 md:gap-5">
+                        <div class="text-gold text-xl md:text-2xl mt-1 w-6 md:w-8 text-center"><i class="fa-regular fa-handshake"></i></div>
+                        <div>
+                            <h4 class="font-serif text-lg md:text-xl mb-1 md:mb-2 text-elegantBlack">Colaborare directă</h4>
+                            <p class="text-[13px] md:text-sm font-light text-darkBrown/80 leading-relaxed">Comunici direct cu artistul pe tot parcursul procesului creativ, asigurând un rezultat perfect aliniat viziunii tale.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center border-t border-beige pt-8 md:pt-10">
+                    <p class="text-[11px] md:text-sm uppercase tracking-widest font-medium text-darkBrown mb-6 md:mb-8">Te rog să iei legătura direct cu artistul pentru o cerere.</p>
+                    <button onclick="navigateTo('contact')" class="bg-darkBrown text-cream px-8 py-3 md:px-10 md:py-4 rounded uppercase tracking-widest text-[11px] md:text-sm hover:bg-elegantBlack transition-all duration-300">
+                        Scrie artistului
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CERTIFICAT DE AUTENTICITATE ================= -->
+        <section id="certificate" class="tab-content max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-6 md:p-14 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+                    
+                    <div class="order-2 md:order-1">
+                        <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Certificat de Autenticitate</h2>
+                        <div class="w-12 md:w-16 h-px bg-gold mb-6 md:mb-8"></div>
+                        
+                        <p class="text-[14px] md:text-lg font-light text-darkBrown leading-relaxed mb-6 md:mb-10">
+                            Fiecare lucrare originală poate fi însoțită de un certificat oficial de autenticitate, document ce atestă proveniența și valoarea operei.
+                        </p>
+                        
+                        <ul class="space-y-4 md:space-y-6 text-[13px] md:text-base font-light text-darkBrown/90">
+                            <li class="flex items-start gap-3 md:gap-4">
+                                <i class="fas fa-check text-gold mt-1"></i>
+                                <span>Confirmă autenticitatea lucrării și proveniența directă de la artist.</span>
+                            </li>
+                            <li class="flex items-start gap-3 md:gap-4">
+                                <i class="fas fa-check text-gold mt-1"></i>
+                                <span>Menționează că opera este unică și nereproductibilă, cu detalii despre titlu, tehnică, dimensiuni și an.</span>
+                            </li>
+                            <li class="flex items-start gap-3 md:gap-4">
+                                <i class="fas fa-check text-gold mt-1"></i>
+                                <span>Include semnătura olografă a artistului Biró Melinda.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="order-1 md:order-2 w-full max-w-sm md:max-w-md mx-auto">
+                        <div class="bg-white p-3 md:p-4 shadow-passepartout border border-beige/40">
+                            <img src="https://i.postimg.cc/ZnVtp45n/7168B321-90E7-4880-8EDC-85EDA33B982E.jpg" alt="Certificat de Autenticitate ELIART_2020" class="w-full h-auto object-cover border border-beige/20 mix-blend-multiply">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DESPRE ARTIST ================= -->
+        <section id="about" class="tab-content max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+
+            <div class="bg-white p-6 md:p-14 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
+                    
+                    <div class="lg:col-span-5 order-1">
+                        <div class="bg-white p-3 md:p-5 shadow-passepartout border border-beige/30 max-w-[260px] md:max-w-sm mx-auto lg:mx-0 transform rotate-1 transition-transform hover:rotate-0 duration-500">
+                            <div class="border border-beige/50 p-1">
+                                <img src="https://i.postimg.cc/7YtrLHRF/B683B73D-C547-476B-9823-34F7E07DB400.jpg" alt="Biró Melinda - Eliart" class="w-full aspect-[4/5] object-cover filter contrast-[1.05]">
+                            </div>
+                            <div class="text-center mt-3 md:mt-4 font-sans text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-darkBrown/60">
+                                Biró Melinda
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-7 order-2 lg:py-6">
+                        <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Despre Artist</h2>
+                        <div class="w-12 md:w-16 h-px bg-gold mb-6 md:mb-10"></div>
+                        
+                        <div class="space-y-4 md:space-y-6 text-[13px] md:text-[15px] font-light text-darkBrown leading-relaxed">
+                            <p class="text-base md:text-xl font-serif text-elegantBlack italic">
+                                Numele meu este Biró Melinda, cunoscută artistic ca Eliart.
+                            </p>
+                            
+                            <p>Am moștenit pasiunea pentru pictură de la părinții mei și consider acest dar una dintre cele mai mari binecuvântări ale vieții mele. Lucrez intuitiv, explorând emoția, textura și materialul. Pictez pe pânză, lemn, sticlă, material textil și orice suprafață care mă inspiră.</p>
+                            
+                            <blockquote class="pl-4 md:pl-6 border-l-2 border-gold py-1 my-6 md:my-8 font-serif text-lg md:text-2xl text-elegantBlack leading-snug">
+                                "Arta mea nu este imitație — este transformare. În timpul creației intru într-un spațiu atemporal, unde emoția devine culoare și gândul devine formă."
+                            </blockquote>
+                            
+                            <p>Pe lângă activitatea artistică, am lucrat ca art-terapeut și profesor de desen. Aceste experiențe mi-au dezvoltat sensibilitatea și înțelegerea expresiei umane. Una dintre cele mai mari bucurii ale parcursului meu artistic este lucrul cu copiii. Ei devin adesea profesorii mei, amintindu-mi de puritatea, libertatea și spontaneitatea expresiei autentice.</p>
+                            
+                            <p>Ca art-terapeut, am avut privilegiul de a lucra și cu persoane cu dizabilități, care m-au învățat una dintre cele mai valoroase lecții: să văd cu inima. Ei nu judecă aparențele — ei simt ceea ce este real.</p>
+                            
+                            <div class="pt-4 md:pt-6 mt-6 md:mt-8 border-t border-beige">
+                                <p class="font-medium text-elegantBlack uppercase tracking-[0.1em] text-[10px] md:text-xs">
+                                    Fiecare lucrare este autentică, emoțională și realizată cu intenție.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICII ================= -->
+        <section id="services" class="tab-content max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full text-center">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            <h2 class="font-serif text-3xl md:text-4xl text-elegantBlack mb-8 md:mb-12 uppercase tracking-wider reveal-up">Servicii Educaționale & Terapie</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 reveal-up delay-100">
+                <div class="bg-white p-8 md:p-14 rounded-2xl md:rounded-3xl shadow-sm border border-beige hover:shadow-premium transition-all cursor-pointer group" onclick="navigateTo('creative-camps')">
+                    <span class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-gold mb-4 md:mb-6 block font-medium">Educație</span>
+                    <h3 class="font-serif text-2xl md:text-3xl text-elegantBlack mb-3 md:mb-4 group-hover:italic transition-all">Tabere Creative</h3>
+                    <p class="text-[13px] md:text-[15px] text-darkBrown/80 font-light mb-6 md:mb-8 leading-relaxed">Activități creative și educative la locația beneficiarului pentru școli, grădinițe și evenimente private.</p>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium text-darkBrown border-b border-darkBrown pb-1">Află detalii</span>
+                </div>
+                
+                <div class="bg-white p-8 md:p-14 rounded-2xl md:rounded-3xl shadow-sm border border-beige hover:shadow-premium transition-all cursor-pointer group" onclick="navigateTo('art-therapy')">
+                    <span class="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-gold mb-4 md:mb-6 block font-medium">Terapie</span>
+                    <h3 class="font-serif text-2xl md:text-3xl text-elegantBlack mb-3 md:mb-4 group-hover:italic transition-all">Terapie prin Artă</h3>
+                    <p class="text-[13px] md:text-[15px] text-darkBrown/80 font-light mb-6 md:mb-8 leading-relaxed">Ședințe individuale și de grup pentru dezvoltare personală, relaxare și echilibru interior.</p>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium text-darkBrown border-b border-darkBrown pb-1">Află detalii</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TABERE CREATIVE ================= -->
+        <section id="creative-camps" class="tab-content max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-6 md:p-14 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Tabere Creative</h2>
+                <div class="w-12 md:w-16 h-px bg-gold mb-8 md:mb-10"></div>
+                
+                <p class="text-[14px] md:text-lg font-light text-darkBrown leading-relaxed mb-6">
+                    Organizez tabere creative și educative la locația beneficiarului.<br>
+                    Mă deplasez la școli, grădinițe, centre educaționale, pensiuni, evenimente private și tabere tematice.
+                </p>
+                
+                <div class="bg-muted p-6 md:p-8 rounded-xl mb-8 border border-beige/40">
+                    <h4 class="font-serif text-lg md:text-xl mb-4 text-elegantBlack">Activitățile includ:</h4>
+                    <ul class="space-y-3 font-light text-[13px] md:text-[15px] text-darkBrown/90">
+                        <li class="flex items-start gap-3"><span class="text-gold mt-0.5 md:mt-1">•</span> pictură și desen creativ</li>
+                        <li class="flex items-start gap-3"><span class="text-gold mt-0.5 md:mt-1">•</span> activități senzoriale</li>
+                        <li class="flex items-start gap-3"><span class="text-gold mt-0.5 md:mt-1">•</span> dezvoltarea imaginației</li>
+                        <li class="flex items-start gap-3"><span class="text-gold mt-0.5 md:mt-1">•</span> jocuri educative</li>
+                    </ul>
+                </div>
+                
+                <p class="font-medium text-elegantBlack text-[14px] md:text-lg italic text-center mt-8 md:mt-10">
+                    Fiecare tabără este concepută pentru a îmbina creativitatea, dezvoltarea personală și bucuria de a crea.
+                </p>
+                
+                <div class="text-center mt-8 md:mt-10">
+                    <button onclick="navigateTo('contact')" class="border border-darkBrown text-darkBrown px-8 py-3 rounded uppercase tracking-widest text-[11px] md:text-xs hover:bg-beige/30 transition-all">
+                        Solicită o ofertă
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TERAPIE PRIN ARTĂ ================= -->
+        <section id="art-therapy" class="tab-content max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-6 md:p-14 rounded-2xl md:rounded-3xl border border-white shadow-premium reveal-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Terapie prin Artă</h2>
+                <div class="w-12 md:w-16 h-px bg-gold mb-8 md:mb-10"></div>
+                
+                <p class="text-[14px] md:text-lg font-light text-darkBrown leading-relaxed mb-8 md:mb-10">
+                    Ședințe individuale și de grup pentru copii, adolescenți și adulți. Terapia prin artă explorează potențialul vindecător al procesului creativ.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mb-8 md:mb-12">
+                    <div class="bg-cream p-6 md:p-8 rounded-xl border border-beige/40">
+                        <h4 class="font-sans text-[10px] md:text-xs uppercase tracking-widest mb-4 md:mb-6 text-elegantBlack font-medium">Benefică pentru:</h4>
+                        <ul class="space-y-3 font-light text-[13px] md:text-[15px] text-darkBrown/90">
+                            <li class="flex items-center gap-3"><span class="text-gold font-bold">-</span> Anxietate și stres</li>
+                            <li class="flex items-center gap-3"><span class="text-gold font-bold">-</span> Gestionarea emoțiilor</li>
+                            <li class="flex items-center gap-3"><span class="text-gold font-bold">-</span> Dezvoltare personală</li>
+                            <li class="flex items-center gap-3"><span class="text-gold font-bold">-</span> Creșterea încrederii</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 md:p-8">
+                        <h4 class="font-sans text-[10px] md:text-xs uppercase tracking-widest mb-4 md:mb-6 text-elegantBlack font-medium">Ateliere pentru:</h4>
+                        <ul class="space-y-3 font-light text-[13px] md:text-[15px] text-darkBrown/90">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-beige rounded-full"></span> Evenimente private</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-beige rounded-full"></span> Companii</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-beige rounded-full"></span> Școli</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-beige pt-8 text-center">
+                    <p class="font-serif text-darkBrown/80 text-[16px] md:text-xl italic mb-8 md:mb-10">
+                        Nu este necesară experiență artistică. Accentul este pus pe procesul creativ și starea de bine.
+                    </p>
+                    <button onclick="navigateTo('contact')" class="border border-darkBrown text-darkBrown px-8 md:px-10 py-3 md:py-4 rounded uppercase tracking-widest text-[11px] md:text-xs hover:bg-beige/30 transition-all">
+                        Programează o ședință
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTOFOLIU ================= -->
+        <section id="portfolio" class="tab-content max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="text-center max-w-3xl mx-auto mb-10 md:mb-16 reveal-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Portofoliu / Arhivă</h2>
+                <div class="w-12 md:w-16 h-px bg-gold mx-auto mb-4 md:mb-6"></div>
+                <p class="text-[13px] md:text-lg font-light text-darkBrown mb-2">O selecție de lucrări realizate și vândute.</p>
+            </div>
+
+            <div id="portfolio-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- AICI VOR FI ADAUGATE POZELE TALE PENTRU PORTOFOLIU -->
+            </div>
+            
+            <div class="text-center mt-12 md:mt-20 reveal-up">
+                <button onclick="navigateTo('custom-orders')" class="text-[10px] md:text-xs uppercase tracking-widest text-darkBrown border-b border-darkBrown pb-1 hover:text-gold hover:border-gold transition-colors">
+                    Doresc o lucrare similară la comandă
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section id="contact" class="tab-content max-w-4xl mx-auto px-4 md:px-6 py-8 md:py-12 w-full flex-1 flex flex-col justify-center">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-6 md:mb-10 text-[10px] md:text-xs tracking-widest uppercase font-medium self-start">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-6 md:p-16 rounded-2xl md:rounded-3xl border border-white shadow-premium text-center reveal-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4 md:mb-6 uppercase tracking-wider">Contact</h2>
+                <div class="w-12 md:w-16 h-px bg-gold mx-auto mb-6 md:mb-10"></div>
+                
+                <p class="text-[13px] md:text-lg font-light text-darkBrown leading-relaxed mb-8 md:mb-12 max-w-xl mx-auto">
+                    Pentru comenzi personalizate, tabere, ateliere sau ședințe de terapie prin artă, te invit să iei legătura direct cu artistul.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 md:gap-6 mb-10 md:mb-16 w-full max-w-2xl mx-auto">
+                    <!-- Apel automat -->
+                    <a href="tel:+40765502791" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-darkBrown text-cream px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-elegantBlack transition-all shadow-md group">
+                        <i class="fas fa-phone-alt group-hover:animate-pulse"></i>
+                        <span class="text-[11px] md:text-sm uppercase tracking-widest font-medium">Sună acum</span>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/40765502791" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-[#20bd5a] transition-all shadow-md group">
+                        <i class="fab fa-whatsapp text-base md:text-lg group-hover:scale-110 transition-transform"></i>
+                        <span class="text-[11px] md:text-sm uppercase tracking-widest font-medium">WhatsApp</span>
+                    </a>
+                    
+                    <!-- Email -->
+                    <a href="mailto:Meli_klara2025@yahoo.com" class="w-full sm:w-auto flex items-center justify-center gap-3 border border-darkBrown text-darkBrown px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-beige/30 transition-all group">
+                        <i class="far fa-envelope"></i>
+                        <span class="text-[11px] md:text-[13px] tracking-wider font-medium">Meli_klara2025@yahoo.com</span>
+                    </a>
+                </div>
+                
+                <!-- Datele Companiei Complete -->
+                <div class="bg-cream p-6 md:p-8 rounded-xl border border-beige/50 text-[11px] md:text-[13px] text-darkBrown/80 font-light max-w-lg mx-auto relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-6 h-6 md:w-8 md:h-8 bg-gold/10 rounded-bl-full"></div>
+                    <h3 class="font-sans text-[9px] md:text-[10px] font-medium text-elegantBlack uppercase tracking-[0.2em] mb-3 md:mb-4 border-b border-beige/50 pb-2 md:pb-3">Informații Companie</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 text-left">
+                        <div>
+                            <p class="font-medium text-elegantBlack mb-1">RM ELIART 2020 SRL</p>
+                            <p>CUI: <span class="font-medium text-elegantBlack">43192503</span></p>
+                            <p>Înființare: 15.10.2020</p>
+                        </div>
+                        <div>
+                            <p>Județ Covasna</p>
+                            <p>Sat Sâncraiu, Nr. 550</p>
+                            <p>Cod poștal: 527107</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Artwork modal -->
+    <div id="artwork-modal" class="artwork-modal fixed inset-0 z-[80] bg-elegantBlack/70 backdrop-blur-sm p-3 md:p-6 overflow-y-auto" onclick="closeArtworkModal()">
+        <div class="min-h-full flex items-center justify-center">
+            <div class="artwork-modal-panel w-full max-w-6xl bg-cream rounded-2xl md:rounded-3xl shadow-2xl border border-beige/70 overflow-hidden" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between px-4 md:px-7 py-4 border-b border-beige/60">
+                    <p class="text-[9px] md:text-[10px] uppercase tracking-[0.25em] text-darkBrown/60">Detalii lucrare</p>
+                    <button type="button" onclick="closeArtworkModal()" class="w-10 h-10 rounded-full border border-beige flex items-center justify-center text-darkBrown hover:text-gold hover:border-gold transition-colors" aria-label="Închide detaliile">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                    <div class="p-4 md:p-7 bg-white/50">
+                        <div class="bg-white p-2 md:p-3 shadow-passepartout border border-beige/40 rounded-xl">
+                            <img id="modal-art-image" src="" alt="" class="w-full max-h-[70vh] object-contain rounded-lg bg-muted">
+                        </div>
+                        <div id="modal-art-thumbs" class="flex gap-3 mt-4 overflow-x-auto pb-2"></div>
+                    </div>
+
+                    <div class="p-6 md:p-10 flex flex-col">
+                        <p class="text-[9px] md:text-[10px] uppercase tracking-[0.25em] text-gold font-medium mb-3">Original Artwork</p>
+                        <h3 id="modal-art-title" class="font-serif text-3xl md:text-5xl text-elegantBlack mb-4"></h3>
+
+                        <div class="flex flex-wrap gap-2 mb-6 text-[10px] md:text-xs uppercase tracking-widest text-darkBrown/70">
+                            <span id="modal-art-size" class="border border-beige rounded-full px-3 py-1"></span>
+                            <span id="modal-art-price" class="border border-beige rounded-full px-3 py-1"></span>
+                            <span id="modal-art-technique" class="border border-beige rounded-full px-3 py-1"></span>
+                        </div>
+
+                        <div id="modal-art-description" class="artwork-desc text-[13px] md:text-[15px] font-light text-darkBrown/85 leading-relaxed"></div>
+
+                        <div class="mt-8 pt-6 border-t border-beige/60 flex flex-col sm:flex-row gap-3">
+                            <button type="button" onclick="contactForArtwork()" class="bg-darkBrown text-cream px-7 py-3 rounded uppercase tracking-widest text-[11px] md:text-xs hover:bg-elegantBlack transition-all duration-300">
+                                Contact pentru lucrare
+                            </button>
+                            <button type="button" onclick="closeArtworkModal()" class="border border-darkBrown text-darkBrown px-7 py-3 rounded uppercase tracking-widest text-[11px] md:text-xs hover:bg-beige/30 transition-all duration-300">
+                                Închide
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer minimal -->
+    <footer class="border-t border-beige/60 bg-cream z-10 relative mt-auto">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left">
+            <div class="text-[10px] md:text-[11px] text-darkBrown/70 font-light tracking-wide space-y-1">
+                <p class="font-medium text-elegantBlack uppercase tracking-[0.2em] mb-1.5 md:mb-2 text-[9px] md:text-[10px]">RM ELIART 2020 SRL</p>
+                <p>CUI: 43192503 &nbsp;|&nbsp; Înființată: 15.10.2020</p>
+                <p>Sat Sâncraiu nr. 550, Cod 527107, Jud. Covasna</p>
+            </div>
+            <div class="text-[8px] md:text-[9px] tracking-[0.2em] uppercase font-light text-darkBrown/60 flex flex-col md:items-end">
+                <p>&copy; <span id="current-year"></span> ELIART_2020.</p>
+                <p class="mt-1">Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Logic / JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
