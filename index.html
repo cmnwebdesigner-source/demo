@@ -1,2062 +1,843 @@
 <!DOCTYPE html>
-<html lang="ro" class="scroll-smooth">
+<html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>RM ELIART 2020 SRL | Elena Art - Terapie prin Artă & Educație Culturală</title>
-  <meta name="description" content="RM ELIART 2020 SRL - Elena Art. Terapie prin artă, cursuri de artă pentru copii, tabere creative, picturi personalizate și portofoliu artistic." />
-  <meta name="theme-color" content="#0d9488" />
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- AOS Animation Library CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- Tailwind Config -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans: ['Poppins', 'sans-serif'],
-          },
-          colors: {
-            primary: '#0d9488',
-            primaryLight: '#14b8a6',
-            secondary: '#e11d48',
-            accent: '#f59e0b',
-            warmBg: '#fdfbf7',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ELIART_2020 | Artă Contemporană de Biró Melinda</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FCFBF9',
+                        beige: '#E8DCC4',
+                        gold: '#C5A059',
+                        darkBrown: '#2C241B',
+                        elegantBlack: '#171614',
+                        muted: '#F5EFE6'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 15px 40px -10px rgba(44, 36, 27, 0.08)',
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "RM ELIART 2020 SRL",
-    "alternateName": "Elena Art",
-    "description": "Terapie prin artă, cursuri creative, tabere de artă și picturi personalizate.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Sâncraiu nr. 550",
-      "addressLocality": "Sâncraiu, Comuna Ilieni",
-      "addressRegion": "Covasna",
-      "postalCode": "527107",
-      "addressCountry": "RO"
-    },
-    "telephone": "+40700123456",
-    "url": ""
-  }
-  </script>
-
-  <style>
-    html,
-    body {
-      overflow-x: hidden;
-      max-width: 100%;
-      background-color: #fdfbf7;
-    }
-
-    body {
-      min-height: 100vh;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-      touch-action: none;
-    }
-
-    .text-gradient {
-      background: linear-gradient(to right, #0d9488, #e11d48);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .float-anim {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
-
-    .bg-parallax {
-      background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    @media (max-width: 768px) {
-      .bg-parallax {
-        background-attachment: scroll;
-      }
-    }
-
-    .tab-content {
-      display: none;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-link.active {
-      color: #0d9488;
-    }
-
-    /* LOADING SCREEN PREMIUM */
-    .loading-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(13, 148, 136, 0.18), transparent 32%),
-        radial-gradient(circle at 85% 72%, rgba(225, 29, 72, 0.13), transparent 34%),
-        radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.12), transparent 34%),
-        linear-gradient(135deg, #fdfbf7 0%, #ffffff 48%, #f8efe3 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-
-    .loading-screen.hide {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader-premium {
-      width: min(88vw, 360px);
-      text-align: center;
-      position: relative;
-      padding: 44px 26px 36px;
-      border-radius: 36px;
-      background: rgba(255, 255, 255, 0.56);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 30px 100px rgba(15, 23, 42, 0.13);
-      backdrop-filter: blur(20px);
-      overflow: hidden;
-      transform: translateY(0);
-      animation: loaderCardIn 0.75s ease both;
-    }
-
-    .loader-premium::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(13, 148, 136, 0.18), transparent 68%);
-      top: -80px;
-      left: -70px;
-    }
-
-    .loader-premium::after {
-      content: "";
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(225, 29, 72, 0.12), transparent 66%);
-      bottom: -90px;
-      right: -80px;
-    }
-
-    .loader-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .loader-orbit {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 20px;
-      border-radius: 999px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.86);
-      box-shadow:
-        0 18px 48px rgba(13, 148, 136, 0.18),
-        inset 0 0 0 1px rgba(13, 148, 136, 0.13);
-    }
-
-    .loader-orbit::before {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      border-radius: 999px;
-      border: 2px solid rgba(13, 148, 136, 0.16);
-      border-top-color: #0d9488;
-      border-right-color: rgba(225, 29, 72, 0.75);
-      animation: orbitSpin 1.05s linear infinite;
-    }
-
-    .loader-orbit::after {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border-radius: 999px;
-      border: 1px dashed rgba(245, 158, 11, 0.6);
-      animation: orbitSpinReverse 1.8s linear infinite;
-    }
-
-    .loader-orbit i {
-      font-size: 27px;
-      color: #0d9488;
-      z-index: 2;
-      animation: iconFloat 1.2s ease-in-out infinite;
-    }
-
-    .loader-premium h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      line-height: 1;
-      font-weight: 700;
-      color: #111827;
-      margin-bottom: 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .loader-premium p {
-      font-size: 12px;
-      color: #6b7280;
-      margin-bottom: 22px;
-    }
-
-    .loader-brush {
-      width: 174px;
-      height: 5px;
-      margin: 0 auto;
-      border-radius: 999px;
-      background: rgba(17, 24, 39, 0.08);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .loader-brush span {
-      display: block;
-      height: 100%;
-      width: 58%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #0d9488, #14b8a6, #e11d48, #f59e0b);
-      animation: brushMove 1s ease-in-out infinite;
-    }
-
-    .loader-mini-text {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      margin-top: 15px;
-    }
-
-    .loader-mini-text span {
-      width: 5px;
-      height: 5px;
-      border-radius: 999px;
-      background: #0d9488;
-      opacity: 0.4;
-      animation: dotPremium 1s ease-in-out infinite;
-    }
-
-    .loader-mini-text span:nth-child(2) {
-      background: #e11d48;
-      animation-delay: 0.14s;
-    }
-
-    .loader-mini-text span:nth-child(3) {
-      background: #f59e0b;
-      animation-delay: 0.28s;
-    }
-
-    @keyframes loaderCardIn {
-      from {
-        opacity: 0;
-        transform: translateY(14px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes orbitSpin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes orbitSpinReverse {
-      to { transform: rotate(-360deg); }
-    }
-
-    @keyframes iconFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-2px) rotate(-5deg); }
-    }
-
-    @keyframes brushMove {
-      0% { transform: translateX(-110%); }
-      52% { transform: translateX(52%); }
-      100% { transform: translateX(190%); }
-    }
-
-    @keyframes dotPremium {
-      0%, 100% {
-        opacity: 0.35;
-        transform: translateY(0);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(-4px);
-      }
-    }
-
-    /* HAMBURGER */
-    .hamburger-btn {
-      position: fixed;
-      top: calc(env(safe-area-inset-top, 0px) + 14px);
-      right: 14px;
-      z-index: 90;
-      width: 43px;
-      height: 43px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.92);
-      color: #111827;
-      border: 1px solid rgba(229, 231, 235, 0.9);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s ease, opacity 0.25s ease, color 0.25s ease, background 0.25s ease;
-      touch-action: manipulation;
-      pointer-events: auto;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .hamburger-btn:hover {
-      color: #0d9488;
-      transform: translateY(-1px) scale(1.03);
-    }
-
-    .hamburger-btn.is-hidden {
-      opacity: 0;
-      transform: scale(0.85);
-      pointer-events: none;
-    }
-
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 70;
-      background: rgba(17, 24, 39, 0.46);
-      backdrop-filter: blur(5px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-
-    .menu-overlay.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .menu-drawer {
-      position: fixed;
-      top: calc(env(safe-area-inset-top, 0px) + 12px);
-      right: 12px;
-      bottom: 12px;
-      z-index: 85;
-      width: min(78vw, 286px);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 30px 90px rgba(15, 23, 42, 0.22);
-      backdrop-filter: blur(18px);
-      transform: translateX(116%) scale(0.96);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.32s cubic-bezier(.2,.9,.2,1), opacity 0.25s ease;
-      overflow: hidden;
-    }
-
-    .menu-drawer.is-open {
-      transform: translateX(0) scale(1);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .menu-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 16px;
-      color: #374151;
-      font-size: 13px;
-      font-weight: 600;
-      transition: 0.22s ease;
-      text-align: left;
-    }
-
-    .menu-link i {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: rgba(13, 148, 136, 0.08);
-      color: #0d9488;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      transition: 0.22s ease;
-    }
-
-    .menu-link:hover,
-    .menu-link.active {
-      background: rgba(13, 148, 136, 0.08);
-      color: #0d9488;
-      transform: translateX(-2px);
-    }
-
-    .menu-link:hover i,
-    .menu-link.active i {
-      background: #0d9488;
-      color: white;
-    }
-
-    .lang-btn {
-      width: 44px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      font-size: 12px;
-      font-weight: 700;
-      color: #6b7280;
-      background: white;
-      transition: 0.22s ease;
-    }
-
-    .lang-btn.active {
-      background: #0d9488;
-      color: white;
-      border-color: #0d9488;
-      box-shadow: 0 10px 24px rgba(13, 148, 136, 0.22);
-    }
-
-    .back-tab-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      background: #ffffff;
-      color: #374151;
-      border: 1px solid #e5e7eb;
-      padding: 9px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      transition: 0.2s ease;
-    }
-
-    .back-tab-btn:hover {
-      color: #0d9488;
-      border-color: rgba(13, 148, 136, 0.25);
-      transform: translateX(-2px);
-    }
-
-
-
-    .portfolio-category-btn {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .portfolio-category-btn::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.22s ease;
-      pointer-events: none;
-    }
-
-    .portfolio-category-btn:hover::after,
-    .portfolio-category-btn.active::after {
-      opacity: 1;
-    }
-
-    .portfolio-category-panel {
-      display: none;
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    .portfolio-category-panel.is-visible {
-      display: block;
-      animation: portfolioPanelIn 0.28s ease forwards;
-    }
-
-    @keyframes portfolioPanelIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (min-width: 768px) {
-      .hamburger-btn {
-        top: 18px;
-        right: 22px;
-      }
-
-      .menu-drawer {
-        top: 18px;
-        right: 18px;
-        bottom: 18px;
-        width: 294px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .menu-drawer {
-        width: min(82vw, 276px);
-        border-radius: 24px;
-      }
-
-      .menu-link {
-        font-size: 12px;
-        padding: 9px 10px;
-      }
-
-      .loader-premium {
-        padding: 38px 22px 32px;
-        border-radius: 30px;
-      }
-
-      .loader-premium h2 {
-        font-size: 30px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-      }
-
-      .loader-orbit::before,
-      .loader-orbit::after,
-      .loader-orbit i,
-      .loader-brush span,
-      .loader-mini-text span,
-      .float-anim {
-        animation: none !important;
-      }
-
-      .loading-screen,
-      .tab-content,
-      .hamburger-btn,
-      .menu-overlay,
-      .menu-drawer,
-      .menu-link {
-        transition-duration: 0.15s !important;
-      }
-    }
-  </style>
+    </script>
+
+    <style>
+        /* Custom Styles & Layout */
+        body {
+            background-color: theme('colors.cream');
+            color: theme('colors.darkBrown');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Image Placeholder Style */
+        .img-placeholder {
+            background-color: theme('colors.muted');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: theme('colors.beige');
+            font-family: theme('fontFamily.serif');
+            font-style: italic;
+        }
+
+        /* Smooth fade for loader */
+        #loader {
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        #loader.hidden-loader {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Nav Link Hover */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: theme('colors.gold');
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active-nav::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Transitions */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-overlay {
+            transition: opacity 0.3s ease;
+        }
+
+        /* ----- ANIMATIONS ON SCROLL ----- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered delays for groups of elements (like cards) */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
 </head>
+<body class="font-sans min-h-screen flex flex-col relative overflow-x-hidden" onload="initApp()">
 
-<body class="font-sans text-gray-800 antialiased flex flex-col min-h-screen">
-
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="loading-screen">
-    <div class="loader-premium">
-      <div class="loader-inner">
-        <div class="loader-orbit">
-          <i class="fa-solid fa-palette"></i>
+    <!-- Loading Screen -->
+    <div id="loader" class="fixed inset-0 z-[9999] bg-cream flex flex-col items-center justify-center">
+        <img src="https://i.postimg.cc/52ZcwPbS/97B317FF-A87A-47A2-A6FB-5ED63B937D9D.jpg" alt="ELIART_2020 Logo" class="h-24 md:h-32 w-auto mb-8 rounded-sm shadow-sm object-contain animate-pulse">
+        <div class="w-24 h-[1px] bg-beige relative overflow-hidden">
+            <div class="absolute top-0 left-0 h-full bg-gold w-full animate-[loading_1.5s_ease-in-out_infinite]"></div>
         </div>
-
-        <h2>Elena Art</h2>
-        <p data-i18n="loadingText">Pregătim culorile...</p>
-
-        <div class="loader-brush">
-          <span></span>
-        </div>
-
-        <div class="loader-mini-text">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+        <style>
+            @keyframes loading {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(100%); }
+            }
+        </style>
     </div>
-  </div>
 
-  <!-- Navigation -->
-  <nav class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-40 top-0 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pr-16 sm:pr-20">
-      <div class="flex justify-between items-center h-16 sm:h-20">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-[40] bg-cream/95 backdrop-blur-md border-b border-beige/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 md:h-24 flex items-center justify-between">
+            
+            <!-- Logo & Nume -->
+            <button onclick="navigateTo('home')" class="flex items-center gap-3 md:gap-4 group text-left">
+                <img src="https://i.postimg.cc/52ZcwPbS/97B317FF-A87A-47A2-A6FB-5ED63B937D9D.jpg" alt="ELIART_2020" class="h-10 md:h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                <div class="flex flex-col justify-center border-l border-beige/60 pl-3 md:pl-4">
+                    <span class="font-serif text-[11px] md:text-sm text-gold tracking-widest uppercase font-medium">Biró Melinda</span>
+                    <span class="font-sans text-[9px] md:text-xs text-elegantBlack font-semibold tracking-widest uppercase mt-0.5">RM ELIART 2020 SRL</span>
+                </div>
+            </button>
 
-        <!-- Logo -->
-        <button type="button" class="flex-shrink-0 flex items-center cursor-pointer group text-left" onclick="openTab('tab-home')">
-          <i class="fa-solid fa-palette text-primary text-2xl sm:text-3xl mr-2 group-hover:rotate-12 transition-transform duration-300"></i>
-          <div>
-            <h1 class="font-serif text-xl sm:text-2xl font-bold text-gray-900 leading-tight">Elena Art</h1>
-            <p class="text-[10px] sm:text-xs text-gray-500 font-medium" data-i18n="brandSubtitle">RM ELIART 2020 SRL</p>
-          </div>
-        </button>
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8 text-[13px] uppercase tracking-[0.15em] font-light">
+                <button onclick="navigateTo('home')" class="nav-link">Acasă</button>
+                <button onclick="navigateTo('shop')" class="nav-link font-medium text-gold">Shop / Lucrări</button>
+                <button onclick="navigateTo('custom-orders')" class="nav-link">Comenzi</button>
+                <button onclick="navigateTo('portfolio')" class="nav-link">Portofoliu</button>
+                <button onclick="navigateTo('services')" class="nav-link">Servicii</button>
+                <button onclick="navigateTo('about')" class="nav-link">Despre</button>
+                <button onclick="navigateTo('contact')" class="nav-link">Contact</button>
+            </nav>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
-          <button onclick="openTab('tab-home')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-home" data-i18n="navHome">Acasă</button>
-          <button onclick="openTab('tab-about')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-about" data-i18n="navAbout">Despre mine</button>
-          <button onclick="openTab('tab-portofoliu')" class="nav-link text-sm text-gray-600 hover:text-primary transition font-medium" data-tab-target="tab-portofoliu" data-i18n="navPortfolio">Portofoliu</button>
+            <!-- Mobile Menu Toggle -->
+            <button id="hamburger-btn" class="lg:hidden text-2xl text-darkBrown focus:outline-none p-2" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+    </header>
 
-        <!-- Desktop Call Button -->
-        <div class="hidden lg:flex items-center">
-          <a href="tel:0700123456" class="bg-primary hover:bg-primaryLight text-white text-sm px-5 py-2 rounded-full font-semibold transition shadow-md shadow-primary/30 flex items-center transform hover:scale-105">
-            <i class="fa-solid fa-phone mr-2 text-xs"></i>
-            <span data-i18n="callShort">Sună</span>
-          </a>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-elegantBlack/60 backdrop-blur-sm z-[45] hidden opacity-0" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-cream z-[50] shadow-2xl translate-x-full flex flex-col">
+        <div class="h-20 px-6 flex items-center justify-between border-b border-beige/50">
+            <span class="font-serif text-lg tracking-widest uppercase text-gold">Meniu</span>
+            <button onclick="closeMobileMenu()" class="text-2xl text-darkBrown p-2 focus:outline-none hover:text-gold transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
+        <nav class="flex-1 overflow-y-auto py-8 px-6 flex flex-col gap-6 text-sm uppercase tracking-widest font-light">
+            <button onclick="navigateTo('home')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Acasă</button>
+            <button onclick="navigateTo('shop')" class="text-left py-2 border-b border-beige/30 text-gold font-medium">Shop / Lucrări</button>
+            <button onclick="navigateTo('custom-orders')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Comenzi personalizate</button>
+            <button onclick="navigateTo('portfolio')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Portofoliu</button>
+            <button onclick="navigateTo('certificate')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Certificat de autenticitate</button>
+            <button onclick="navigateTo('creative-camps')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Tabere creative</button>
+            <button onclick="navigateTo('art-therapy')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Terapie prin artă</button>
+            <button onclick="navigateTo('about')" class="text-left py-2 border-b border-beige/30 hover:text-gold transition-colors">Despre artist</button>
+            <button onclick="navigateTo('contact')" class="text-left py-2 hover:text-gold transition-colors">Contact</button>
+        </nav>
+    </aside>
 
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hamburger -->
-  <button
-    id="open-menu-btn"
-    type="button"
-    aria-label="Deschide meniul"
-    aria-expanded="false"
-    aria-controls="mobile-sidebar"
-    class="hamburger-btn"
-  >
-    <i class="fa-solid fa-bars text-[18px]"></i>
-  </button>
-
-  <!-- Overlay -->
-  <div id="mobile-menu-overlay" class="menu-overlay"></div>
-
-  <!-- Menu Drawer -->
-  <aside id="mobile-sidebar" class="menu-drawer" aria-hidden="true">
-    <div class="h-full flex flex-col">
-
-      <div class="p-4 border-b border-gray-100">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-2">
-              <i class="fa-solid fa-palette text-sm"></i>
-            </div>
-            <div>
-              <h2 class="font-serif text-lg font-bold text-gray-900 leading-tight">Elena Art</h2>
-              <p class="text-[10px] text-gray-500" data-i18n="brandSubtitle">RM ELIART 2020 SRL</p>
-            </div>
-          </div>
-
-          <button id="close-menu-btn" type="button" aria-label="Închide meniul" class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-primary hover:bg-primary/10 transition flex items-center justify-center">
-            <i class="fa-solid fa-xmark text-sm"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="p-4">
-        <p class="text-[10px] uppercase tracking-[0.22em] text-gray-400 mb-3 font-semibold" data-i18n="menuLabel">Meniu</p>
-
-        <div class="space-y-1.5">
-          <button onclick="openTab('tab-home')" class="menu-link mobile-link" data-tab-target="tab-home">
-            <i class="fa-solid fa-house"></i>
-            <span data-i18n="navHome">Acasă</span>
-          </button>
-
-          <button onclick="openTab('tab-about')" class="menu-link mobile-link" data-tab-target="tab-about">
-            <i class="fa-solid fa-user"></i>
-            <span data-i18n="navAbout">Despre mine</span>
-          </button>
-
-          <button onclick="openTab('tab-portofoliu')" class="menu-link mobile-link" data-tab-target="tab-portofoliu">
-            <i class="fa-solid fa-image"></i>
-            <span data-i18n="navPortfolio">Portofoliu</span>
-          </button>
-
-
-          <button onclick="openTab('tab-termeni')" class="menu-link mobile-link" data-tab-target="tab-termeni">
-            <i class="fa-solid fa-file-lines"></i>
-            <span data-i18n="navTerms">Termeni și Condiții</span>
-          </button>
-        </div>
-
-        <div class="mt-5 pt-4 border-t border-gray-100">
-          <p class="text-[10px] uppercase tracking-[0.22em] text-gray-400 mb-3 font-semibold" data-i18n="languageLabel">Limbă</p>
-
-          <div class="flex items-center gap-2">
-            <button type="button" class="lang-btn" data-lang="ro">RO</button>
-            <button type="button" class="lang-btn" data-lang="en">EN</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-auto p-4 border-t border-gray-100">
-        <a href="tel:0700123456" class="w-full bg-primary hover:bg-primaryLight text-white text-xs px-4 py-3 rounded-full font-semibold transition shadow-md flex items-center justify-center">
-          <i class="fa-solid fa-phone mr-2 text-[11px]"></i>
-          <span data-i18n="callNow">Sună acum</span>
-        </a>
-
-        <a href="https://wa.me/40700123456" target="_blank" class="mt-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs px-4 py-3 rounded-full font-semibold transition shadow-md flex items-center justify-center">
-          <i class="fa-brands fa-whatsapp mr-2 text-[13px]"></i>
-          <span data-i18n="whatsappNow">Scrie pe WhatsApp</span>
-        </a>
-
-        <div class="flex items-center justify-center gap-3 mt-4">
-          <a href="https://wa.me/40700123456" target="_blank" aria-label="WhatsApp" class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:bg-[#25D366] hover:text-white transition flex items-center justify-center">
-            <i class="fa-brands fa-whatsapp text-sm"></i>
-          </a>
-
-          <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:bg-[#1877F2] hover:text-white transition flex items-center justify-center">
-            <i class="fa-brands fa-facebook-f text-sm"></i>
-          </a>
-
-          <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:bg-[#e6683c] hover:text-white transition flex items-center justify-center">
-            <i class="fa-brands fa-instagram text-sm"></i>
-          </a>
-        </div>
-
-        <p class="text-[10px] text-gray-400 text-center mt-3" data-i18n="menuFooter">Răspund cât de repede pot.</p>
-      </div>
-
-    </div>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="flex-grow pt-16 sm:pt-20">
-
-    <!-- TAB: HOME -->
-    <div id="tab-home" class="tab-content active">
-
-      <!-- Hero -->
-      <section class="relative pt-16 pb-12 lg:pt-28 lg:pb-20 overflow-hidden bg-parallax">
-        <div class="absolute inset-0 bg-white/90"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-            <div data-aos="fade-up-right" data-aos-duration="1000">
-              <span class="text-primary font-semibold tracking-wider uppercase text-xs sm:text-sm mb-3 block">
-                <i class="fa-solid fa-sparkles mr-1"></i>
-                <span data-i18n="heroBadge">RM ELIART 2020 SRL • Artă, cursuri și tabere creative</span>
-              </span>
-
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight mb-4 sm:mb-6" data-i18n-html="heroTitle">
-                Arta ca limbaj al <span class="text-gradient">sufletului</span>
-              </h1>
-
-              <p class="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed" data-i18n-html="heroText">
-                Elena este <strong class="text-primary font-medium">terapeut de artă la un centru pentru persoane cu dizabilități</strong>, profesoară de artă pentru copii, organizatoare de tabere creative și pictoriță. Activitățile sunt prezentate profesional sub firma <strong class="text-primary font-medium">RM ELIART 2020 SRL</strong>.
-              </p>
-
-              <div class="flex flex-wrap gap-3">
-                <button onclick="openTab('tab-portofoliu')" class="bg-gray-900 hover:bg-gray-800 text-white text-sm px-6 py-2.5 rounded-full font-medium transition shadow-md transform hover:-translate-y-1">
-                  <span data-i18n="ctaPortfolio">Vezi Portofoliul</span>
-                </button>
-
-                <button onclick="openTab('tab-about')" class="bg-white hover:bg-gray-50 text-gray-800 text-sm px-6 py-2.5 rounded-full font-medium transition shadow-md border border-gray-100">
-                  <span data-i18n="ctaAbout">Despre mine</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="relative mt-8 lg:mt-0" data-aos="fade-up-left" data-aos-duration="1000" data-aos-delay="200">
-              <div class="relative rounded-2xl overflow-hidden shadow-xl float-anim border-4 border-white max-w-md mx-auto lg:max-w-full">
-                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Materiale de pictură" class="w-full h-auto object-cover">
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- Services -->
-      <section class="py-12 bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-3xl mx-auto mb-9" data-aos="fade-up">
-            <span class="text-primary font-semibold tracking-wider uppercase text-xs mb-2 block" data-i18n="servicesBadge">Activități</span>
-            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-3" data-i18n="servicesTitle">Ce oferă Elena Art</h2>
-            <p class="text-gray-600 text-sm leading-relaxed" data-i18n="servicesText">
-              Un site profesional trebuie să arate clar experiența, serviciile și direcțiile de lucru. Secțiunea de mai jos poate fi adaptată cu program, poze reale și prețuri.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-warmBg rounded-3xl p-5 border border-gray-100 shadow-sm hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="50">
-              <div class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <i class="fa-solid fa-hands-holding-child"></i>
-              </div>
-              <h3 class="font-serif text-xl font-bold text-gray-900 mb-2" data-i18n="serviceTherapyTitle">Terapie prin artă</h3>
-              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="serviceTherapyText">
-                Activitate cu persoane cu dizabilități, folosind culoarea și desenul ca formă de exprimare și comunicare.
-              </p>
-            </div>
-
-            <div class="bg-warmBg rounded-3xl p-5 border border-gray-100 shadow-sm hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="100">
-              <div class="w-11 h-11 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center mb-4">
-                <i class="fa-solid fa-child-reaching"></i>
-              </div>
-              <h3 class="font-serif text-xl font-bold text-gray-900 mb-2" data-i18n="serviceKidsTitle">Cursuri pentru copii</h3>
-              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="serviceKidsText">
-                Lecții de artă pentru copii, cu accent pe încredere, răbdare, joacă și dezvoltarea creativității.
-              </p>
-            </div>
-
-            <div class="bg-warmBg rounded-3xl p-5 border border-gray-100 shadow-sm hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="150">
-              <div class="w-11 h-11 rounded-2xl bg-accent/10 text-accent flex items-center justify-center mb-4">
-                <i class="fa-solid fa-campground"></i>
-              </div>
-              <h3 class="font-serif text-xl font-bold text-gray-900 mb-2" data-i18n="serviceCampTitle">Tabere de artă</h3>
-              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="serviceCampText">
-                Ateliere și tabere creative, unde copiii pot experimenta pictura, culoarea și lucrul în grup.
-              </p>
-            </div>
-
-            <div class="bg-warmBg rounded-3xl p-5 border border-gray-100 shadow-sm hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="200">
-              <div class="w-11 h-11 rounded-2xl bg-gray-900/10 text-gray-900 flex items-center justify-center mb-4">
-                <i class="fa-solid fa-palette"></i>
-              </div>
-              <h3 class="font-serif text-xl font-bold text-gray-900 mb-2" data-i18n="servicePainterTitle">Picturi personalizate</h3>
-              <p class="text-sm text-gray-600 leading-relaxed" data-i18n="servicePainterText">
-                Lucrări pictate manual, potrivite pentru cadouri, decor sau comenzi personalizate.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section class="py-12 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-5xl mx-auto px-4" data-aos="fade-up">
-
-          <div class="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-
-              <div class="lg:col-span-6 text-center lg:text-left">
-                <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold text-primary mb-3">
-                  <i class="fa-solid fa-phone-volume"></i>
-                  <span data-i18n="contactSmallLabel">Programări telefonice</span>
-                </span>
-
-                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900 mb-3" data-i18n="contactTitle">
-                  Contactează RM ELIART 2020 SRL
-                </h2>
-
-                <p class="text-gray-600 text-sm leading-relaxed" data-i18n="contactText">
-                  Pentru ședințe, cursuri, tabere creative sau lucrări personalizate, programările se fac telefonic.
-                </p>
-              </div>
-
-              <div class="lg:col-span-6">
-                <div class="flex flex-col gap-3">
-
-                  <a href="tel:0700123456" class="group flex items-center justify-between gap-4 bg-primary hover:bg-primaryLight text-white rounded-2xl px-5 py-4 shadow-lg shadow-primary/20 transition transform hover:-translate-y-0.5">
-                    <div class="flex items-center gap-3">
-                      <span class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
-                        <i class="fa-solid fa-phone"></i>
-                      </span>
-
-                      <div class="text-left">
-                        <p class="text-[11px] uppercase tracking-[0.18em] text-white/75 font-semibold" data-i18n="callNow">
-                          Sună acum
-                        </p>
-                        <p class="text-base font-bold leading-tight">
-                          0700 123 456
-                        </p>
-                      </div>
+    <!-- Main Content -->
+    <main class="flex-1 pt-20 md:pt-24 pb-16 flex flex-col relative z-0">
+        
+        <!-- ================= ACASĂ ================= -->
+        <section id="home" class="tab-content w-full flex-1 flex flex-col">
+            <div class="flex-1 flex items-center justify-center px-4 md:px-6 py-12 md:py-24">
+                <div class="max-w-4xl w-full text-center bg-white/40 backdrop-blur-md p-8 md:p-16 rounded-2xl border border-beige/60 shadow-premium fade-up">
+                    <span class="text-gold uppercase tracking-[0.3em] text-xs md:text-sm font-semibold mb-6 block fade-up delay-100">Artist: Biró Melinda</span>
+                    <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-elegantBlack mb-6 tracking-wide fade-up delay-200">ELIART_2020</h1>
+                    <p class="text-darkBrown text-[15px] md:text-xl font-light mb-10 tracking-[0.2em] uppercase leading-relaxed fade-up delay-300">
+                        Original Paintings <br class="md:hidden"><span class="hidden md:inline text-gold mx-2">•</span> 
+                        Contemporary Art <br class="md:hidden"><span class="hidden md:inline text-gold mx-2">•</span> 
+                        Custom Commissions
+                    </p>
+                    <div class="italic font-serif text-2xl md:text-3xl text-darkBrown/80 mb-12 fade-up delay-300">
+                        “Every painting begins where words end.”
                     </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 fade-up delay-300">
+                        <button onclick="navigateTo('shop')" class="w-full sm:w-auto bg-darkBrown text-cream px-10 py-4 rounded-sm uppercase tracking-widest text-xs font-medium hover:bg-elegantBlack hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                            Vezi Colecția / Shop Now
+                        </button>
+                        <button onclick="navigateTo('custom-orders')" class="w-full sm:w-auto border border-darkBrown text-darkBrown px-10 py-4 rounded-sm uppercase tracking-widest text-xs font-medium hover:bg-beige/30 hover:text-elegantBlack transition-all duration-300 hover:-translate-y-1">
+                            Comandă personalizată
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Secondary focus items preview on homepage -->
+            <div class="max-w-7xl mx-auto px-6 pb-12 w-full">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-beige/40">
+                    <button onclick="navigateTo('creative-camps')" class="group text-left p-6 rounded-xl hover:bg-white transition-all duration-300 border border-transparent hover:border-beige/50 hover:shadow-premium fade-up delay-100">
+                        <h3 class="font-serif text-xl text-elegantBlack mb-2 group-hover:text-gold transition-colors">Tabere creative</h3>
+                        <p class="text-sm text-darkBrown/70 font-light">Programe educative și creative pentru grupuri.</p>
+                    </button>
+                    <button onclick="navigateTo('art-therapy')" class="group text-left p-6 rounded-xl hover:bg-white transition-all duration-300 border border-transparent hover:border-beige/50 hover:shadow-premium fade-up delay-200">
+                        <h3 class="font-serif text-xl text-elegantBlack mb-2 group-hover:text-gold transition-colors">Terapie prin artă</h3>
+                        <p class="text-sm text-darkBrown/70 font-light">Ședințe individuale și de grup pentru dezvoltare personală.</p>
+                    </button>
+                    <button onclick="navigateTo('certificate')" class="group text-left p-6 rounded-xl hover:bg-white transition-all duration-300 border border-transparent hover:border-beige/50 hover:shadow-premium fade-up delay-300">
+                        <h3 class="font-serif text-xl text-elegantBlack mb-2 group-hover:text-gold transition-colors">Autenticitate</h3>
+                        <p class="text-sm text-darkBrown/70 font-light">Fiecare lucrare vine cu certificat de autenticitate.</p>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-                    <i class="fa-solid fa-arrow-right text-sm opacity-70 group-hover:translate-x-1 transition"></i>
-                  </a>
+        <!-- ================= SHOP / LUCRĂRI DISPONIBILE ================= -->
+        <section id="shop" class="tab-content max-w-7xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Magazin / Lucrări Disponibile</h2>
+                <div class="w-16 h-px bg-gold mx-auto mb-6"></div>
+                <p class="text-lg font-light text-darkBrown mb-2">Lucrări originale de artă contemporană disponibile pentru vânzare.</p>
+                <p class="text-lg font-light text-darkBrown mb-2">Fiecare tablou este unic, realizat manual.</p>
+                <p class="text-lg font-light text-darkBrown">Fiecare lucrare este unică și nu poate fi reprodusă.</p>
+            </div>
 
-                  <div class="bg-warmBg rounded-2xl p-4 border border-gray-100">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Sancraiu%20550%20Ilieni%20Covasna%20Romania" target="_blank" class="flex items-center justify-between gap-3 group">
-                      <div class="flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                          <i class="fa-solid fa-location-dot"></i>
-                        </span>
-
-                        <div class="text-left">
-                          <p class="text-[11px] uppercase tracking-[0.18em] text-gray-400 font-semibold" data-i18n="locationLabel">
-                            Sediu social
-                          </p>
-                          <p class="text-sm text-gray-700 font-medium group-hover:text-primary transition" data-i18n="locationText">
-                            Sâncraiu nr. 550, com. Ilieni, jud. Covasna
-                          </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Categorie 1 -->
+                <div class="bg-white rounded-xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-500 group cursor-pointer fade-up delay-100" onclick="navigateTo('contact')">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR -->
+                    <div class="w-full aspect-[4/3] img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Imagine Pictură Abstractă</span>
+                    </div>
+                    <div class="p-8 bg-white relative z-10 border-t border-beige/30">
+                        <h3 class="font-serif text-2xl text-elegantBlack mb-3">Picturi abstracte</h3>
+                        <p class="text-sm text-darkBrown/70 font-light mb-6">Explorări cromatice și compoziții emoționale libere.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase tracking-widest font-medium">Preț individual / La cerere</span>
+                            <span class="text-gold group-hover:translate-x-2 transition-transform"><i class="fas fa-arrow-right"></i></span>
                         </div>
-                      </div>
-
-                      <i class="fa-solid fa-map-location-dot text-primary opacity-80 group-hover:scale-110 transition"></i>
-                    </a>
-
-                    <div class="grid grid-cols-2 gap-2 mt-3">
-                      <a href="https://www.google.com/maps/search/?api=1&query=Sancraiu%20550%20Ilieni%20Covasna%20Romania" target="_blank" class="bg-white hover:bg-gray-50 border border-gray-100 text-gray-700 text-xs font-semibold rounded-full px-3 py-2 flex items-center justify-center gap-2 transition">
-                        <i class="fa-solid fa-map-location-dot text-primary"></i>
-                        <span data-i18n="openMaps">Google Maps</span>
-                      </a>
-
-                      <a href="https://waze.com/ul?q=Sancraiu%20550%20Ilieni%20Covasna%20Romania&navigate=yes&utm_source=elena_art_website" target="_blank" class="bg-white hover:bg-gray-50 border border-gray-100 text-gray-700 text-xs font-semibold rounded-full px-3 py-2 flex items-center justify-center gap-2 transition">
-                        <i class="fa-brands fa-waze text-primary"></i>
-                        <span data-i18n="openWaze">Waze</span>
-                      </a>
                     </div>
-                  </div>
-
                 </div>
 
-                <div class="flex justify-center lg:justify-end items-center gap-3 mt-4">
-                  <a href="https://wa.me/40700123456" target="_blank" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:bg-[#25D366] hover:text-white transition flex items-center justify-center">
-                    <i class="fa-brands fa-whatsapp"></i>
-                  </a>
-
-                  <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:bg-[#1877F2] hover:text-white transition flex items-center justify-center">
-                    <i class="fa-brands fa-facebook-f"></i>
-                  </a>
-
-                  <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 hover:bg-[#e6683c] hover:text-white transition flex items-center justify-center">
-                    <i class="fa-brands fa-instagram"></i>
-                  </a>
+                <!-- Categorie 2 -->
+                <div class="bg-white rounded-xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-500 group cursor-pointer fade-up delay-200" onclick="navigateTo('contact')">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR -->
+                    <div class="w-full aspect-[4/3] img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Imagine Artă Texturată</span>
+                    </div>
+                    <div class="p-8 bg-white relative z-10 border-t border-beige/30">
+                        <h3 class="font-serif text-2xl text-elegantBlack mb-3">Artă texturată</h3>
+                        <p class="text-sm text-darkBrown/70 font-light mb-6">Lucrări tactile, cu relief și profunzime materială.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase tracking-widest font-medium">Preț individual / La cerere</span>
+                            <span class="text-gold group-hover:translate-x-2 transition-transform"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
                 </div>
-              </div>
 
+                <!-- Categorie 3 -->
+                <div class="bg-white rounded-xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-500 group cursor-pointer fade-up delay-100" onclick="navigateTo('contact')">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR -->
+                    <div class="w-full aspect-[4/3] img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Imagine Mixed Media</span>
+                    </div>
+                    <div class="p-8 bg-white relative z-10 border-t border-beige/30">
+                        <h3 class="font-serif text-2xl text-elegantBlack mb-3">Lucrări mixed media</h3>
+                        <p class="text-sm text-darkBrown/70 font-light mb-6">Fuziune de materiale, tehnici și elemente neconvenționale.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase tracking-widest font-medium">Preț individual / La cerere</span>
+                            <span class="text-gold group-hover:translate-x-2 transition-transform"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categorie 4 -->
+                <div class="bg-white rounded-xl border border-beige/60 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-500 group cursor-pointer fade-up delay-200" onclick="navigateTo('portfolio')">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR -->
+                    <div class="w-full aspect-[4/3] img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Imagine Portofoliu / Arhivă</span>
+                    </div>
+                    <div class="p-8 bg-white relative z-10 border-t border-beige/30">
+                        <h3 class="font-serif text-2xl text-elegantBlack mb-3">Selecție din arhivă</h3>
+                        <p class="text-sm text-darkBrown/70 font-light mb-6">Descoperă lucrări anterioare din portofoliul artistului.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs uppercase tracking-widest font-medium">Vezi lucrările vândute</span>
+                            <span class="text-gold group-hover:translate-x-2 transition-transform"><i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
-
-    <!-- TAB: ABOUT -->
-    <div id="tab-about" class="tab-content bg-warmBg min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="backBtn">Înapoi</span>
-          </button>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div class="lg:col-span-5" data-aos="fade-right">
-            <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
-              <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Artă și culori" class="w-full h-[360px] object-cover">
+            
+            <div class="mt-16 text-center fade-up">
+                <p class="text-xs uppercase tracking-[0.2em] text-darkBrown/60 font-medium">* Prețuri de la 500 lei pentru comenzi personalizate</p>
             </div>
-          </div>
+        </section>
 
-          <div class="lg:col-span-7" data-aos="fade-up">
-            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm">
-              <span class="text-primary font-semibold tracking-wider uppercase text-xs mb-3 block" data-i18n="aboutBadge">Despre Elena</span>
-
-              <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-5" data-i18n="aboutPageTitle">
-                Terapeut de artă, profesoară și pictoriță
-              </h2>
-
-              <div class="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
-                <p data-i18n="aboutPara1">
-                  Elena lucrează ca terapeut de artă la un centru pentru persoane cu dizabilități, unde folosește desenul, pictura și culoarea ca instrumente de exprimare, răbdare și comunicare.
+        <!-- ================= COMENZI PERSONALIZATE ================= -->
+        <section id="custom-orders" class="tab-content max-w-5xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-8 md:p-16 rounded-2xl border border-beige shadow-premium fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest text-center">Comenzi Personalizate</h2>
+                <div class="w-16 h-px bg-gold mx-auto mb-10"></div>
+                
+                <p class="text-xl font-light text-darkBrown mb-12 text-center max-w-2xl mx-auto leading-relaxed">
+                    Realizez picturi personalizate, create în funcție de viziunea, spațiul și emoția ta.
                 </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+                    <div class="flex items-start gap-4 fade-up delay-100">
+                        <div class="text-gold text-2xl mt-1"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <div>
+                            <h4 class="font-serif text-2xl mb-2 text-elegantBlack">Dimensiuni personalizate</h4>
+                            <p class="text-sm font-light text-darkBrown/80 leading-relaxed">Lucrarea este adaptată perfect spațiului tău, de la tablouri intime la pânze supradimensionate.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 fade-up delay-200">
+                        <div class="text-gold text-2xl mt-1"><i class="fa-regular fa-lightbulb"></i></div>
+                        <div>
+                            <h4 class="font-serif text-2xl mb-2 text-elegantBlack">Dezvoltarea conceptului</h4>
+                            <p class="text-sm font-light text-darkBrown/80 leading-relaxed">Discutăm împreună despre paleta cromatică, texturi și emoția pe care dorești să o transmită.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 fade-up delay-100">
+                        <div class="text-gold text-2xl mt-1"><i class="fa-solid fa-house-chimney"></i></div>
+                        <div>
+                            <h4 class="font-serif text-2xl mb-2 text-elegantBlack">Pentru interior și cadouri</h4>
+                            <p class="text-sm font-light text-darkBrown/80 leading-relaxed">Opere de artă ideale pentru a înnobila un design interior sau pentru a oferi un cadou cu adevărat special.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 fade-up delay-200">
+                        <div class="text-gold text-2xl mt-1"><i class="fa-regular fa-handshake"></i></div>
+                        <div>
+                            <h4 class="font-serif text-2xl mb-2 text-elegantBlack">Colaborare directă</h4>
+                            <p class="text-sm font-light text-darkBrown/80 leading-relaxed">Comunici direct cu artistul pe tot parcursul procesului creativ, pentru un rezultat aliniat viziunii tale.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center border-t border-beige pt-10 fade-up delay-300">
+                    <p class="text-lg font-medium text-darkBrown mb-8">Te rog să iei legătura direct cu artistul pentru o comandă personalizată.</p>
+                    <button onclick="navigateTo('contact')" class="bg-darkBrown text-cream px-10 py-4 rounded-sm uppercase tracking-widest text-xs font-medium hover:bg-elegantBlack transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        Scrie artistului
+                    </button>
+                </div>
+            </div>
+        </section>
 
-                <p data-i18n="aboutPara2">
-                  În paralel, susține cursuri de artă pentru copii, organizează tabere creative și creează lucrări pictate manual, potrivite pentru cadouri, decor sau comenzi personalizate.
+        <!-- ================= CERTIFICAT DE AUTENTICITATE ================= -->
+        <section id="certificate" class="tab-content max-w-6xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="flex flex-col lg:flex-row gap-12 items-center bg-white p-8 md:p-14 rounded-2xl border border-beige shadow-premium fade-up">
+                <div class="flex-1 w-full fade-up delay-100">
+                    <!-- AICI SE PUNE POZA CERTIFICATULUI -->
+                    <img src="https://i.postimg.cc/ZnVtp45n/7168B321-90E7-4880-8EDC-85EDA33B982E.jpg" alt="Certificat de Autenticitate ELIART" class="w-full max-w-md mx-auto rounded-sm border-[10px] border-muted shadow-lg object-cover hover:scale-[1.02] transition-transform duration-500">
+                </div>
+                <div class="flex-1 fade-up delay-200">
+                    <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Certificat de Autenticitate</h2>
+                    <div class="w-16 h-px bg-gold mb-8"></div>
+                    
+                    <p class="text-lg font-light text-darkBrown leading-relaxed mb-10">
+                        Fiecare lucrare originală poate fi însoțită de certificat de autenticitate, semnat de artist, cu detalii despre titlu, tehnică, dimensiuni și anul realizării.
+                    </p>
+                    
+                    <ul class="space-y-5 font-light text-darkBrown/90 text-[15px]">
+                        <li class="flex items-center gap-4 bg-muted/50 p-4 rounded-lg">
+                            <i class="fas fa-check text-gold text-lg"></i>
+                            <span>Confirmă autenticitatea lucrării</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-muted/50 p-4 rounded-lg">
+                            <i class="fas fa-check text-gold text-lg"></i>
+                            <span>Menționează că opera este unică și nereproductibilă</span>
+                        </li>
+                        <li class="flex items-center gap-4 bg-muted/50 p-4 rounded-lg">
+                            <i class="fas fa-check text-gold text-lg"></i>
+                            <span>Include semnătura olografă a artistului</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DESPRE ARTIST ================= -->
+        <section id="about" class="tab-content max-w-6xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <div class="lg:col-span-5 order-2 lg:order-1 fade-up delay-100">
+                    <!-- AICI SE PUNE POZA PENTRU DESPRE ARTIST -->
+                    <img src="https://i.postimg.cc/7YtrLHRF/B683B73D-C547-476B-9823-34F7E07DB400.jpg" alt="Biró Melinda - Artist" class="w-full aspect-[3/4] object-cover rounded-t-full shadow-premium border border-beige/40">
+                </div>
+                <div class="lg:col-span-7 order-1 lg:order-2 lg:py-6 fade-up delay-200">
+                    <h2 class="font-serif text-4xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Despre Artist</h2>
+                    <div class="w-16 h-px bg-gold mb-10"></div>
+                    
+                    <div class="space-y-6 text-[15px] font-light text-darkBrown leading-relaxed">
+                        <p class="text-xl font-medium text-elegantBlack font-serif italic">Numele meu este Biró Melinda, cunoscută artistic ca Eliart.</p>
+                        
+                        <p>Am moștenit pasiunea pentru pictură de la părinții mei și consider acest dar una dintre cele mai mari binecuvântări ale vieții mele.</p>
+                        
+                        <p>Lucrez intuitiv, explorând emoția, textura și materialul. Pictez pe pânză, lemn, sticlă, material textil și orice suprafață care mă inspiră.</p>
+                        
+                        <blockquote class="pl-6 border-l-[3px] border-gold italic font-serif text-2xl my-10 text-elegantBlack bg-gradient-to-r from-muted/50 to-transparent py-4">
+                            "Arta mea nu este imitație — este transformare. În timpul creației intru într-un spațiu atemporal, unde emoția devine culoare și gândul devine formă."
+                        </blockquote>
+                        
+                        <p>Pe lângă activitatea artistică, am lucrat ca art-terapeut și profesor de desen. Aceste experiențe mi-au dezvoltat sensibilitatea și înțelegerea expresiei umane.</p>
+                        
+                        <p>Una dintre cele mai mari bucurii ale parcursului meu artistic este lucrul cu copiii. Ei devin adesea profesorii mei, amintindu-mi de puritatea, libertatea și spontaneitatea expresiei autentice.</p>
+                        
+                        <p>Ca art-terapeut, am avut privilegiul de a lucra și cu persoane cu dizabilități, care m-au învățat una dintre cele mai valoroase lecții: să văd cu inima. Ei nu judecă aparențele — ei simt ceea ce este real.</p>
+                        
+                        <p class="font-medium mt-8 text-elegantBlack uppercase tracking-widest text-sm pt-6 border-t border-beige/50">Fiecare lucrare este autentică, emoțională și realizată cu intenție.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICII (Meniu intermediar pentru tabere/terapie) ================= -->
+        <section id="services" class="tab-content max-w-5xl mx-auto px-6 py-12 w-full text-center">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium self-start fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            <h2 class="font-serif text-3xl md:text-5xl text-elegantBlack mb-12 uppercase tracking-widest fade-up">Servicii Educaționale & Terapie</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-beige/60 hover:shadow-premium transition-all duration-300 cursor-pointer group fade-up delay-100 hover:-translate-y-2" onclick="navigateTo('creative-camps')">
+                    <div class="w-20 h-20 mx-auto bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
+                        <i class="fas fa-palette text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-elegantBlack mb-4">Tabere Creative</h3>
+                    <p class="text-darkBrown/80 font-light mb-8 text-[15px] leading-relaxed">Activități creative și educative la locația beneficiarului pentru școli, grădinițe și evenimente private.</p>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-darkBrown border-b-2 border-gold pb-1 group-hover:text-gold transition-colors">Află detalii</span>
+                </div>
+                
+                <div class="bg-white p-10 rounded-2xl shadow-sm border border-beige/60 hover:shadow-premium transition-all duration-300 cursor-pointer group fade-up delay-200 hover:-translate-y-2" onclick="navigateTo('art-therapy')">
+                    <div class="w-20 h-20 mx-auto bg-muted rounded-full flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
+                        <i class="fas fa-leaf text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-elegantBlack mb-4">Terapie prin Artă</h3>
+                    <p class="text-darkBrown/80 font-light mb-8 text-[15px] leading-relaxed">Ședințe individuale și de grup pentru dezvoltare personală, relaxare și echilibru interior.</p>
+                    <span class="text-xs uppercase tracking-widest font-semibold text-darkBrown border-b-2 border-gold pb-1 group-hover:text-gold transition-colors">Află detalii</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TABERE CREATIVE ================= -->
+        <section id="creative-camps" class="tab-content max-w-4xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-8 md:p-14 rounded-2xl border border-beige shadow-premium fade-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-elegantBlack mb-6 uppercase tracking-widest">Tabere Creative</h2>
+                <div class="w-16 h-px bg-gold mb-10"></div>
+                
+                <p class="text-lg font-light text-darkBrown leading-relaxed mb-8">
+                    Organizez tabere creative și educative la locația beneficiarului.<br>
+                    Mă deplasez la școli, grădinițe, centre educaționale, pensiuni, evenimente private și tabere tematice.
                 </p>
-
-                <p data-i18n="aboutPara3">
-                  Site-ul prezintă activitatea artistică și educațională sub RM ELIART 2020 SRL, într-un format profesionist, clar și ușor de actualizat cu poze reale, prețuri și program.
+                
+                <div class="bg-muted/40 p-8 rounded-xl mb-10 border border-beige/30">
+                    <h4 class="font-serif text-2xl mb-6 text-elegantBlack">Activitățile sunt adaptate vârstei și nevoilor grupului și includ:</h4>
+                    <ul class="space-y-4 font-light text-darkBrown/90 text-[15px]">
+                        <li class="flex items-start gap-4"><span class="text-gold mt-1 text-lg">•</span> pictură și desen creativ</li>
+                        <li class="flex items-start gap-4"><span class="text-gold mt-1 text-lg">•</span> activități senzoriale</li>
+                        <li class="flex items-start gap-4"><span class="text-gold mt-1 text-lg">•</span> dezvoltarea imaginației și creativității</li>
+                        <li class="flex items-start gap-4"><span class="text-gold mt-1 text-lg">•</span> jocuri educative și de echipă</li>
+                        <li class="flex items-start gap-4"><span class="text-gold mt-1 text-lg">•</span> proiecte tematice personalizate</li>
+                    </ul>
+                </div>
+                
+                <p class="font-serif text-elegantBlack text-2xl italic text-center mb-10">
+                    Fiecare tabără este concepută pentru a îmbina creativitatea, dezvoltarea personală și bucuria de a crea.
                 </p>
-              </div>
+                
+                <div class="text-center border-t border-beige pt-10">
+                    <button onclick="navigateTo('contact')" class="border border-darkBrown text-darkBrown px-10 py-4 rounded-sm uppercase tracking-widest text-xs font-medium hover:bg-beige/30 hover:shadow-sm transition-all duration-300">
+                        Solicită o ofertă
+                    </button>
+                </div>
+            </div>
+        </section>
 
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7">
-                <div class="bg-warmBg rounded-2xl p-4 border border-gray-100">
-                  <i class="fa-solid fa-heart text-secondary mb-3"></i>
-                  <h3 class="font-semibold text-gray-900 text-sm mb-1" data-i18n="value1Title">Empatie</h3>
-                  <p class="text-xs text-gray-500" data-i18n="value1Text">Lucru atent cu fiecare persoană.</p>
+        <!-- ================= TERAPIE PRIN ARTĂ ================= -->
+        <section id="art-therapy" class="tab-content max-w-4xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="bg-white p-8 md:p-14 rounded-2xl border border-beige shadow-premium fade-up">
+                <h2 class="font-serif text-3xl md:text-4xl text-elegantBlack mb-6 uppercase tracking-widest">Terapie prin Artă</h2>
+                <div class="w-16 h-px bg-gold mb-10"></div>
+                
+                <p class="text-xl font-light text-darkBrown leading-relaxed mb-12">
+                    Ședințe individuale și de grup pentru copii, adolescenți și adulți.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                    <div class="bg-muted/30 p-6 rounded-xl border border-beige/20">
+                        <h4 class="font-serif text-2xl mb-6 text-elegantBlack">Terapia prin artă poate fi benefică pentru:</h4>
+                        <ul class="space-y-4 font-light text-darkBrown/90 text-[15px]">
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-gold text-sm"></i> anxietate</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-gold text-sm"></i> stres</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-gold text-sm"></i> gestionarea emoțiilor</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-gold text-sm"></i> dezvoltare personală</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-gold text-sm"></i> creșterea încrederii în sine</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check text-gold text-sm"></i> relaxare și echilibru interior</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-muted/30 p-6 rounded-xl border border-beige/20">
+                        <h4 class="font-serif text-2xl mb-6 text-elegantBlack">Organizez ateliere creative și sesiuni în cadrul:</h4>
+                        <ul class="space-y-4 font-light text-darkBrown/90 text-[15px]">
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-gold"></span> evenimentelor private</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-gold"></span> companiilor (teambuilding)</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-gold"></span> școlilor</li>
+                            <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-gold"></span> retreat-urilor și programelor</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-beige pt-10 text-center">
+                    <p class="font-serif text-elegantBlack text-xl italic mb-8">
+                        Nu este necesară experiență artistică. Accentul este pus pe procesul creativ, exprimarea liberă și starea de bine.
+                    </p>
+                    <button onclick="navigateTo('contact')" class="border border-darkBrown text-darkBrown px-10 py-4 rounded-sm uppercase tracking-widest text-xs font-medium hover:bg-beige/30 hover:shadow-sm transition-all duration-300">
+                        Programează o ședință
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTOFOLIU ================= -->
+        <section id="portfolio" class="tab-content max-w-7xl mx-auto px-6 py-12 w-full">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
+            </button>
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+                <h2 class="font-serif text-4xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Portofoliu</h2>
+                <div class="w-16 h-px bg-gold mx-auto mb-6"></div>
+                <p class="text-lg font-light text-darkBrown mb-2">O selecție de lucrări realizate și vândute.</p>
+                <p class="text-xs font-semibold text-darkBrown/70 uppercase tracking-[0.2em] mt-4">Prețurile sunt actualizate individual pentru fiecare lucrare.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Arhivă Item 1 -->
+                <div class="bg-white rounded-xl border border-beige/40 overflow-hidden shadow-sm fade-up delay-100">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR (Arhivă) -->
+                    <div class="w-full aspect-square img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Lucrare Arhivă 1</span>
+                    </div>
+                    <div class="p-6 border-t border-beige/30">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-gold font-bold">Vândut</span>
+                        <h3 class="font-serif text-xl text-elegantBlack mt-2">Titlu Lucrare 1</h3>
+                    </div>
+                </div>
+                
+                <!-- Arhivă Item 2 -->
+                <div class="bg-white rounded-xl border border-beige/40 overflow-hidden shadow-sm fade-up delay-200">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR (Arhivă) -->
+                    <div class="w-full aspect-square img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Lucrare Arhivă 2</span>
+                    </div>
+                    <div class="p-6 border-t border-beige/30">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-gold font-bold">Vândut</span>
+                        <h3 class="font-serif text-xl text-elegantBlack mt-2">Titlu Lucrare 2</h3>
+                    </div>
                 </div>
 
-                <div class="bg-warmBg rounded-2xl p-4 border border-gray-100">
-                  <i class="fa-solid fa-brush text-primary mb-3"></i>
-                  <h3 class="font-semibold text-gray-900 text-sm mb-1" data-i18n="value2Title">Creativitate</h3>
-                  <p class="text-xs text-gray-500" data-i18n="value2Text">Culoarea devine o formă de comunicare.</p>
+                <!-- Arhivă Item 3 -->
+                <div class="bg-white rounded-xl border border-beige/40 overflow-hidden shadow-sm fade-up delay-300">
+                    <!-- AICI SE PUN POZELE LUCRĂRILOR (Arhivă) -->
+                    <div class="w-full aspect-square img-placeholder group-hover:scale-105 transition-transform duration-700">
+                        <span>Lucrare Arhivă 3</span>
+                    </div>
+                    <div class="p-6 border-t border-beige/30">
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-gold font-bold">Vândut</span>
+                        <h3 class="font-serif text-xl text-elegantBlack mt-2">Titlu Lucrare 3</h3>
+                    </div>
                 </div>
-
-                <div class="bg-warmBg rounded-2xl p-4 border border-gray-100">
-                  <i class="fa-solid fa-seedling text-accent mb-3"></i>
-                  <h3 class="font-semibold text-gray-900 text-sm mb-1" data-i18n="value3Title">Dezvoltare</h3>
-                  <p class="text-xs text-gray-500" data-i18n="value3Text">Activități pentru încredere și exprimare.</p>
-                </div>
-              </div>
-
-              <div class="mt-7 flex flex-wrap gap-3">
-                <button onclick="openTab('tab-portofoliu')" class="bg-gray-900 hover:bg-gray-800 text-white text-sm px-6 py-2.5 rounded-full font-medium transition">
-                  <span data-i18n="ctaPortfolio">Vezi Portofoliul</span>
+            </div>
+            
+            <div class="text-center mt-16 fade-up">
+                <button onclick="navigateTo('custom-orders')" class="border-b-2 border-darkBrown text-darkBrown pb-1 uppercase tracking-widest text-xs font-semibold hover:text-gold hover:border-gold transition-colors">
+                    Doresc o lucrare similară la comandă
                 </button>
-
-
-                <a href="tel:0700123456" class="bg-primary hover:bg-primaryLight text-white text-sm px-6 py-2.5 rounded-full font-medium transition">
-                  <span data-i18n="callNow">Sună acum</span>
-                </a>
-              </div>
-
             </div>
-          </div>
-        </div>
+        </section>
 
-      </div>
-    </div>
-
-    <!-- TAB: PORTOFOLIU -->
-    <div id="tab-portofoliu" class="tab-content bg-white min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="backBtn">Înapoi</span>
-          </button>
-        </div>
-
-        <div class="text-center mb-8">
-          <span class="text-primary font-semibold tracking-wider uppercase text-xs mb-2 block" data-i18n="portfolioBadge">Portofoliu pe categorii</span>
-          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-3" data-i18n="portfolioTitle">Portofoliu Artistic</h2>
-          <p class="text-gray-500 text-sm max-w-2xl mx-auto leading-relaxed" data-i18n="portfolioText">
-            Alege categoria dorită. Fiecare categorie se deschide separat, cu propriul buton de întoarcere.
-          </p>
-        </div>
-
-        <div id="portfolio-category-menu" class="bg-warmBg border border-gray-100 rounded-[1.75rem] p-4 sm:p-5 shadow-sm" data-aos="fade-up">
-          <p class="text-[10px] uppercase tracking-[0.22em] text-gray-400 font-semibold mb-4" data-i18n="portfolioChooseCategory">Alege categoria</p>
-
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <button type="button" onclick="openTab('tab-portfolio-pictura')" class="portfolio-category-btn bg-white border border-gray-100 rounded-2xl p-4 text-left shadow-sm hover:-translate-y-1 transition group">
-              <span class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-white transition">
-                <i class="fa-solid fa-palette text-sm"></i>
-              </span>
-              <h3 class="font-serif text-lg font-bold text-gray-900" data-i18n="catPaintingShort">Pictură</h3>
-              <p class="text-[11px] text-gray-500 mt-1 leading-relaxed" data-i18n="catPaintingDesc">Tablouri și comenzi.</p>
-              <p class="text-xs font-bold text-primary mt-3" data-i18n="pricePaintingSmallValue">de la 180 lei</p>
+        <!-- ================= CONTACT ================= -->
+        <section id="contact" class="tab-content max-w-4xl mx-auto px-6 py-12 w-full flex-1 flex flex-col justify-center">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-darkBrown hover:text-gold transition-colors mb-10 text-xs tracking-[0.2em] uppercase font-medium self-start fade-up">
+                <i class="fas fa-arrow-left"></i> Înapoi
             </button>
-
-            <button type="button" onclick="openTab('tab-portfolio-cursuri')" class="portfolio-category-btn bg-white border border-gray-100 rounded-2xl p-4 text-left shadow-sm hover:-translate-y-1 transition group">
-              <span class="w-9 h-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-3 group-hover:bg-secondary group-hover:text-white transition">
-                <i class="fa-solid fa-child-reaching text-sm"></i>
-              </span>
-              <h3 class="font-serif text-lg font-bold text-gray-900" data-i18n="catKidsShort">Cursuri copii</h3>
-              <p class="text-[11px] text-gray-500 mt-1 leading-relaxed" data-i18n="catKidsDesc">Desen și pictură.</p>
-              <p class="text-xs font-bold text-secondary mt-3" data-i18n="price80Session">80 lei/ședință</p>
-            </button>
-
-            <button type="button" onclick="openTab('tab-portfolio-tabere')" class="portfolio-category-btn bg-white border border-gray-100 rounded-2xl p-4 text-left shadow-sm hover:-translate-y-1 transition group">
-              <span class="w-9 h-9 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-3 group-hover:bg-accent group-hover:text-white transition">
-                <i class="fa-solid fa-campground text-sm"></i>
-              </span>
-              <h3 class="font-serif text-lg font-bold text-gray-900" data-i18n="catCampsShort">Tabere</h3>
-              <p class="text-[11px] text-gray-500 mt-1 leading-relaxed" data-i18n="catCampsDesc">Ateliere creative.</p>
-              <p class="text-xs font-bold text-accent mt-3" data-i18n="price180Child">180 lei/copil</p>
-            </button>
-
-            <button type="button" onclick="openTab('tab-portfolio-terapie')" class="portfolio-category-btn bg-white border border-gray-100 rounded-2xl p-4 text-left shadow-sm hover:-translate-y-1 transition group">
-              <span class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-white transition">
-                <i class="fa-solid fa-hands-holding-child text-sm"></i>
-              </span>
-              <h3 class="font-serif text-lg font-bold text-gray-900" data-i18n="catTherapyShort">Terapie prin artă</h3>
-              <p class="text-[11px] text-gray-500 mt-1 leading-relaxed" data-i18n="catTherapyDesc">Exprimare prin culoare.</p>
-              <p class="text-xs font-bold text-primary mt-3" data-i18n="price120Session">120 lei/ședință</p>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TAB: PORTOFOLIU - PICTURĂ -->
-    <div id="tab-portfolio-pictura" class="tab-content bg-white min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6 flex flex-wrap gap-3">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="categoryBack">Înapoi la Portofoliu</span>
-          </button>
-        </div>
-
-        <div class="mb-7">
-          <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagPainting">Pictură</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2" data-i18n="categoryPaintingTitle">Picturi & comenzi personalizate</h2>
-          <p class="text-sm text-gray-500 mt-3 max-w-2xl leading-relaxed" data-i18n="categoryPaintingText">Tablouri decorative, portrete stilizate și lucrări făcute la comandă.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <aside class="lg:col-span-4 bg-warmBg rounded-3xl p-5 border border-gray-100 h-fit">
-            <h3 class="font-serif text-xl font-bold text-gray-900 mb-4" data-i18n="pricesTitle">Prețuri orientative</h3>
-            <div class="space-y-2">
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="pricePaintingSmall">Tablou mic</span>
-                <strong data-i18n="pricePaintingSmallValue">de la 180 lei</strong>
-              </div>
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="pricePaintingMedium">Tablou mediu</span>
-                <strong data-i18n="pricePaintingMediumValue">de la 350 lei</strong>
-              </div>
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="pricePaintingCustom">Comandă personalizată</span>
-                <strong data-i18n="pricePaintingCustomValue">de la 500 lei</strong>
-              </div>
+            
+            <div class="bg-white p-8 md:p-16 rounded-2xl border border-beige shadow-premium text-center fade-up">
+                <h2 class="font-serif text-4xl md:text-5xl text-elegantBlack mb-6 uppercase tracking-widest">Contact</h2>
+                <div class="w-16 h-px bg-gold mx-auto mb-10"></div>
+                
+                <p class="text-lg font-light text-darkBrown leading-relaxed mb-12 max-w-2xl mx-auto">
+                    Pentru comenzi personalizate, tabere, ateliere sau ședințe de terapie prin artă, te invit să iei legătura direct cu artistul.
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-24 mb-16">
+                    <a href="mailto:Meli_klara2025@yahoo.com" class="group flex flex-col items-center gap-5 fade-up delay-100">
+                        <div class="w-20 h-20 rounded-full bg-muted flex items-center justify-center group-hover:bg-gold/10 group-hover:-translate-y-1 transition-all duration-300 text-gold text-3xl shadow-sm">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-[0.2em] text-darkBrown/60 mb-2 font-medium">Email</span>
+                            <span class="text-lg font-medium text-elegantBlack group-hover:text-gold transition-colors">Meli_klara2025@yahoo.com</span>
+                        </div>
+                    </a>
+                    
+                    <a href="tel:0765502791" class="group flex flex-col items-center gap-5 fade-up delay-200">
+                        <div class="w-20 h-20 rounded-full bg-muted flex items-center justify-center group-hover:bg-gold/10 group-hover:-translate-y-1 transition-all duration-300 text-gold text-3xl shadow-sm">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-[0.2em] text-darkBrown/60 mb-2 font-medium">Telefon</span>
+                            <span class="text-lg font-medium text-elegantBlack group-hover:text-gold transition-colors">0765.502.791</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Firm Details Box -->
+                <div class="border border-beige/60 bg-cream/50 rounded-xl p-8 max-w-md mx-auto text-sm text-darkBrown/80 font-light space-y-2 fade-up delay-300">
+                    <p class="font-semibold text-elegantBlack uppercase tracking-widest mb-4 text-xs">Datele companiei</p>
+                    <p class="font-medium text-elegantBlack">RM ELIART 2020 SRL</p>
+                    <p>CUI: <span class="font-medium">43192503</span></p>
+                    <p>Data înființării: 15.10.2020</p>
+                    <div class="w-10 h-px bg-beige mx-auto my-3"></div>
+                    <p>Sat Sâncraiu, Nr. 550</p>
+                    <p>Cod poștal: 527107</p>
+                    <p>Județ Covasna, România</p>
+                </div>
             </div>
-          </aside>
+        </section>
 
-          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tablou abstract" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem1Title">Tablou abstract</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem1Text">Lucrare decorativă pictată manual.</p>
-                <p class="text-sm font-bold text-primary mt-3" data-i18n="pricePaintingSmallValue">de la 180 lei</p>
-              </div>
-            </article>
+    </main>
 
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lucrare colorată" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem2Title">Lucrare colorată</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem2Text">Model pentru picturi, portrete sau decor.</p>
-                <p class="text-sm font-bold text-primary mt-3" data-i18n="pricePaintingMediumValue">de la 350 lei</p>
-              </div>
-            </article>
-
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group sm:col-span-2">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Comandă personalizată" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem5Title">Comandă personalizată</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem5Text">Pentru picturi făcute la cerere, cadouri sau decor personalizat.</p>
-                <p class="text-sm font-bold text-primary mt-3" data-i18n="pricePaintingCustomValue">de la 500 lei</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TAB: PORTOFOLIU - CURSURI COPII -->
-    <div id="tab-portfolio-cursuri" class="tab-content bg-white min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="categoryBack">Înapoi la Portofoliu</span>
-          </button>
-        </div>
-
-        <div class="mb-7">
-          <span class="text-[10px] uppercase tracking-[0.18em] text-secondary font-semibold" data-i18n="portfolioTagKids">Cursuri copii</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2" data-i18n="categoryKidsTitle">Cursuri de artă pentru copii</h2>
-          <p class="text-sm text-gray-500 mt-3 max-w-2xl leading-relaxed" data-i18n="categoryKidsText">Ateliere de desen și pictură pentru copii, cu accent pe creativitate, răbdare și încredere.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <aside class="lg:col-span-4 bg-warmBg rounded-3xl p-5 border border-gray-100 h-fit">
-            <h3 class="font-serif text-xl font-bold text-gray-900 mb-4" data-i18n="pricesTitle">Prețuri orientative</h3>
-            <div class="space-y-2">
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="kidsPrice1Label">Ședință individuală</span>
-                <strong data-i18n="price80Session">80 lei/ședință</strong>
-              </div>
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="kidsPrice2Label">Pachet 4 ședințe</span>
-                <strong data-i18n="price300Package">300 lei</strong>
-              </div>
+    <!-- Footer minimal -->
+    <footer class="border-t border-beige/50 bg-cream/90 backdrop-blur z-10 relative mt-auto py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="text-[11px] md:text-xs text-darkBrown/70 font-light space-y-1 tracking-wide">
+                <p class="font-medium text-elegantBlack uppercase tracking-widest mb-2">RM ELIART 2020 SRL</p>
+                <p>CUI: 43192503 &nbsp;|&nbsp; Înființată: 15.10.2020</p>
+                <p>Sat Sâncraiu nr. 550, Cod 527107, Jud. Covasna</p>
             </div>
-          </aside>
-
-          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1599423300746-b62533397364?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier pentru copii" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem3Title">Atelier pentru copii</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem3Text">Activități de desen și culoare.</p>
-                <p class="text-sm font-bold text-secondary mt-3" data-i18n="price80Session">80 lei/ședință</p>
-              </div>
-            </article>
-
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Curs de pictură" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem7Title">Curs de pictură</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem7Text">Cursuri pentru începători și copii creativi.</p>
-                <p class="text-sm font-bold text-secondary mt-3" data-i18n="price300Package">300 lei / 4 ședințe</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TAB: PORTOFOLIU - TABERE -->
-    <div id="tab-portfolio-tabere" class="tab-content bg-white min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="categoryBack">Înapoi la Portofoliu</span>
-          </button>
-        </div>
-
-        <div class="mb-7">
-          <span class="text-[10px] uppercase tracking-[0.18em] text-accent font-semibold" data-i18n="portfolioTagCamp">Tabere</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2" data-i18n="categoryCampsTitle">Tabere de artă</h2>
-          <p class="text-sm text-gray-500 mt-3 max-w-2xl leading-relaxed" data-i18n="categoryCampsText">Activități de grup, pictură, joacă și explorare creativă în cadrul taberelor.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <aside class="lg:col-span-4 bg-warmBg rounded-3xl p-5 border border-gray-100 h-fit">
-            <h3 class="font-serif text-xl font-bold text-gray-900 mb-4" data-i18n="pricesTitle">Prețuri orientative</h3>
-            <div class="space-y-2">
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="campPrice1Label">Atelier în tabără</span>
-                <strong data-i18n="price180Child">180 lei/copil</strong>
-              </div>
-              <div class="flex justify-between gap-3 text-sm bg-white rounded-2xl px-4 py-3 border border-gray-100">
-                <span data-i18n="campPrice2Label">Pachet creativ</span>
-                <strong data-i18n="priceFrom450">de la 450 lei</strong>
-              </div>
+            <div class="text-[10px] md:text-xs tracking-widest uppercase font-light text-darkBrown/70">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> ELIART_2020.</p>
+                <p class="mt-1">Toate drepturile rezervate.</p>
             </div>
-          </aside>
-
-          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1456086272160-b22364c9ca36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tabără creativă" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem4Title">Tabără creativă</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem4Text">Activități de grup și pictură.</p>
-                <p class="text-sm font-bold text-accent mt-3" data-i18n="priceFrom450">de la 450 lei</p>
-              </div>
-            </article>
-
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Atelier în natură" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem8Title">Atelier în natură</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem8Text">Activități în aer liber și lucru în grup.</p>
-                <p class="text-sm font-bold text-accent mt-3" data-i18n="price180Child">180 lei/copil</p>
-              </div>
-            </article>
-          </div>
         </div>
+    </footer>
 
-      </div>
-    </div>
+    <!-- Logic / JavaScript -->
+    <script>
+        let historyStack = ['home'];
+        let intersectionObserver;
 
-    <!-- TAB: PORTOFOLIU - TERAPIE -->
-    <div id="tab-portfolio-terapie" class="tab-content bg-white min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        function initApp() {
+            // Setup loading screen
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.classList.add('hidden-loader');
+                setTimeout(() => { loader.style.display = 'none'; }, 800);
+            }, 1200);
 
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="categoryBack">Înapoi la Portofoliu</span>
-          </button>
-        </div>
+            // Initialize animations observer
+            setupAnimations();
 
-        <div class="mb-7">
-          <span class="text-[10px] uppercase tracking-[0.18em] text-primary font-semibold" data-i18n="portfolioTagTherapy">Terapie prin artă</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mt-2" data-i18n="categoryTherapyTitle">Terapie prin artă</h2>
-          <p class="text-sm text-gray-500 mt-3 max-w-2xl leading-relaxed" data-i18n="categoryTherapyText">Activități prin desen și culoare, cu accent pe exprimare, comunicare și lucru atent cu fiecare persoană.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <aside class="lg:col-span-4 bg-warmBg rounded-3xl p-5 border border-gray-100 h-fit">
-            <h3 class="font-serif text-xl font-bold text-gray-900 mb-4" data-i18n="pricesTitle">Prețuri orientative</h3>
-            <ul class="space-y-2 text-sm text-gray-700">
-              <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="therapyBullet1">Ședință individuală</span> — <strong data-i18n="therapyPrice1">120 lei</strong></li>
-              <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="therapyBullet2">Sesiune de grup</span> — <strong data-i18n="therapyPrice2">70 lei/pers.</strong></li>
-              <li class="bg-white rounded-2xl px-4 py-3 border border-gray-100">• <span data-i18n="therapyBullet3">Pachet 4 ședințe</span> — <strong data-i18n="therapyPrice3">420 lei</strong></li>
-            </ul>
-          </aside>
-
-          <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Activitate creativă" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem6Title">Activitate creativă</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem6Text">Exprimare prin culoare și desen.</p>
-                <p class="text-sm font-bold text-primary mt-3" data-i18n="price120Session">120 lei/ședință</p>
-              </div>
-            </article>
-
-            <article class="rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-sm group">
-              <div class="h-40 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Exprimare prin artă" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              </div>
-              <div class="p-4">
-                <h4 class="font-serif text-lg font-bold text-gray-900" data-i18n="portfolioItem9Title">Exprimare prin artă</h4>
-                <p class="text-xs text-gray-500 mt-1" data-i18n="portfolioItem9Text">Comunicare și lucru cu emoțiile.</p>
-                <p class="text-sm font-bold text-primary mt-3" data-i18n="price420Package">420 lei / 4 ședințe</p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TAB: TERMENI -->
-    <div id="tab-termeni" class="tab-content bg-warmBg min-h-[70vh] py-10 sm:py-12">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-6">
-          <button type="button" onclick="goBackTab()" class="back-tab-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            <span data-i18n="backBtn">Înapoi</span>
-          </button>
-        </div>
-
-        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100">
-          <h2 class="text-2xl font-serif font-bold text-gray-900 mb-6 border-b pb-4" data-i18n="termsTitle">Termeni și Condiții</h2>
-
-          <div class="space-y-6 text-gray-600 text-sm leading-relaxed">
-            <section>
-              <h3 class="font-bold text-gray-800 text-base mb-2" data-i18n="termsIntroTitle">Operator site</h3>
-              <p data-i18n="termsIntroText">Acest site prezintă activitățile creative și educaționale asociate firmei RM ELIART 2020 SRL, CUI 43192503, J14/351/2020.</p>
-            </section>
-
-            <section>
-              <h3 class="font-bold text-gray-800 text-base mb-2" data-i18n="terms1Title">1. Confidențialitate</h3>
-              <p data-i18n="terms1Text">Toate informațiile și detaliile personale discutate în cadrul ședințelor sau activităților creative sunt tratate cu respect și confidențialitate.</p>
-            </section>
-
-            <section>
-              <h3 class="font-bold text-gray-800 text-base mb-2" data-i18n="terms2Title">2. Programări și Anulări</h3>
-              <p data-i18n="terms2Text">Programările pentru ședințe, cursuri sau tabere se fac în prealabil. Orice anulare sau reprogramare trebuie anunțată din timp.</p>
-            </section>
-
-            <section>
-              <h3 class="font-bold text-gray-800 text-base mb-2" data-i18n="terms3Title">3. Drepturi de Autor</h3>
-              <p data-i18n="terms3Text">Textele, imaginile și lucrările artistice prezentate pe site nu pot fi copiate, reproduse sau folosite comercial fără acordul proprietarului.</p>
-            </section>
-
-            <section>
-              <h3 class="font-bold text-gray-800 text-base mb-2" data-i18n="terms4Title">4. Despre acest site</h3>
-              <p data-i18n="terms4Text">Acest site web are rol de prezentare. Informațiile prezentate au caracter informativ și pot fi actualizate la cererea proprietarului.</p>
-            </section>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-7 text-center text-xs border-t border-white/5 mt-auto px-4">
-    <div class="max-w-5xl mx-auto">
-      <p class="text-gray-300 font-semibold">RM ELIART 2020 SRL</p>
-      <p class="mt-1" data-i18n="footerCompany">CUI 43192503 • J14/351/2020</p>
-      <p class="mt-1" data-i18n="footerAddress">Sediu social: Sâncraiu nr. 550, sat Sâncraiu, com. Ilieni, jud. Covasna</p>
-      <p class="mt-2" data-i18n="footerText">© 2026 Elena Art - Terapie și Creație. Toate drepturile rezervate.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script>
-    AOS.init({
-      once: true,
-      offset: 30,
-      duration: 700
-    });
-
-    const translations = {
-      ro: {
-        loadingText: "Pregătim culorile...",
-        brandSubtitle: "RM ELIART 2020 SRL",
-        navHome: "Acasă",
-        navAbout: "Despre mine",
-        navPortfolio: "Portofoliu",
-        navTerms: "Termeni și Condiții",
-        navCompany: "Date firmă",
-        callShort: "Sună",
-        callNow: "Sună acum",
-        whatsappNow: "Scrie pe WhatsApp",
-        menuLabel: "Meniu",
-        languageLabel: "Limbă",
-        menuFooter: "Răspund cât de repede pot.",
-        heroBadge: "RM ELIART 2020 SRL • Artă, cursuri și tabere creative",
-        heroTitle: "Arta ca limbaj al <span class='text-gradient'>sufletului</span>",
-        heroText: "Elena este <strong class='text-primary font-medium'>terapeut de artă la un centru pentru persoane cu dizabilități</strong>, profesoară de artă pentru copii, organizatoare de tabere creative și pictoriță. Activitățile sunt prezentate profesional sub firma <strong class='text-primary font-medium'>RM ELIART 2020 SRL</strong>.",
-        statCompany: "Firmă",
-        statRole: "Roluri",
-        statRoleValue: "Terapeut & artist",
-        statActivity: "Activitate",
-        statActivityValue: "Cursuri & picturi",
-        ctaPortfolio: "Vezi Portofoliul",
-        ctaAbout: "Despre mine",
-        ctaCompany: "Vezi datele firmei",
-        servicesBadge: "Activități",
-        servicesTitle: "Ce oferă Elena Art",
-        servicesText: "Un site profesional trebuie să arate clar experiența, serviciile și direcțiile de lucru. Secțiunea de mai jos poate fi adaptată cu program, poze reale și prețuri.",
-        serviceTherapyTitle: "Terapie prin artă",
-        serviceTherapyText: "Activitate cu persoane cu dizabilități, folosind culoarea și desenul ca formă de exprimare și comunicare.",
-        serviceKidsTitle: "Cursuri pentru copii",
-        serviceKidsText: "Lecții de artă pentru copii, cu accent pe încredere, răbdare, joacă și dezvoltarea creativității.",
-        serviceCampTitle: "Tabere de artă",
-        serviceCampText: "Ateliere și tabere creative, unde copiii pot experimenta pictura, culoarea și lucrul în grup.",
-        servicePainterTitle: "Picturi personalizate",
-        servicePainterText: "Lucrări pictate manual, potrivite pentru cadouri, decor sau comenzi personalizate.",
-        contactSmallLabel: "Programări telefonice",
-        contactTitle: "Contactează RM ELIART 2020 SRL",
-        contactText: "Pentru ședințe, cursuri, tabere creative sau lucrări personalizate, programările se fac telefonic.",
-        locationLabel: "Sediu social",
-        locationText: "Sâncraiu nr. 550, com. Ilieni, jud. Covasna",
-        openMaps: "Google Maps",
-        openWaze: "Waze",
-        backBtn: "Înapoi",
-        aboutBadge: "Despre Elena",
-        aboutPageTitle: "Terapeut de artă, profesoară și pictoriță",
-        aboutPara1: "Elena lucrează ca terapeut de artă la un centru pentru persoane cu dizabilități, unde folosește desenul, pictura și culoarea ca instrumente de exprimare, răbdare și comunicare.",
-        aboutPara2: "În paralel, susține cursuri de artă pentru copii, organizează tabere creative și creează lucrări pictate manual, potrivite pentru cadouri, decor sau comenzi personalizate.",
-        aboutPara3: "Site-ul prezintă activitatea artistică și educațională sub RM ELIART 2020 SRL, într-un format profesionist, clar și ușor de actualizat cu poze reale, prețuri și program.",
-        value1Title: "Empatie",
-        value1Text: "Lucru atent cu fiecare persoană.",
-        value2Title: "Creativitate",
-        value2Text: "Culoarea devine o formă de comunicare.",
-        value3Title: "Dezvoltare",
-        value3Text: "Activități pentru încredere și exprimare.",
-        portfolioBadge: "Portofoliu organizat",
-        portfolioTitle: "Portofoliu Artistic",
-        portfolioText: "Alege categoria dorită. Fiecare categorie se deschide separat, cu propriul buton de întoarcere.",
-        portfolioEmptyTitle: "Alege o categorie",
-        portfolioEmptyText: "Conținutul portofoliului apare doar după ce vizitatorul selectează Pictură, Cursuri copii, Tabere sau Terapie prin artă.",
-        categoryBack: "Înapoi la categorii",
-        catPaintingDesc: "Tablouri, lucrări decorative și comenzi personalizate.",
-        catKidsDesc: "Ateliere de desen și pictură pentru copii.",
-        catCampsDesc: "Experiențe creative, activități de grup și pictură.",
-        catTherapyDesc: "Activități expresive prin desen, culoare și comunicare.",
-        portfolioTagPainting: "Pictură",
-        portfolioTagKids: "Cursuri copii",
-        portfolioTagCamp: "Tabere",
-        portfolioTagCustom: "Personalizat",
-        portfolioTagTherapy: "Terapie prin artă",
-        portfolioItem1Title: "Tablou abstract",
-        portfolioItem1Text: "Lucrare decorativă pictată manual.",
-        portfolioItem2Title: "Lucrare colorată",
-        portfolioItem2Text: "Model pentru picturi decorative.",
-        portfolioItem3Title: "Atelier pentru copii",
-        portfolioItem3Text: "Activități de desen și pictură.",
-        portfolioItem4Title: "Tabără creativă",
-        portfolioItem4Text: "Activități de grup și pictură.",
-        portfolioItem5Title: "Comandă personalizată",
-        portfolioItem5Text: "Cadouri sau decor personalizat.",
-        portfolioItem6Title: "Activitate creativă",
-        portfolioItem6Text: "Exprimare prin culoare și desen.",
-        categoryPaintingTitle: "Picturi & comenzi personalizate",
-        categoryPaintingText: "Tablouri decorative, portrete stilizate și lucrări făcute la comandă.",
-        categoryKidsTitle: "Cursuri de artă pentru copii",
-        categoryKidsText: "Ateliere creative pentru exprimare liberă, răbdare și încredere.",
-        categoryCampsTitle: "Tabere de artă",
-        categoryCampsText: "Activități creative de grup, potrivite pentru experiențe educative, joacă și explorare prin culoare.",
-        categoryTherapyTitle: "Terapie prin artă",
-        categoryTherapyText: "Activități prin desen și culoare, cu accent pe exprimare, comunicare și lucru atent cu fiecare persoană.",
-        portfolioItem7Title: "Lecție de desen",
-        portfolioItem7Text: "Card pentru programe săptămânale, grupe de copii sau ateliere tematice.",
-        portfolioItem8Title: "Atelier în natură",
-        portfolioItem8Text: "Loc pentru poze din tabere, activități în aer liber sau sesiuni de grup.",
-        portfolioItem9Title: "Exprimare prin artă",
-        portfolioItem9Text: "Card pentru activități de exprimare, comunicare și lucru cu emoțiile prin artă.",
-        portfolioPriceRequest: "Preț la cerere",
-        askPrice: "Întreabă prețul",
-        portfolioChooseCategory: "Alege categoria",
-        categoryBack: "Înapoi la Portofoliu",
-        pricesTitle: "Prețuri orientative",
-        catPaintingShort: "Pictură",
-        catKidsShort: "Cursuri copii",
-        catCampsShort: "Tabere",
-        catTherapyShort: "Terapie prin artă",
-        pricePaintingSmall: "Tablou mic",
-        pricePaintingSmallValue: "de la 180 lei",
-        pricePaintingMedium: "Tablou mediu",
-        pricePaintingMediumValue: "de la 350 lei",
-        pricePaintingCustom: "Comandă personalizată",
-        pricePaintingCustomValue: "de la 500 lei",
-        kidsBullet1: "Ședință individuală",
-        kidsPrice1: "80 lei",
-        kidsBullet2: "Atelier de grup",
-        kidsPrice2: "60 lei/copil",
-        kidsBullet3: "Abonament 4 ședințe",
-        kidsPrice3: "250 lei",
-        campBullet1: "Zi creativă",
-        campPrice1: "180 lei/copil",
-        campBullet2: "Weekend creativ",
-        campPrice2: "de la 450 lei",
-        campBullet3: "Program complet",
-        therapyBullet1: "Ședință individuală",
-        therapyPrice1: "120 lei",
-        therapyBullet2: "Sesiune de grup",
-        therapyPrice2: "70 lei/pers.",
-        therapyBullet3: "Pachet 4 ședințe",
-        therapyPrice3: "420 lei",
-        price250: "250 lei",
-        price350: "350 lei",
-        priceFrom500: "de la 500 lei",
-        price60Child: "60 lei/copil",
-        price80Session: "80 lei/ședință",
-        priceFrom450: "de la 450 lei",
-        price180Child: "180 lei/copil",
-        price120Session: "120 lei/ședință",
-        price420Package: "420 lei / 4 ședințe",
-        companyBadge: "Date de identificare",
-        companyIntro: "Informații utile pentru identificarea firmei și pentru transparență profesională.",
-        companyNameLabel: "Denumire",
-        regComLabel: "Nr. Registrul Comerțului",
-        companyAddressLabel: "Sediu social",
-        companyAddress: "Sâncraiu nr. 550, cod poștal 527107, sat Sâncraiu, com. Ilieni, jud. Covasna",
-        companyNote: "Notă: datele de identificare trebuie verificate de proprietarul firmei înainte de publicarea finală a site-ului.",
-        termsTitle: "Termeni și Condiții",
-        termsIntroTitle: "Operator site",
-        termsIntroText: "Acest site prezintă activitățile creative și educaționale asociate firmei RM ELIART 2020 SRL, CUI 43192503, J14/351/2020.",
-        terms1Title: "1. Confidențialitate",
-        terms1Text: "Toate informațiile și detaliile personale discutate în cadrul ședințelor sau activităților creative sunt tratate cu respect și confidențialitate.",
-        terms2Title: "2. Programări și Anulări",
-        terms2Text: "Programările pentru ședințe, cursuri sau tabere se fac în prealabil. Orice anulare sau reprogramare trebuie anunțată din timp.",
-        terms3Title: "3. Drepturi de Autor",
-        terms3Text: "Textele, imaginile și lucrările artistice prezentate pe site nu pot fi copiate, reproduse sau folosite comercial fără acordul proprietarului.",
-        terms4Title: "4. Despre acest site",
-        terms4Text: "Acest site web are rol de prezentare. Informațiile prezentate au caracter informativ și pot fi actualizate la cererea proprietarului.",
-        footerCompany: "CUI 43192503 • J14/351/2020",
-        footerAddress: "Sediu social: Sâncraiu nr. 550, sat Sâncraiu, com. Ilieni, jud. Covasna",
-        footerText: "© 2026 Elena Art - Terapie și Creație. Toate drepturile rezervate."
-      },
-
-      en: {
-        loadingText: "Preparing the colors...",
-        brandSubtitle: "RM ELIART 2020 SRL",
-        navHome: "Home",
-        navAbout: "About me",
-        navPortfolio: "Portfolio",
-        navTerms: "Terms & Conditions",
-        navCompany: "Company details",
-        callShort: "Call",
-        callNow: "Call now",
-        whatsappNow: "Message on WhatsApp",
-        menuLabel: "Menu",
-        languageLabel: "Language",
-        menuFooter: "I reply as soon as possible.",
-        heroBadge: "RM ELIART 2020 SRL • Art, classes and creative camps",
-        heroTitle: "Art as the language of the <span class='text-gradient'>soul</span>",
-        heroText: "Elena is an <strong class='text-primary font-medium'>art therapist at a center for people with disabilities</strong>, an art teacher for children, an organizer of creative camps and a painter. The activities are professionally presented under <strong class='text-primary font-medium'>RM ELIART 2020 SRL</strong>.",
-        statCompany: "Company",
-        statRole: "Roles",
-        statRoleValue: "Therapist & artist",
-        statActivity: "Activity",
-        statActivityValue: "Classes & paintings",
-        ctaPortfolio: "View Portfolio",
-        ctaAbout: "About me",
-        ctaCompany: "View company details",
-        servicesBadge: "Activities",
-        servicesTitle: "What Elena Art offers",
-        servicesText: "A professional website should clearly present experience, services and work directions. This section can be adapted with real photos, prices and schedule.",
-        serviceTherapyTitle: "Art therapy",
-        serviceTherapyText: "Work with people with disabilities, using color and drawing as a form of expression and communication.",
-        serviceKidsTitle: "Art classes for children",
-        serviceKidsText: "Art lessons for children, focused on confidence, patience, play and creativity.",
-        serviceCampTitle: "Art camps",
-        serviceCampText: "Creative workshops and camps where children can experience painting, color and group activities.",
-        servicePainterTitle: "Custom paintings",
-        servicePainterText: "Hand-painted artworks suitable for gifts, decor or personalized orders.",
-        contactSmallLabel: "Phone appointments",
-        contactTitle: "Contact RM ELIART 2020 SRL",
-        contactText: "For sessions, classes, creative camps or custom artworks, appointments are made by phone.",
-        locationLabel: "Registered office",
-        locationText: "Sâncraiu no. 550, Ilieni commune, Covasna county",
-        openMaps: "Google Maps",
-        openWaze: "Waze",
-        backBtn: "Back",
-        aboutBadge: "About Elena",
-        aboutPageTitle: "Art therapist, teacher and painter",
-        aboutPara1: "Elena works as an art therapist at a center for people with disabilities, using drawing, painting and color as tools for expression, patience and communication.",
-        aboutPara2: "She also teaches art classes for children, organizes creative camps and creates hand-painted artworks suitable for gifts, decor or personalized orders.",
-        aboutPara3: "The website presents her artistic and educational activity under RM ELIART 2020 SRL in a professional, clear format that can be easily updated with real photos, prices and schedule.",
-        value1Title: "Empathy",
-        value1Text: "Attentive work with each person.",
-        value2Title: "Creativity",
-        value2Text: "Color becomes a form of communication.",
-        value3Title: "Development",
-        value3Text: "Activities for confidence and expression.",
-        portfolioBadge: "Organized portfolio",
-        portfolioTitle: "Art Portfolio",
-        portfolioText: "The categories are clearly separated so visitors can quickly find paintings, children’s classes, camps or art therapy activities.",
-        portfolioTagPainting: "Painting",
-        portfolioTagKids: "Kids classes",
-        portfolioTagCamp: "Camps",
-        portfolioTagCustom: "Custom",
-        portfolioTagTherapy: "Art therapy",
-        portfolioItem1Title: "Abstract painting",
-        portfolioItem1Text: "Hand-painted decorative artwork.",
-        portfolioItem2Title: "Colorful artwork",
-        portfolioItem2Text: "Model for decorative paintings.",
-        portfolioItem3Title: "Children’s workshop",
-        portfolioItem3Text: "Drawing and painting activities.",
-        portfolioItem4Title: "Creative camp",
-        portfolioItem4Text: "Group activities and painting.",
-        portfolioItem5Title: "Custom order",
-        portfolioItem5Text: "Gifts or personalized decor.",
-        portfolioItem6Title: "Creative activity",
-        portfolioItem6Text: "Expression through color and drawing.",
-        categoryPaintingTitle: "Paintings & custom orders",
-        categoryPaintingText: "Hand-painted artworks, decorative paintings and custom-made orders.",
-        categoryKidsTitle: "Art classes for children",
-        categoryKidsText: "Creative workshops for free expression, patience and confidence.",
-        categoryCampsTitle: "Art camps",
-        categoryCampsText: "Creative group activities suitable for educational experiences, play and exploration through color.",
-        categoryTherapyTitle: "Art therapy",
-        categoryTherapyText: "Drawing and color activities focused on expression, communication and attentive work with each person.",
-        portfolioItem7Title: "Drawing lesson",
-        portfolioItem7Text: "Card for weekly programs, children’s groups or themed workshops.",
-        portfolioItem8Title: "Outdoor workshop",
-        portfolioItem8Text: "Space for photos from camps, outdoor activities or group sessions.",
-        portfolioItem9Title: "Expression through art",
-        portfolioItem9Text: "Card for expression, communication and emotion-focused activities through art.",
-        portfolioPriceRequest: "Price on request",
-        askPrice: "Ask price",
-        portfolioChooseCategory: "Choose category",
-        categoryBack: "Back to Portfolio",
-        pricesTitle: "Estimated prices",
-        catPaintingShort: "Painting",
-        catKidsShort: "Kids classes",
-        catCampsShort: "Camps",
-        catTherapyShort: "Art therapy",
-        categoryPaintingTitle: "Paintings & custom orders",
-        categoryPaintingText: "Decorative paintings, stylized portraits and custom works.",
-        categoryKidsTitle: "Art classes for children",
-        categoryKidsText: "Creative workshops for free expression, patience and confidence.",
-        categoryCampsTitle: "Art camps",
-        categoryCampsText: "Creative group experiences with workshops, painting and educational activities.",
-        categoryTherapyTitle: "Art therapy",
-        categoryTherapyText: "Activities through drawing and color, focused on expression, communication and attentive work with each person.",
-        pricePaintingSmall: "Small painting",
-        pricePaintingSmallValue: "from 180 lei",
-        pricePaintingMedium: "Medium painting",
-        pricePaintingMediumValue: "from 350 lei",
-        pricePaintingCustom: "Custom order",
-        pricePaintingCustomValue: "from 500 lei",
-        kidsBullet1: "Individual session",
-        kidsPrice1: "80 lei",
-        kidsBullet2: "Group workshop",
-        kidsPrice2: "60 lei/child",
-        kidsBullet3: "4-session package",
-        kidsPrice3: "250 lei",
-        campBullet1: "Creative day",
-        campPrice1: "180 lei/child",
-        campBullet2: "Creative weekend",
-        campPrice2: "from 450 lei",
-        campBullet3: "Full program",
-        therapyBullet1: "Individual session",
-        therapyPrice1: "120 lei",
-        therapyBullet2: "Group session",
-        therapyPrice2: "70 lei/person",
-        therapyBullet3: "4-session package",
-        therapyPrice3: "420 lei",
-        price250: "250 lei",
-        price350: "350 lei",
-        priceFrom500: "from 500 lei",
-        price60Child: "60 lei/child",
-        price80Session: "80 lei/session",
-        priceFrom450: "from 450 lei",
-        price180Child: "180 lei/child",
-        price120Session: "120 lei/session",
-        price420Package: "420 lei / 4 sessions",
-        companyBadge: "Identification details",
-        companyIntro: "Useful information for company identification and professional transparency.",
-        companyNameLabel: "Company name",
-        regComLabel: "Trade Registry No.",
-        companyAddressLabel: "Registered office",
-        companyAddress: "Sâncraiu no. 550, postal code 527107, Sâncraiu village, Ilieni commune, Covasna county",
-        companyNote: "Note: identification details should be verified by the company owner before final publication.",
-        termsTitle: "Terms & Conditions",
-        termsIntroTitle: "Website operator",
-        termsIntroText: "This website presents creative and educational activities associated with RM ELIART 2020 SRL, CUI 43192503, J14/351/2020.",
-        terms1Title: "1. Confidentiality",
-        terms1Text: "All personal information and details discussed during sessions or creative activities are treated with respect and confidentiality.",
-        terms2Title: "2. Appointments and Cancellations",
-        terms2Text: "Appointments for sessions, classes or camps are made in advance. Any cancellation or rescheduling should be announced in time.",
-        terms3Title: "3. Copyright",
-        terms3Text: "The texts, images and artworks presented on this website may not be copied, reproduced or used commercially without the owner’s consent.",
-        terms4Title: "4. About this website",
-        terms4Text: "This website is designed for presentation purposes. The information shown here is informative and may be updated at the owner’s request.",
-        footerCompany: "CUI 43192503 • J14/351/2020",
-        footerAddress: "Registered office: Sâncraiu no. 550, Sâncraiu village, Ilieni commune, Covasna county",
-        footerText: "© 2026 Elena Art - Therapy and Creation. All rights reserved."
-      }
-    };
-
-    const loadingStartedAt = Date.now();
-
-    const openBtn = document.getElementById('open-menu-btn');
-    const closeBtn = document.getElementById('close-menu-btn');
-    const sidebar = document.getElementById('mobile-sidebar');
-    const overlay = document.getElementById('mobile-menu-overlay');
-    const loadingScreen = document.getElementById('loading-screen');
-
-    let menuIsOpen = false;
-    let activeTabId = 'tab-home';
-    let tabHistory = [];
-    let currentLanguage = 'ro';
-
-    function safeLocalStorageGet(key) {
-      try {
-        return localStorage.getItem(key);
-      } catch (error) {
-        return null;
-      }
-    }
-
-    function safeLocalStorageSet(key, value) {
-      try {
-        localStorage.setItem(key, value);
-      } catch (error) {}
-    }
-
-    function refreshAnimations() {
-      setTimeout(() => {
-        if (window.AOS) {
-          AOS.refresh();
+            // Initialize first view
+            navigateTo('home', true);
         }
-      }, 250);
-    }
 
-    function updateActiveLinks() {
-      document.querySelectorAll('[data-tab-target]').forEach(link => {
-        if (link.getAttribute('data-tab-target') === activeTabId) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
+        // --- Animations Logic ---
+        function setupAnimations() {
+            const options = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px', // trigger slightly before it enters viewport
+                threshold: 0.1
+            };
+
+            intersectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, options);
         }
-      });
-    }
 
-    function updateLanguageButtons() {
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang') === currentLanguage) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
+        function resetAnimationsForTab(tabId) {
+            const tab = document.getElementById(tabId);
+            if (!tab) return;
+            
+            // Re-trigger animations for the new active tab
+            const elements = tab.querySelectorAll('.fade-up');
+            elements.forEach(el => {
+                el.classList.remove('is-visible'); // reset
+                intersectionObserver.observe(el); // start observing again
+            });
+            
+            // Force check visibility immediately for items at the top
+            setTimeout(() => {
+                elements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('is-visible');
+                    }
+                });
+            }, 100);
         }
-      });
-    }
+        // -----------------------
 
-    function setLanguage(lang) {
-      if (!translations[lang]) return;
+        function navigateTo(tabId, skipHistory = false) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                setTimeout(() => {
+                    if(!tab.classList.contains('active')) tab.classList.add('hidden');
+                }, 400); // match transition duration
+            });
 
-      currentLanguage = lang;
-      document.documentElement.lang = lang;
+            // Update navigation UI colors
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                link.classList.remove('font-medium', 'text-gold');
+            });
+            
+            const activeLinks = Array.from(document.querySelectorAll('.nav-link')).filter(el => {
+                return el.getAttribute('onclick') && el.getAttribute('onclick').includes(`'${tabId}'`);
+            });
+            activeLinks.forEach(link => {
+                link.classList.add('active-nav');
+                if(tabId === 'shop') link.classList.add('font-medium', 'text-gold');
+            });
 
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          el.textContent = translations[lang][key];
+            // Show target tab
+            const target = document.getElementById(tabId);
+            if (target) {
+                target.classList.remove('hidden');
+                setTimeout(() => {
+                    target.classList.add('active');
+                    resetAnimationsForTab(tabId); // Trigger fade-ups
+                }, 50);
+            }
+
+            // Handle history stack for back button
+            if (!skipHistory && historyStack[historyStack.length - 1] !== tabId) {
+                historyStack.push(tabId);
+            }
+
+            // Scroll top & close mobile menu smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            closeMobileMenu();
         }
-      });
 
-      document.querySelectorAll('[data-i18n-html]').forEach(el => {
-        const key = el.getAttribute('data-i18n-html');
-        if (translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
+        function goBack() {
+            if (historyStack.length > 1) {
+                historyStack.pop(); // remove current
+                const prevTab = historyStack[historyStack.length - 1];
+                navigateTo(prevTab, true);
+            } else {
+                navigateTo('home', true);
+            }
         }
-      });
 
-      safeLocalStorageSet('elena_art_language', lang);
-      updateLanguageButtons();
-      refreshAnimations();
-    }
+        // Mobile Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
 
+        function toggleMobileMenu() {
+            if (mobileMenu.classList.contains('translate-x-full')) {
+                openMobileMenu();
+            } else {
+                closeMobileMenu();
+            }
+        }
 
-    function resetPortfolioView() {
-      document.querySelectorAll('.portfolio-category-panel').forEach(panel => {
-        panel.classList.remove('is-visible');
-      });
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // block body scroll
+        }
 
-      document.querySelectorAll('[data-portfolio-target]').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      const emptyState = document.getElementById('portfolio-empty-state');
-      if (emptyState) {
-        emptyState.style.display = 'block';
-      }
-
-      const menu = document.getElementById('portfolio-category-menu');
-      if (menu && activeTabId === 'tab-portofoliu') {
-        setTimeout(() => {
-          menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 40);
-      }
-    }
-
-    function openPortfolioCategory(panelId) {
-      const targetPanel = document.getElementById(panelId);
-      if (!targetPanel) return;
-
-      document.querySelectorAll('.portfolio-category-panel').forEach(panel => {
-        panel.classList.remove('is-visible');
-      });
-
-      document.querySelectorAll('[data-portfolio-target]').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-portfolio-target') === panelId);
-      });
-
-      const emptyState = document.getElementById('portfolio-empty-state');
-      if (emptyState) {
-        emptyState.style.display = 'none';
-      }
-
-      targetPanel.classList.add('is-visible');
-
-      setTimeout(() => {
-        targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        refreshAnimations();
-      }, 60);
-    }
-
-    function showTab(tabId) {
-      const target = document.getElementById(tabId);
-      if (!target) return;
-
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-        tab.style.display = 'none';
-      });
-
-      target.style.display = 'block';
-
-      requestAnimationFrame(() => {
-        target.classList.add('active');
-      });
-
-      activeTabId = tabId;
-      updateActiveLinks();
-
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-
-      refreshAnimations();
-    }
-
-    function openTab(tabId) {
-      if (tabId === activeTabId) {
-        closeMenu();
-        return;
-      }
-
-      if (activeTabId) {
-        tabHistory.push(activeTabId);
-      }
-
-      showTab(tabId);
-      closeMenu();
-    }
-
-    function goBackTab() {
-      const previousTab = tabHistory.pop();
-
-      if (previousTab && document.getElementById(previousTab)) {
-        showTab(previousTab);
-      } else {
-        showTab('tab-home');
-      }
-
-      closeMenu();
-    }
-
-    function openMenu() {
-      menuIsOpen = true;
-
-      overlay.classList.add('is-visible');
-      sidebar.classList.add('is-open');
-      sidebar.setAttribute('aria-hidden', 'false');
-
-      document.body.classList.add('menu-open');
-
-      openBtn.setAttribute('aria-expanded', 'true');
-      openBtn.classList.add('is-hidden');
-    }
-
-    function closeMenu() {
-      menuIsOpen = false;
-
-      overlay.classList.remove('is-visible');
-      sidebar.classList.remove('is-open');
-      sidebar.setAttribute('aria-hidden', 'true');
-
-      document.body.classList.remove('menu-open');
-
-      openBtn.setAttribute('aria-expanded', 'false');
-      openBtn.classList.remove('is-hidden');
-    }
-
-    let lastMenuToggleAt = 0;
-
-    function toggleMenuFromUserEvent(event) {
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      const now = Date.now();
-      if (now - lastMenuToggleAt < 180) return;
-      lastMenuToggleAt = now;
-
-      if (menuIsOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    }
-
-    if (window.PointerEvent) {
-      openBtn.addEventListener('pointerup', toggleMenuFromUserEvent, { passive: false });
-    } else {
-      openBtn.addEventListener('touchend', toggleMenuFromUserEvent, { passive: false });
-    }
-
-    openBtn.addEventListener('click', (event) => {
-      if (Date.now() - lastMenuToggleAt < 450) {
-        event.preventDefault();
-        event.stopPropagation();
-        return;
-      }
-
-      toggleMenuFromUserEvent(event);
-    });
-
-    closeBtn.addEventListener('pointerup', (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      closeMenu();
-    }, { passive: false });
-
-    overlay.addEventListener('pointerup', (event) => {
-      event.preventDefault();
-      closeMenu();
-    }, { passive: false });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      closeMenu();
-    });
-
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const selectedLanguage = btn.getAttribute('data-lang');
-        setLanguage(selectedLanguage);
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = 'none';
-        tab.classList.remove('active');
-      });
-
-      const savedLanguage = safeLocalStorageGet('elena_art_language');
-
-      if (savedLanguage && translations[savedLanguage]) {
-        setLanguage(savedLanguage);
-      } else {
-        setLanguage('ro');
-      }
-
-      const home = document.getElementById('tab-home');
-      home.style.display = 'block';
-
-      requestAnimationFrame(() => {
-        home.classList.add('active');
-      });
-
-      activeTabId = 'tab-home';
-      tabHistory = [];
-      updateActiveLinks();
-      updateLanguageButtons();
-    });
-
-    window.addEventListener('load', () => {
-      const elapsed = Date.now() - loadingStartedAt;
-      const remaining = Math.max(1000 - elapsed, 0);
-
-      setTimeout(() => {
-        loadingScreen.classList.add('hide');
-      }, remaining);
-    });
-  </script>
-
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 400);
+            document.body.style.overflow = ''; // restore body scroll
+        }
+    </script>
 </body>
 </html>
